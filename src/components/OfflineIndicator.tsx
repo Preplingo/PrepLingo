@@ -30,9 +30,9 @@ export const OfflineIndicator: React.FC = () => {
     <div
       role="status"
       aria-live="polite"
-      className="bg-amber-50 dark:bg-amber-950/60 border-b border-amber-200/80 dark:border-amber-800/60 text-amber-900 dark:text-amber-200 px-3 py-1.5 text-xs font-medium flex items-center justify-center gap-2"
+      className="bg-[#fffbeb] dark:bg-[#451a03] border-b border-[#fde68a] dark:border-[#92400e] text-[#78350f] dark:text-[#fde68a] px-3 py-1.5 text-xs font-medium flex items-center justify-center gap-2"
     >
-      <WifiOff className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400 shrink-0" />
+      <WifiOff width={14} height={14} stroke="currentColor" fill="none" className="w-3.5 h-3.5 text-[#d97706] dark:text-[#fbbf24] shrink-0" />
       <span>Çevrimdışı Mod — Yerel veriler kullanılıyor</span>
     </div>
   );

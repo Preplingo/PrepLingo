@@ -7,12 +7,12 @@ import { PartOfSpeech } from '../types';
  */
 export function getCefrBadgeClass(level: string): string {
   if (level === 'Genel') {
-    return 'bg-sky-700 text-white font-bold shadow-xs border border-sky-600/50';
+    return 'bg-[#0369a1] text-[#ffffff] font-bold shadow-xs border border-[#0284c7]';
   }
   if (level === 'A1' || level === 'A2') {
-    return 'bg-emerald-600 text-white font-bold shadow-xs border border-emerald-500/40';
+    return 'bg-[#059669] text-[#ffffff] font-bold shadow-xs border border-[#10b981]';
   }
-  return 'bg-indigo-600 text-white font-bold shadow-xs border border-indigo-500/40';
+  return 'bg-[#4f46e5] text-[#ffffff] font-bold shadow-xs border border-[#6366f1]';
 }
 
 /**
@@ -26,24 +26,24 @@ export function getPosBadgeClass(pos: PartOfSpeech | string): string {
   switch (pos) {
     case 'noun':
     case 'n':
-      return 'bg-sky-100 text-sky-800 dark:bg-sky-950/80 dark:text-sky-200 border border-sky-300 dark:border-sky-800 font-semibold';
+      return 'bg-[#e0f2fe] text-[#075985] dark:bg-[#082f49] dark:text-[#bae6fd] border border-[#7dd3fc] dark:border-[#075985] font-semibold';
     case 'verb':
     case 'v':
-      return 'bg-rose-100 text-rose-800 dark:bg-rose-950/80 dark:text-rose-200 border border-rose-300 dark:border-rose-800 font-semibold';
+      return 'bg-[#ffe4e6] text-[#9f1239] dark:bg-[#4c0519] dark:text-[#fecdd3] border border-[#fda4af] dark:border-[#9f1239] font-semibold';
     case 'adjective':
     case 'adj':
-      return 'bg-amber-100 text-amber-800 dark:bg-amber-950/80 dark:text-amber-200 border border-amber-300 dark:border-amber-800 font-semibold';
+      return 'bg-[#fef3c7] text-[#92400e] dark:bg-[#451a03] dark:text-[#fde68a] border border-[#fcd34d] dark:border-[#92400e] font-semibold';
     case 'adverb':
     case 'adv':
-      return 'bg-purple-100 text-purple-800 dark:bg-purple-950/80 dark:text-purple-200 border border-purple-300 dark:border-purple-800 font-semibold';
+      return 'bg-[#f3e8ff] text-[#6b21a8] dark:bg-[#3b0764] dark:text-[#e9d5ff] border border-[#d8b4fe] dark:border-[#6b21a8] font-semibold';
     case 'preposition':
     case 'prep':
-      return 'bg-teal-100 text-teal-800 dark:bg-teal-950/80 dark:text-teal-200 border border-teal-300 dark:border-teal-800 font-semibold';
+      return 'bg-[#ccfbf1] text-[#115e59] dark:bg-[#042f2e] dark:text-[#99f6e4] border border-[#5eead4] dark:border-[#115e59] font-semibold';
     case 'conjunction':
     case 'conj':
-      return 'bg-indigo-100 text-indigo-800 dark:bg-indigo-950/80 dark:text-indigo-200 border border-indigo-300 dark:border-indigo-800 font-semibold';
+      return 'bg-[#e0e7ff] text-[#3730a3] dark:bg-[#1e1b4b] dark:text-[#c7d2fe] border border-[#a5b4fc] dark:border-[#3730a3] font-semibold';
     default:
-      return 'bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300 border border-slate-300 dark:border-slate-700 font-semibold';
+      return 'bg-[#f1f5f9] text-[#334155] dark:bg-[#1e293b] dark:text-[#cbd5e1] border border-[#cbd5e1] dark:border-[#334155] font-semibold';
   }
 }
 

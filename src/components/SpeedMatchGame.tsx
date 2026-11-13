@@ -610,51 +610,65 @@ export const SpeedMatchGame: React.FC<SpeedMatchGameProps> = ({
       : 100;
 
   // Deck filter button options: 4 clear source options
-  const filterButtons: { id: DeckFilter; label: string; icon?: React.ReactNode }[] = [
+  const filterButtons: { id: DeckFilter; label: string; hasIcon?: boolean }[] = [
     { id: 'all', label: 'Tümü' },
     { id: 'a1-a2', label: 'A1 - A2' },
     { id: 'b1-b2', label: 'B1 - B2' },
-    { id: 'favorites', label: 'Kelime Defterim 📖', icon: <BookOpen className="w-3.5 h-3.5 text-rose-500 shrink-0" /> },
+    { id: 'favorites', label: 'Kelime Defterim 📖', hasIcon: true },
   ];
 
   return (
     <div className="space-y-4 max-w-2xl mx-auto min-h-screen pb-[140px]">
       {/* 1. Mode & Deck Selector (Top Controls) */}
-      <div className="bg-white/95 dark:bg-slate-900/95 backdrop-blur-md rounded-2xl sm:rounded-3xl p-3 sm:p-4 border border-slate-200/80 dark:border-slate-800 shadow-2xs space-y-3">
+      <div className="bg-[#ffffff] dark:bg-[#0f172a] rounded-2xl sm:rounded-3xl p-3 sm:p-4 border border-[#e2e8f0] dark:border-[#1e293b] shadow-2xs space-y-3">
         {/* Game Mode Segmented Switch: ONLY 2 Gameplay Style Modes (Klasik, 60s Yarış) */}
-        <div className="flex items-center justify-between gap-2 border-b border-slate-100 dark:border-slate-800/80 pb-2.5 px-0.5">
-          <div className="flex items-center gap-1 sm:gap-1.5 p-1 bg-slate-100 dark:bg-slate-800/90 rounded-2xl w-full sm:w-auto">
+        <div className="flex items-center justify-between gap-2 border-b border-[#f1f5f9] dark:border-[#1e293b] pb-2.5 px-0.5">
+          <div className="flex items-center gap-1 sm:gap-1.5 p-1 bg-[#f1f5f9] dark:bg-[#1e293b] rounded-2xl w-full sm:w-auto">
             <button
               type="button"
               onClick={() => handleModeChange('classic')}
+              style={gameMode === 'classic' ? { backgroundColor: '#4f46e5', color: '#ffffff' } : undefined}
               className={`flex-1 sm:flex-initial py-2 px-3 sm:px-4 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-1.5 cursor-pointer ${
                 gameMode === 'classic'
-                  ? 'bg-white dark:bg-slate-900 text-indigo-600 dark:text-indigo-400 shadow-xs'
-                  : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                  ? 'legacy-btn-indigo bg-[#4f46e5] text-[#ffffff] shadow-xs'
+                  : 'text-[#475569] dark:text-[#cbd5e1] hover:text-[#0f172a] dark:hover:text-[#ffffff]'
               }`}
             >
-              <Layers className="w-3.5 h-3.5" />
+              <Layers
+                width={14}
+                height={14}
+                fill="none"
+                stroke={gameMode === 'classic' ? '#ffffff' : '#475569'}
+                className="w-3.5 h-3.5"
+              />
               <span>Klasik</span>
             </button>
 
             <button
               type="button"
               onClick={() => handleModeChange('time_attack')}
+              style={gameMode === 'time_attack' ? { backgroundColor: '#d97706', color: '#ffffff' } : undefined}
               className={`flex-1 sm:flex-initial py-2 px-3 sm:px-4 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-1.5 cursor-pointer ${
                 gameMode === 'time_attack'
-                  ? 'bg-white dark:bg-slate-900 text-amber-600 dark:text-amber-400 shadow-xs'
-                  : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                  ? 'bg-[#d97706] text-[#ffffff] shadow-xs'
+                  : 'text-[#475569] dark:text-[#cbd5e1] hover:text-[#0f172a] dark:hover:text-[#ffffff]'
               }`}
             >
-              <Hourglass className="w-3.5 h-3.5 text-amber-500" />
+              <Hourglass
+                width={14}
+                height={14}
+                fill="none"
+                stroke={gameMode === 'time_attack' ? '#ffffff' : '#d97706'}
+                className="w-3.5 h-3.5"
+              />
               <span>60s Yarış ⏱️</span>
             </button>
           </div>
 
           {/* Time Attack Best Badge */}
           {gameMode === 'time_attack' && personalBest > 0 && (
-            <div className="hidden sm:flex items-center gap-1 px-2.5 py-1 rounded-xl bg-amber-50 dark:bg-amber-950/40 border border-amber-200/80 dark:border-amber-800 text-[11px] font-bold text-amber-700 dark:text-amber-300 font-mono">
-              <Medal className="w-3.5 h-3.5 text-amber-500" />
+            <div className="hidden sm:flex items-center gap-1 px-2.5 py-1 rounded-xl bg-[#fffbeb] dark:bg-[#451a03] border border-[#fde68a] dark:border-[#92400e] text-[11px] font-bold text-[#b45309] dark:text-[#fcd34d] font-mono">
+              <Medal width={14} height={14} fill="none" stroke="#f59e0b" className="w-3.5 h-3.5" />
               <span>Rekor: {personalBest}</span>
             </div>
           )}
@@ -663,10 +677,10 @@ export const SpeedMatchGame: React.FC<SpeedMatchGameProps> = ({
             <button
               type="button"
               onClick={() => handleStartGame(deckFilter, gameMode)}
-              className="text-xs font-semibold text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 px-3 py-1.5 rounded-xl hover:bg-indigo-50 dark:hover:bg-slate-800 transition-colors flex items-center gap-1 cursor-pointer shrink-0"
+              className="text-xs font-semibold text-[#4f46e5] dark:text-[#818cf8] hover:text-[#4338ca] dark:hover:text-[#a5b4fc] px-3 py-1.5 rounded-xl hover:bg-[#eef2ff] dark:hover:bg-[#1e293b] transition-colors flex items-center gap-1 cursor-pointer shrink-0"
               title="Yeni tur başlat"
             >
-              <RotateCcw className="w-3.5 h-3.5" />
+              <RotateCcw width={14} height={14} fill="none" stroke="#4f46e5" className="w-3.5 h-3.5" />
               <span className="hidden sm:inline">Yenile</span>
             </button>
           )}
@@ -675,18 +689,18 @@ export const SpeedMatchGame: React.FC<SpeedMatchGameProps> = ({
         {/* 2. Unified Deck / Source Selector in the Second Row ("Kelime Destesi") */}
         <div className="space-y-1.5">
           <div className="flex items-center justify-between px-1 text-xs">
-            <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider flex items-center gap-1.5">
-              <SlidersHorizontal className="w-3 h-3 text-slate-400" />
+            <span className="text-[11px] font-bold text-[#64748b] uppercase tracking-wider flex items-center gap-1.5">
+              <SlidersHorizontal width={12} height={12} fill="none" stroke="#64748b" className="w-3 h-3" />
               <span>Kelime Destesi:</span>
             </span>
-            <span className="text-[11px] text-slate-500 dark:text-slate-400 font-medium">
+            <span className="text-[11px] text-[#64748b] dark:text-[#94a3b8] font-medium">
               {deckFilter === 'favorites'
                 ? `${savedWords.length} kayıtlı kelime (Akıllı Tekrar)`
                 : `${activePool.length.toLocaleString('tr-TR')} kelime aktif`}
             </span>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-1.5 p-1 bg-slate-100 dark:bg-slate-800/90 rounded-2xl">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-1.5 p-1 bg-[#f1f5f9] dark:bg-[#1e293b] rounded-2xl">
             {filterButtons.map((btn) => {
               const isActive = deckFilter === btn.id;
               return (
@@ -694,15 +708,28 @@ export const SpeedMatchGame: React.FC<SpeedMatchGameProps> = ({
                   key={btn.id}
                   type="button"
                   onClick={() => handleFilterChange(btn.id)}
+                  style={
+                    isActive
+                      ? { backgroundColor: btn.id === 'favorites' ? '#e11d48' : '#4f46e5', color: '#ffffff' }
+                      : undefined
+                  }
                   className={`py-2 px-2 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-1.5 cursor-pointer truncate ${
                     isActive
                       ? btn.id === 'favorites'
-                        ? 'bg-white dark:bg-slate-900 text-rose-600 dark:text-rose-400 shadow-xs'
-                        : 'bg-white dark:bg-slate-900 text-indigo-600 dark:text-indigo-400 shadow-xs'
-                      : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                        ? 'bg-[#e11d48] text-[#ffffff] shadow-xs'
+                        : 'legacy-btn-indigo bg-[#4f46e5] text-[#ffffff] shadow-xs'
+                      : 'text-[#475569] dark:text-[#cbd5e1] hover:text-[#0f172a] dark:hover:text-[#ffffff]'
                   }`}
                 >
-                  {btn.icon}
+                  {btn.hasIcon && (
+                    <BookOpen
+                      width={14}
+                      height={14}
+                      fill="none"
+                      stroke={isActive ? '#ffffff' : '#f43f5e'}
+                      className="w-3.5 h-3.5 shrink-0"
+                    />
+                  )}
                   <span className="truncate">{btn.label}</span>
                 </button>
               );
@@ -713,22 +740,22 @@ export const SpeedMatchGame: React.FC<SpeedMatchGameProps> = ({
 
       {/* 3. Single Unified Empty State when Kelime Defterim has fewer than 5 saved words */}
       {isFavoritesInsufficient && (
-        <div className="p-8 text-center rounded-3xl bg-white dark:bg-slate-900 border border-dashed border-rose-200 dark:border-rose-900/50 space-y-4 animate-in fade-in duration-300">
-          <div className="w-16 h-16 mx-auto rounded-3xl bg-rose-50 dark:bg-rose-950/40 border border-rose-200 dark:border-rose-900/60 flex items-center justify-center text-rose-500">
-            <BookOpen className="w-8 h-8 text-rose-500" />
+        <div className="p-8 text-center rounded-3xl bg-[#ffffff] dark:bg-[#0f172a] border border-dashed border-[#fecdd3] dark:border-[#881337] space-y-4 animate-in fade-in duration-300">
+          <div className="w-16 h-16 mx-auto rounded-3xl bg-[#fff1f2] dark:bg-[#4c0519] border border-[#fecdd3] dark:border-[#881337] flex items-center justify-center text-[#f43f5e]">
+            <BookOpen width={32} height={32} fill="none" stroke="#f43f5e" className="w-8 h-8" />
           </div>
           <div className="space-y-3 max-w-md mx-auto">
-            <h3 className="text-base font-bold text-slate-900 dark:text-white leading-snug">
+            <h3 className="text-base font-bold text-[#0f172a] dark:text-[#ffffff] leading-snug">
               Kelime Defterim ile eşleştirme oynamak için önce sözlükten en az 5 kelime ekleyin. (Mevcut: {savedWords.length} / 5)
             </h3>
             {/* Progress bar towards 5 words */}
-            <div className="w-48 max-w-full mx-auto bg-slate-100 dark:bg-slate-800 rounded-full h-2.5 overflow-hidden">
+            <div className="w-48 max-w-full mx-auto bg-[#f1f5f9] dark:bg-[#1e293b] rounded-full h-2.5 overflow-hidden">
               <div
-                className="bg-rose-500 h-full rounded-full transition-all duration-300"
+                className="bg-[#f43f5e] h-full rounded-full transition-all duration-300"
                 style={{ width: `${Math.min(100, (savedWords.length / 5) * 100)}%` }}
               />
             </div>
-            <p className="text-xs text-slate-500 dark:text-slate-400">
+            <p className="text-xs text-[#64748b] dark:text-[#94a3b8]">
               Defterinize eklediğiniz kelimeler burada akıllı tekrar algoritmasıyla sunulur. Hata yaptığınız kelimeler pekişene kadar daha sık sorulur.
             </p>
           </div>
@@ -737,16 +764,17 @@ export const SpeedMatchGame: React.FC<SpeedMatchGameProps> = ({
               <button
                 type="button"
                 onClick={onNavigateToDictionary}
-                className="px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold transition-colors cursor-pointer inline-flex items-center gap-1.5 shadow-sm"
+                style={{ backgroundColor: '#4f46e5', color: '#ffffff' }}
+                className="legacy-btn-indigo px-5 py-2.5 rounded-xl bg-[#4f46e5] hover:bg-[#4338ca] text-[#ffffff] text-xs font-bold transition-colors cursor-pointer inline-flex items-center gap-1.5 shadow-sm"
               >
                 <span>Sözlüğe Git ve Kelime Ekle</span>
-                <ArrowRight className="w-3.5 h-3.5" />
+                <ArrowRight width={14} height={14} fill="none" stroke="#ffffff" className="w-3.5 h-3.5" />
               </button>
             )}
             <button
               type="button"
               onClick={() => handleFilterChange('all')}
-              className="px-4 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 text-xs font-bold transition-colors cursor-pointer"
+              className="px-4 py-2.5 rounded-xl bg-[#f1f5f9] dark:bg-[#1e293b] hover:bg-[#e2e8f0] dark:hover:bg-[#334155] text-[#334155] dark:text-[#e2e8f0] text-xs font-bold transition-colors cursor-pointer"
             >
               <span>Tüm Seviyeleri Oyna</span>
             </button>
@@ -756,34 +784,34 @@ export const SpeedMatchGame: React.FC<SpeedMatchGameProps> = ({
 
       {/* Idle Screen (Pre-game Intro) */}
       {!isFavoritesInsufficient && activePool.length > 0 && gameState === 'idle' && (
-        <div className="bg-white dark:bg-slate-900 rounded-3xl p-6 sm:p-8 border border-slate-200/80 dark:border-slate-800 shadow-2xs text-center space-y-6">
+        <div className="bg-[#ffffff] dark:bg-[#0f172a] rounded-3xl p-6 sm:p-8 border border-[#e2e8f0] dark:border-[#1e293b] shadow-2xs text-center space-y-6">
           <div
             className={`w-16 h-16 mx-auto rounded-2xl flex items-center justify-center border ${
               gameMode === 'time_attack'
-                ? 'bg-amber-50 dark:bg-amber-950/60 text-amber-500 border-amber-200 dark:border-amber-800'
+                ? 'bg-[#fffbeb] dark:bg-[#451a03] text-[#f59e0b] border-[#fde68a] dark:border-[#92400e]'
                 : deckFilter === 'favorites'
-                ? 'bg-rose-50 dark:bg-rose-950/60 text-rose-500 border-rose-200 dark:border-rose-800'
-                : 'bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400 border-indigo-200 dark:border-indigo-800'
+                ? 'bg-[#fff1f2] dark:bg-[#4c0519] text-[#f43f5e] border-[#fecdd3] dark:border-[#881337]'
+                : 'bg-[#eef2ff] dark:bg-[#1e1b4b] text-[#4f46e5] dark:text-[#818cf8] border-[#c7d2fe] dark:border-[#3730a3]'
             }`}
           >
             {gameMode === 'time_attack' ? (
-              <Hourglass className="w-8 h-8 text-amber-500" />
+              <Hourglass width={32} height={32} fill="none" stroke="#f59e0b" className="w-8 h-8" />
             ) : deckFilter === 'favorites' ? (
-              <BookOpen className="w-8 h-8 text-rose-500" />
+              <BookOpen width={32} height={32} fill="none" stroke="#f43f5e" className="w-8 h-8" />
             ) : (
-              <Zap className="w-8 h-8" />
+              <Zap width={32} height={32} fill="none" stroke="#4f46e5" className="w-8 h-8" />
             )}
           </div>
 
           <div className="space-y-2">
-            <h2 className="text-2xl sm:text-3xl font-extrabold font-['Outfit'] text-slate-900 dark:text-white">
+            <h2 className="text-2xl sm:text-3xl font-extrabold font-['Outfit'] text-[#0f172a] dark:text-[#ffffff]">
               {gameMode === 'time_attack'
                 ? '60 Saniye Zamana Karşı Yarış ⏱️'
                 : deckFilter === 'favorites'
                 ? 'Kelime Defterim: Akıllı Tekrar 📖'
                 : 'Kelime Eşleştirme Oyunu'}
             </h2>
-            <p className="text-sm text-slate-500 dark:text-slate-400 max-w-md mx-auto leading-relaxed">
+            <p className="text-sm text-[#64748b] dark:text-[#94a3b8] max-w-md mx-auto leading-relaxed">
               {gameMode === 'time_attack'
                 ? deckFilter === 'favorites'
                   ? 'Kelime defterinizdeki kelimelerle 60 saniye boyunca yarışın! Hata yaptığınız kelimeler pekişene kadar daha sık karşınıza gelir.'
@@ -795,21 +823,21 @@ export const SpeedMatchGame: React.FC<SpeedMatchGameProps> = ({
           </div>
 
           {gameMode === 'time_attack' && personalBest > 0 && (
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-2xl bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800/80 text-xs font-bold text-amber-800 dark:text-amber-200">
-              <Medal className="w-4 h-4 text-amber-500" />
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-2xl bg-[#fffbeb] dark:bg-[#451a03] border border-[#fde68a] dark:border-[#92400e] text-xs font-bold text-[#92400e] dark:text-[#fde68a]">
+              <Medal width={16} height={16} fill="none" stroke="#f59e0b" className="w-4 h-4" />
               <span>Kişisel En İyi Skorunuz: {personalBest} Puan</span>
             </div>
           )}
 
           {deckFilter === 'favorites' && (
             <div className="flex flex-wrap items-center justify-center gap-2">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-rose-50 dark:bg-rose-950/40 border border-rose-200 dark:border-rose-800 text-xs font-bold text-rose-700 dark:text-rose-300 font-mono">
-                <Heart className="w-3.5 h-3.5 fill-rose-500 text-rose-500" />
+              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#fff1f2] dark:bg-[#4c0519] border border-[#fecdd3] dark:border-[#881337] text-xs font-bold text-[#be123c] dark:text-[#fda4af] font-mono">
+                <Heart width={14} height={14} fill="#f43f5e" stroke="#f43f5e" className="w-3.5 h-3.5" />
                 <span>{savedWords.length} Kayıtlı Kelime</span>
               </span>
               {savedWords.filter((w) => (notebookMistakes[w.id] || 0) > 0).length > 0 && (
-                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800 text-xs font-bold text-amber-800 dark:text-amber-200 font-mono">
-                  <Flame className="w-3.5 h-3.5 text-amber-500 fill-amber-500" />
+                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#fffbeb] dark:bg-[#451a03] border border-[#fde68a] dark:border-[#92400e] text-xs font-bold text-[#92400e] dark:text-[#fde68a] font-mono">
+                  <Flame width={14} height={14} fill="#f59e0b" stroke="#f59e0b" className="w-3.5 h-3.5" />
                   <span>
                     {savedWords.filter((w) => (notebookMistakes[w.id] || 0) > 0).length} Tekrar Odaklı
                   </span>
@@ -822,9 +850,10 @@ export const SpeedMatchGame: React.FC<SpeedMatchGameProps> = ({
             <button
               type="button"
               onClick={() => handleStartGame(deckFilter, gameMode)}
-              className="w-full sm:w-auto my-2 mx-auto bg-emerald-600 hover:bg-emerald-700 active:scale-95 text-white font-bold py-3.5 px-9 rounded-2xl shadow-lg shadow-emerald-600/30 transition-all flex items-center justify-center gap-2 cursor-pointer min-h-[52px]"
+              style={{ backgroundColor: '#16a34a', color: '#ffffff' }}
+              className="legacy-btn-green w-full sm:w-auto my-2 mx-auto bg-[#16a34a] hover:bg-[#15803d] active:scale-95 text-[#ffffff] font-bold py-3.5 px-9 rounded-2xl shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer min-h-[52px]"
             >
-              <Play className="w-5 h-5 fill-white" />
+              <Play width={20} height={20} fill="#ffffff" stroke="#ffffff" className="w-5 h-5" />
               <span>
                 {gameMode === 'time_attack'
                   ? '60s Yarışı Başlat ⏱️'
@@ -842,10 +871,10 @@ export const SpeedMatchGame: React.FC<SpeedMatchGameProps> = ({
         <div className="space-y-4">
           {/* Top Live Metrics Dashboard Bar */}
           <div
-            className={`bg-white dark:bg-slate-900 rounded-2xl sm:rounded-3xl p-3.5 sm:p-4 border transition-all shadow-2xs flex items-center justify-between gap-2 sm:gap-4 ${
+            className={`bg-[#ffffff] dark:bg-[#0f172a] rounded-2xl sm:rounded-3xl p-3.5 sm:p-4 border transition-all shadow-2xs flex items-center justify-between gap-2 sm:gap-4 ${
               gameMode === 'time_attack' && timeLeft <= 10
-                ? 'border-rose-400/80 dark:border-rose-800/80 ring-2 ring-rose-500/20'
-                : 'border-slate-200/80 dark:border-slate-800'
+                ? 'border-[#fb7185] dark:border-[#9f1239] ring-2 ring-[#f43f5e]'
+                : 'border-[#e2e8f0] dark:border-[#1e293b]'
             }`}
           >
             {/* Timer: Live countdown in time-attack vs elapsed in classic */}
@@ -853,25 +882,31 @@ export const SpeedMatchGame: React.FC<SpeedMatchGameProps> = ({
               <div
                 className={`p-2 rounded-xl transition-all ${
                   gameMode === 'time_attack' && timeLeft <= 10
-                    ? 'bg-rose-100 dark:bg-rose-950/80 text-rose-600 dark:text-rose-400 ring-2 ring-rose-500/40 animate-pulse'
-                    : 'bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400'
+                    ? 'bg-[#ffe4e6] dark:bg-[#4c0519] text-[#e11d48] dark:text-[#fb7185] animate-pulse'
+                    : 'bg-[#eef2ff] dark:bg-[#1e1b4b] text-[#4f46e5] dark:text-[#818cf8]'
                 }`}
               >
                 {gameMode === 'time_attack' ? (
-                  <Hourglass className={`w-4 h-4 sm:w-5 sm:h-5 ${timeLeft <= 10 ? 'animate-spin' : ''}`} />
+                  <Hourglass
+                    width={18}
+                    height={18}
+                    fill="none"
+                    stroke={timeLeft <= 10 ? '#e11d48' : '#4f46e5'}
+                    className={`w-4 h-4 sm:w-5 sm:h-5 ${timeLeft <= 10 ? 'animate-spin' : ''}`}
+                  />
                 ) : (
-                  <Timer className="w-4 h-4 sm:w-5 sm:h-5" />
+                  <Timer width={18} height={18} fill="none" stroke="#4f46e5" className="w-4 h-4 sm:w-5 sm:h-5" />
                 )}
               </div>
               <div>
-                <span className="text-[10px] uppercase font-semibold text-slate-400 block">
+                <span className="text-[10px] uppercase font-semibold text-[#64748b] block">
                   {gameMode === 'time_attack' ? 'Kalan Süre' : 'Süre'}
                 </span>
                 <span
                   className={`text-base sm:text-lg font-mono tabular-nums ${
                     gameMode === 'time_attack' && timeLeft <= 10
-                      ? 'text-rose-600 dark:text-rose-400 font-black animate-pulse'
-                      : 'font-extrabold text-slate-900 dark:text-white'
+                      ? 'text-[#e11d48] dark:text-[#fb7185] font-black animate-pulse'
+                      : 'font-extrabold text-[#0f172a] dark:text-[#ffffff]'
                   }`}
                 >
                   {gameMode === 'time_attack' ? `${timeLeft}s` : `${elapsedTime}s`}
@@ -881,12 +916,12 @@ export const SpeedMatchGame: React.FC<SpeedMatchGameProps> = ({
 
             {/* Matched Count */}
             <div className="flex items-center gap-2">
-              <div className="p-2 rounded-xl bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400">
-                <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5" />
+              <div className="p-2 rounded-xl bg-[#ecfdf5] dark:bg-[#022c22] text-[#16a34a] dark:text-[#34d399]">
+                <CheckCircle2 width={18} height={18} fill="none" stroke="#16a34a" className="w-4 h-4 sm:w-5 sm:h-5" />
               </div>
               <div>
-                <span className="text-[10px] uppercase font-semibold text-slate-400 block">Doğru Eşleşme</span>
-                <span className="text-base sm:text-lg font-extrabold font-mono text-slate-900 dark:text-white">
+                <span className="text-[10px] uppercase font-semibold text-[#64748b] block">Doğru Eşleşme</span>
+                <span className="text-base sm:text-lg font-extrabold font-mono text-[#0f172a] dark:text-[#ffffff]">
                   {gameMode === 'time_attack' ? pairsMatchedCount : `${matchedPairIds.size} / ${enTiles.length}`}
                 </span>
               </div>
@@ -897,17 +932,23 @@ export const SpeedMatchGame: React.FC<SpeedMatchGameProps> = ({
               <div
                 className={`p-2 rounded-xl transition-all ${
                   gameMode === 'time_attack' && streak >= 3
-                    ? 'bg-rose-500 text-white animate-pulse shadow-md shadow-rose-500/30'
-                    : 'bg-amber-50 dark:bg-amber-950/40 text-amber-600 dark:text-amber-400'
+                    ? 'bg-[#f43f5e] text-[#ffffff] animate-pulse shadow-md'
+                    : 'bg-[#fffbeb] dark:bg-[#451a03] text-[#d97706] dark:text-[#fbbf24]'
                 }`}
               >
-                <Flame className={`w-4 h-4 sm:w-5 sm:h-5 ${streak >= 3 ? 'animate-bounce' : streak > 1 ? 'animate-pulse' : ''}`} />
+                <Flame
+                  width={18}
+                  height={18}
+                  fill="none"
+                  stroke={gameMode === 'time_attack' && streak >= 3 ? '#ffffff' : '#d97706'}
+                  className={`w-4 h-4 sm:w-5 sm:h-5 ${streak >= 3 ? 'animate-bounce' : streak > 1 ? 'animate-pulse' : ''}`}
+                />
               </div>
               <div>
                 <div className="flex items-center gap-1">
-                  <span className="text-[10px] uppercase font-semibold text-slate-400 block">Seri</span>
+                  <span className="text-[10px] uppercase font-semibold text-[#64748b] block">Seri</span>
                   {gameMode === 'time_attack' && streak >= 3 && (
-                    <span className="px-1.5 py-0.2 rounded-full bg-linear-to-r from-amber-500 to-rose-500 text-[9px] font-black text-white tracking-wider animate-bounce shadow-xs whitespace-nowrap">
+                    <span className="px-1.5 py-0.2 rounded-full bg-[#e11d48] text-[9px] font-black text-[#ffffff] tracking-wider animate-bounce shadow-xs whitespace-nowrap">
                       2x Kombo 🔥
                     </span>
                   )}
@@ -915,8 +956,8 @@ export const SpeedMatchGame: React.FC<SpeedMatchGameProps> = ({
                 <span
                   className={`text-base sm:text-lg font-extrabold font-mono ${
                     gameMode === 'time_attack' && streak >= 3
-                      ? 'text-rose-600 dark:text-rose-400'
-                      : 'text-amber-600 dark:text-amber-400'
+                      ? 'text-[#e11d48] dark:text-[#fb7185]'
+                      : 'text-[#d97706] dark:text-[#fbbf24]'
                   }`}
                 >
                   {streak}x
@@ -926,12 +967,12 @@ export const SpeedMatchGame: React.FC<SpeedMatchGameProps> = ({
 
             {/* Total Score */}
             <div className="flex items-center gap-2">
-              <div className="p-2 rounded-xl bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400">
-                <Trophy className="w-4 h-4 sm:w-5 sm:h-5" />
+              <div className="p-2 rounded-xl bg-[#eef2ff] dark:bg-[#1e1b4b] text-[#4f46e5] dark:text-[#818cf8]">
+                <Trophy width={18} height={18} fill="none" stroke="#4f46e5" className="w-4 h-4 sm:w-5 sm:h-5" />
               </div>
               <div>
-                <span className="text-[10px] uppercase font-semibold text-slate-400 block">Puan</span>
-                <span className="text-base sm:text-lg font-extrabold font-mono text-indigo-600 dark:text-indigo-400">
+                <span className="text-[10px] uppercase font-semibold text-[#64748b] block">Puan</span>
+                <span className="text-base sm:text-lg font-extrabold font-mono text-[#4f46e5] dark:text-[#818cf8]">
                   {score}
                 </span>
               </div>
@@ -940,12 +981,12 @@ export const SpeedMatchGame: React.FC<SpeedMatchGameProps> = ({
 
           {/* Time Attack Progress Bar with 10s soft red alert */}
           {gameMode === 'time_attack' && (
-            <div className="w-full bg-slate-200 dark:bg-slate-800 h-2.5 rounded-full overflow-hidden transition-all">
+            <div className="w-full bg-[#e2e8f0] dark:bg-[#1e293b] h-2.5 rounded-full overflow-hidden transition-all">
               <div
                 className={`h-full transition-all duration-1000 ${
                   timeLeft <= 10
-                    ? 'bg-rose-500 animate-pulse shadow-md shadow-rose-500/40'
-                    : 'bg-linear-to-r from-amber-500 to-indigo-500'
+                    ? 'bg-[#f43f5e] animate-pulse'
+                    : 'bg-[#4f46e5] bg-gradient-to-r from-[#f59e0b] to-[#6366f1]'
                 }`}
                 style={{ width: `${(timeLeft / 60) * 100}%` }}
               />
@@ -954,16 +995,16 @@ export const SpeedMatchGame: React.FC<SpeedMatchGameProps> = ({
 
           {/* Time Attack Wave Sub-header */}
           {gameMode === 'time_attack' && (
-            <div className="flex items-center justify-between text-xs px-1 text-slate-500 font-medium">
-              <div className="flex items-center gap-1.5 font-bold text-indigo-600 dark:text-indigo-400">
-                <span className="px-2.5 py-1 rounded-xl bg-indigo-50 dark:bg-indigo-950/60 border border-indigo-200/80 dark:border-indigo-800 text-[11px] font-mono">
+            <div className="flex items-center justify-between text-xs px-1 text-[#64748b] font-medium">
+              <div className="flex items-center gap-1.5 font-bold text-[#4f46e5] dark:text-[#818cf8]">
+                <span className="px-2.5 py-1 rounded-xl bg-[#eef2ff] dark:bg-[#1e1b4b] border border-[#c7d2fe] dark:border-[#3730a3] text-[11px] font-mono">
                   Dalga {waveCount}
                 </span>
-                <span className="text-[11px] font-normal text-slate-400">
+                <span className="text-[11px] font-normal text-[#64748b]">
                   ({matchedPairIds.size} / {enTiles.length} eşleşti)
                 </span>
               </div>
-              <span className="text-[11px] text-slate-400 font-medium">
+              <span className="text-[11px] text-[#64748b] font-medium">
                 6 çift tamamlandığında yeni dalga gelir
               </span>
             </div>
@@ -978,10 +1019,10 @@ export const SpeedMatchGame: React.FC<SpeedMatchGameProps> = ({
             {/* English Words Column */}
             <div className="space-y-2.5">
               <div className="flex items-center justify-between px-1">
-                <span className="text-xs font-bold text-slate-400 uppercase tracking-wider block">
+                <span className="text-xs font-bold text-[#64748b] uppercase tracking-wider block">
                   İngilizce Kelime
                 </span>
-                <span className="text-[11px] font-mono text-slate-400">
+                <span className="text-[11px] font-mono text-[#64748b]">
                   {enTiles.length} Kart
                 </span>
               </div>
@@ -994,20 +1035,20 @@ export const SpeedMatchGame: React.FC<SpeedMatchGameProps> = ({
                 const isWeak = (notebookMistakes[tile.wordObj.id] || 0) > 0;
 
                 let stateClasses =
-                  'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800 text-slate-800 dark:text-slate-200 hover:border-indigo-400 dark:hover:border-indigo-600 active:scale-98 shadow-2xs';
+                  'bg-[#ffffff] dark:bg-[#0f172a] border-[#e2e8f0] dark:border-[#1e293b] text-[#1e293b] dark:text-[#e2e8f0] hover:border-[#818cf8] dark:hover:border-[#4f46e5] active:scale-98 shadow-2xs';
 
                 if (isJustMatched) {
                   stateClasses =
-                    'bg-emerald-100 dark:bg-emerald-950/80 border-emerald-500 text-emerald-800 dark:text-emerald-200 ring-4 ring-emerald-500/30 scale-[1.02] transition-all duration-250 shadow-md';
+                    'bg-[#d1fae5] dark:bg-[#022c22] border-[#10b981] text-[#065f46] dark:text-[#a7f3d0] scale-[1.02] transition-all duration-250 shadow-md';
                 } else if (isMatched) {
                   stateClasses =
-                    'opacity-35 bg-slate-100/70 dark:bg-slate-800/40 border-slate-300 dark:border-slate-800/80 text-slate-400 dark:text-slate-500 cursor-default scale-[0.98] pointer-events-none transition-all duration-300';
+                    'opacity-35 bg-[#f1f5f9] dark:bg-[#1e293b] border-[#cbd5e1] dark:border-[#1e293b] text-[#94a3b8] dark:text-[#64748b] cursor-default scale-[0.98] pointer-events-none transition-all duration-300';
                 } else if (isMismatch) {
                   stateClasses =
-                    'bg-rose-50 dark:bg-rose-950/80 border-rose-500 text-rose-700 dark:text-rose-200 ring-4 ring-rose-500/20 animate-shake shadow-md';
+                    'bg-[#fff1f2] dark:bg-[#4c0519] border-[#f43f5e] text-[#be123c] dark:text-[#fecdd3] animate-shake shadow-md';
                 } else if (isSelected) {
                   stateClasses =
-                    'bg-indigo-50/90 dark:bg-indigo-950/90 border-indigo-600 text-indigo-700 dark:text-indigo-200 shadow-md ring-4 ring-indigo-500/25 scale-[1.02]';
+                    'bg-[#eef2ff] dark:bg-[#1e1b4b] border-[#4f46e5] text-[#4338ca] dark:text-[#c7d2fe] shadow-md scale-[1.02]';
                 }
 
                 return (
@@ -1019,16 +1060,16 @@ export const SpeedMatchGame: React.FC<SpeedMatchGameProps> = ({
                     className={`w-full min-h-[62px] p-3 sm:p-3.5 rounded-2xl text-left border-2 font-semibold text-sm sm:text-base select-none flex items-center justify-between cursor-pointer ${stateClasses}`}
                   >
                     <div className="flex items-center gap-2 truncate mr-1.5">
-                      {isMatched && <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />}
+                      {isMatched && <CheckCircle2 width={16} height={16} fill="none" stroke="#16a34a" className="w-4 h-4 shrink-0" />}
                       <span className="font-['Outfit'] tracking-tight truncate">{tile.text}</span>
                     </div>
                     <div className="flex items-center gap-1.5 shrink-0">
                       {isWeak && !isMatched && (
                         <span
-                          className="text-[9px] px-1.5 py-0.5 rounded-md bg-amber-50 dark:bg-amber-950/60 text-amber-700 dark:text-amber-300 border border-amber-200/80 dark:border-amber-800 flex items-center gap-0.5 font-bold shrink-0"
+                          className="text-[9px] px-1.5 py-0.5 rounded-md bg-[#fffbeb] dark:bg-[#451a03] text-[#b45309] dark:text-[#fcd34d] border border-[#fde68a] dark:border-[#92400e] flex items-center gap-0.5 font-bold shrink-0"
                           title="Hata yapılan kelime - tekrar odaklı"
                         >
-                          <Flame className="w-2.5 h-2.5 text-amber-500 fill-amber-500" />
+                          <Flame width={10} height={10} fill="#f59e0b" stroke="#f59e0b" className="w-2.5 h-2.5" />
                           <span className="hidden sm:inline">Tekrar</span>
                           <span className="sm:hidden">!</span>
                         </span>
@@ -1049,10 +1090,10 @@ export const SpeedMatchGame: React.FC<SpeedMatchGameProps> = ({
             {/* Turkish Meanings Column */}
             <div className="space-y-2.5">
               <div className="flex items-center justify-between px-1">
-                <span className="text-xs font-bold text-slate-400 uppercase tracking-wider block">
+                <span className="text-xs font-bold text-[#64748b] uppercase tracking-wider block">
                   Türkçe Anlam
                 </span>
-                <span className="text-[11px] font-mono text-slate-400">
+                <span className="text-[11px] font-mono text-[#64748b]">
                   {trTiles.length} Kart
                 </span>
               </div>
@@ -1064,20 +1105,20 @@ export const SpeedMatchGame: React.FC<SpeedMatchGameProps> = ({
                 const isMismatch = mismatchTileIds?.firstId === tile.id || mismatchTileIds?.secondId === tile.id;
 
                 let stateClasses =
-                  'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:border-indigo-400 dark:hover:border-indigo-600 active:scale-98 shadow-2xs';
+                  'bg-[#ffffff] dark:bg-[#0f172a] border-[#e2e8f0] dark:border-[#1e293b] text-[#334155] dark:text-[#cbd5e1] hover:border-[#818cf8] dark:hover:border-[#4f46e5] active:scale-98 shadow-2xs';
 
                 if (isJustMatched) {
                   stateClasses =
-                    'bg-emerald-100 dark:bg-emerald-950/80 border-emerald-500 text-emerald-800 dark:text-emerald-200 ring-4 ring-emerald-500/30 scale-[1.02] transition-all duration-250 shadow-md';
+                    'bg-[#d1fae5] dark:bg-[#022c22] border-[#10b981] text-[#065f46] dark:text-[#a7f3d0] scale-[1.02] transition-all duration-250 shadow-md';
                 } else if (isMatched) {
                   stateClasses =
-                    'opacity-35 bg-slate-100/70 dark:bg-slate-800/40 border-slate-300 dark:border-slate-800/80 text-slate-400 dark:text-slate-500 cursor-default scale-[0.98] pointer-events-none transition-all duration-300';
+                    'opacity-35 bg-[#f1f5f9] dark:bg-[#1e293b] border-[#cbd5e1] dark:border-[#1e293b] text-[#94a3b8] dark:text-[#64748b] cursor-default scale-[0.98] pointer-events-none transition-all duration-300';
                 } else if (isMismatch) {
                   stateClasses =
-                    'bg-rose-50 dark:bg-rose-950/80 border-rose-500 text-rose-700 dark:text-rose-200 ring-4 ring-rose-500/20 animate-shake shadow-md';
+                    'bg-[#fff1f2] dark:bg-[#4c0519] border-[#f43f5e] text-[#be123c] dark:text-[#fecdd3] animate-shake shadow-md';
                 } else if (isSelected) {
                   stateClasses =
-                    'bg-indigo-50/90 dark:bg-indigo-950/90 border-indigo-600 text-indigo-700 dark:text-indigo-200 shadow-md ring-4 ring-indigo-500/25 scale-[1.02]';
+                    'bg-[#eef2ff] dark:bg-[#1e1b4b] border-[#4f46e5] text-[#4338ca] dark:text-[#c7d2fe] shadow-md scale-[1.02]';
                 }
 
                 return (
@@ -1089,7 +1130,7 @@ export const SpeedMatchGame: React.FC<SpeedMatchGameProps> = ({
                     className={`w-full min-h-[62px] p-3 sm:p-3.5 rounded-2xl text-left border-2 font-medium text-xs sm:text-sm select-none flex items-center justify-between cursor-pointer ${stateClasses}`}
                   >
                     <div className="flex items-center gap-2 truncate">
-                      {isMatched && <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />}
+                      {isMatched && <CheckCircle2 width={16} height={16} fill="none" stroke="#16a34a" className="w-4 h-4 shrink-0" />}
                       <span className="line-clamp-2 leading-snug">{tile.text}</span>
                     </div>
                   </button>
@@ -1102,36 +1143,36 @@ export const SpeedMatchGame: React.FC<SpeedMatchGameProps> = ({
 
       {/* 3. Round Summary & Results Modal */}
       {gameState === 'round_completed' && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm animate-in fade-in duration-200">
-          <div className="w-full max-w-md bg-white dark:bg-slate-900 rounded-3xl p-6 sm:p-8 border border-slate-200 dark:border-slate-800 shadow-2xl text-center space-y-6 animate-in zoom-in-95 duration-200">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#0f172a]/70 backdrop-blur-sm animate-in fade-in duration-200">
+          <div className="w-full max-w-md bg-[#ffffff] dark:bg-[#0f172a] rounded-3xl p-6 sm:p-8 border border-[#e2e8f0] dark:border-[#1e293b] shadow-2xl text-center space-y-6 animate-in zoom-in-95 duration-200">
             {/* Header Icon */}
             <div
               className={`w-18 h-18 mx-auto rounded-3xl flex items-center justify-center border shadow-md ${
                 gameMode === 'time_attack'
-                  ? 'bg-amber-50 dark:bg-amber-950/60 text-amber-500 border-amber-200 dark:border-amber-800/80'
+                  ? 'bg-[#fffbeb] dark:bg-[#451a03] text-[#f59e0b] border-[#fde68a] dark:border-[#92400e]'
                   : deckFilter === 'favorites'
-                  ? 'bg-rose-50 dark:bg-rose-950/60 text-rose-500 border-rose-200 dark:border-rose-800/80'
-                  : 'bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 border-emerald-200 dark:border-emerald-800/80'
+                  ? 'bg-[#fff1f2] dark:bg-[#4c0519] text-[#f43f5e] border-[#fecdd3] dark:border-[#881337]'
+                  : 'bg-[#ecfdf5] dark:bg-[#022c22] text-[#16a34a] dark:text-[#34d399] border-[#a7f3d0] dark:border-[#065f46]'
               }`}
             >
               {gameMode === 'time_attack' ? (
-                <Hourglass className="w-9 h-9" />
+                <Hourglass width={36} height={36} fill="none" stroke="#f59e0b" className="w-9 h-9" />
               ) : deckFilter === 'favorites' ? (
-                <BookOpen className="w-9 h-9" />
+                <BookOpen width={36} height={36} fill="none" stroke="#f43f5e" className="w-9 h-9" />
               ) : (
-                <Sparkles className="w-9 h-9" />
+                <Sparkles width={36} height={36} fill="none" stroke="#16a34a" className="w-9 h-9" />
               )}
             </div>
 
             <div className="space-y-1.5">
-              <h2 className="text-2xl sm:text-3xl font-extrabold font-['Outfit'] text-slate-900 dark:text-white">
+              <h2 className="text-2xl sm:text-3xl font-extrabold font-['Outfit'] text-[#0f172a] dark:text-[#ffffff]">
                 {gameMode === 'time_attack'
                   ? 'Süre Doldu! ⏱️ Harika Yarış'
                   : deckFilter === 'favorites'
                   ? 'Tebrikler! Defter Paketi Tamamlandı 📖'
                   : 'Tebrikler! Tur Tamamlandı 🎉'}
               </h2>
-              <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400">
+              <p className="text-xs sm:text-sm text-[#64748b] dark:text-[#94a3b8]">
                 {gameMode === 'time_attack'
                   ? `60 saniye boyunca toplam ${pairsMatchedCount} kelime çifti başarıyla eşleştirdiniz!`
                   : `${enTiles.length} kelime çiftini başarıyla eşleştirdiniz!`}
@@ -1140,65 +1181,65 @@ export const SpeedMatchGame: React.FC<SpeedMatchGameProps> = ({
 
             {/* Metrics Scorecard: 4-Item Comprehensive Grid for Time Attack */}
             {gameMode === 'time_attack' ? (
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 p-3.5 bg-slate-50 dark:bg-slate-950/60 rounded-2xl border border-slate-200/60 dark:border-slate-800/80 text-center">
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 p-3.5 bg-[#f8fafc] dark:bg-[#020617] rounded-2xl border border-[#e2e8f0] dark:border-[#1e293b] text-center">
                 {/* 1. Total Points */}
-                <div className="p-2.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200/60 dark:border-slate-800/60 shadow-2xs">
-                  <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">
+                <div className="p-2.5 rounded-xl bg-[#ffffff] dark:bg-[#0f172a] border border-[#e2e8f0] dark:border-[#1e293b] shadow-2xs">
+                  <span className="text-[10px] font-bold text-[#64748b] uppercase tracking-wider block">
                     Toplam Puan
                   </span>
-                  <span className="text-xl sm:text-2xl font-black text-indigo-600 dark:text-indigo-400 font-mono">
+                  <span className="text-xl sm:text-2xl font-black text-[#4f46e5] dark:text-[#818cf8] font-mono">
                     {score}
                   </span>
                 </div>
 
                 {/* 2. Matched Pairs */}
-                <div className="p-2.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200/60 dark:border-slate-800/60 shadow-2xs">
-                  <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">
+                <div className="p-2.5 rounded-xl bg-[#ffffff] dark:bg-[#0f172a] border border-[#e2e8f0] dark:border-[#1e293b] shadow-2xs">
+                  <span className="text-[10px] font-bold text-[#64748b] uppercase tracking-wider block">
                     Eşleşen Çift
                   </span>
-                  <span className="text-xl sm:text-2xl font-black text-emerald-600 dark:text-emerald-400 font-mono">
+                  <span className="text-xl sm:text-2xl font-black text-[#16a34a] dark:text-[#34d399] font-mono">
                     {pairsMatchedCount}
                   </span>
                 </div>
 
                 {/* 3. Max Streak */}
-                <div className="p-2.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200/60 dark:border-slate-800/60 shadow-2xs">
-                  <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">
+                <div className="p-2.5 rounded-xl bg-[#ffffff] dark:bg-[#0f172a] border border-[#e2e8f0] dark:border-[#1e293b] shadow-2xs">
+                  <span className="text-[10px] font-bold text-[#64748b] uppercase tracking-wider block">
                     Maks Seri
                   </span>
-                  <span className="text-xl sm:text-2xl font-black text-amber-500 font-mono">
+                  <span className="text-xl sm:text-2xl font-black text-[#f59e0b] font-mono">
                     {maxStreak}x
                   </span>
                 </div>
 
                 {/* 4. Personal Best */}
-                <div className="p-2.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200/60 dark:border-slate-800/60 shadow-2xs">
-                  <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">
+                <div className="p-2.5 rounded-xl bg-[#ffffff] dark:bg-[#0f172a] border border-[#e2e8f0] dark:border-[#1e293b] shadow-2xs">
+                  <span className="text-[10px] font-bold text-[#64748b] uppercase tracking-wider block">
                     En İyi Skor
                   </span>
-                  <span className="text-xl sm:text-2xl font-black text-rose-500 dark:text-rose-400 font-mono">
+                  <span className="text-xl sm:text-2xl font-black text-[#f43f5e] dark:text-[#fb7185] font-mono">
                     {Math.max(score, personalBest)}
                   </span>
                 </div>
               </div>
             ) : (
-              <div className="grid grid-cols-3 gap-2.5 p-4 bg-slate-50 dark:bg-slate-950/60 rounded-2xl border border-slate-200/60 dark:border-slate-800/80 text-center">
+              <div className="grid grid-cols-3 gap-2.5 p-4 bg-[#f8fafc] dark:bg-[#020617] rounded-2xl border border-[#e2e8f0] dark:border-[#1e293b] text-center">
                 <div>
-                  <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">
+                  <span className="text-[10px] font-bold text-[#64748b] uppercase tracking-wider block">
                     Geçen Süre
                   </span>
-                  <span className="text-xl sm:text-2xl font-black text-indigo-600 dark:text-indigo-400 font-mono">
+                  <span className="text-xl sm:text-2xl font-black text-[#4f46e5] dark:text-[#818cf8] font-mono">
                     {elapsedTime}s
                   </span>
                 </div>
 
                 <div>
-                  <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">
+                  <span className="text-[10px] font-bold text-[#64748b] uppercase tracking-wider block">
                     Hata Sayısı
                   </span>
                   <span
                     className={`text-xl sm:text-2xl font-black font-mono ${
-                      mistakesCount === 0 ? 'text-emerald-600 dark:text-emerald-400' : 'text-rose-500'
+                      mistakesCount === 0 ? 'text-[#16a34a] dark:text-[#34d399]' : 'text-[#f43f5e]'
                     }`}
                   >
                     {mistakesCount}
@@ -1206,10 +1247,10 @@ export const SpeedMatchGame: React.FC<SpeedMatchGameProps> = ({
                 </div>
 
                 <div>
-                  <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">
+                  <span className="text-[10px] font-bold text-[#64748b] uppercase tracking-wider block">
                     Toplam Skor
                   </span>
-                  <span className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white font-mono">
+                  <span className="text-xl sm:text-2xl font-black text-[#0f172a] dark:text-[#ffffff] font-mono">
                     {score}
                   </span>
                 </div>
@@ -1219,35 +1260,35 @@ export const SpeedMatchGame: React.FC<SpeedMatchGameProps> = ({
             {/* Badges / High Score Callout */}
             <div className="flex flex-wrap items-center justify-center gap-2 text-xs font-medium">
               {gameMode === 'time_attack' && (
-                <span className="px-3 py-1 rounded-xl bg-amber-50 dark:bg-amber-950/50 text-amber-700 dark:text-amber-300 border border-amber-200 dark:border-amber-900/60 flex items-center gap-1 font-mono">
-                  <Flame className="w-3.5 h-3.5 text-amber-500" />
+                <span className="px-3 py-1 rounded-xl bg-[#fffbeb] dark:bg-[#451a03] text-[#b45309] dark:text-[#fcd34d] border border-[#fde68a] dark:border-[#92400e] flex items-center gap-1 font-mono">
+                  <Flame width={14} height={14} fill="none" stroke="#f59e0b" className="w-3.5 h-3.5" />
                   Maks Seri: {maxStreak}x {maxStreak >= 3 ? '(2x Kombo 🔥)' : ''}
                 </span>
               )}
 
               {gameMode === 'time_attack' && (
-                <span className="px-3 py-1 rounded-xl bg-purple-50 dark:bg-purple-950/50 text-purple-700 dark:text-purple-300 border border-purple-200 dark:border-purple-900/60 flex items-center gap-1 font-mono">
-                  <Layers className="w-3.5 h-3.5 text-purple-500" />
+                <span className="px-3 py-1 rounded-xl bg-[#faf5ff] dark:bg-[#3b0764] text-[#7e22ce] dark:text-[#d8b4fe] border border-[#e9d5ff] dark:border-[#581c87] flex items-center gap-1 font-mono">
+                  <Layers width={14} height={14} fill="none" stroke="#a855f7" className="w-3.5 h-3.5" />
                   Dalga Sayısı: {waveCount}
                 </span>
               )}
 
               {gameMode === 'time_attack' && (
-                <span className="px-3 py-1 rounded-xl bg-emerald-50 dark:bg-emerald-950/50 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-900/60 flex items-center gap-1 font-mono">
-                  <Medal className="w-3.5 h-3.5 text-emerald-500" />
+                <span className="px-3 py-1 rounded-xl bg-[#ecfdf5] dark:bg-[#022c22] text-[#15803d] dark:text-[#6ee7b7] border border-[#a7f3d0] dark:border-[#065f46] flex items-center gap-1 font-mono">
+                  <Medal width={14} height={14} fill="none" stroke="#10b981" className="w-3.5 h-3.5" />
                   {score >= personalBest && score > 0 ? '🏆 Yeni Rekor Kırdınız!' : `Kişisel Rekor: ${personalBest}`}
                 </span>
               )}
 
               {deckFilter === 'favorites' && (
-                <span className="px-3 py-1 rounded-xl bg-rose-50 dark:bg-rose-950/50 text-rose-700 dark:text-rose-300 border border-rose-200 dark:border-rose-900/60 flex items-center gap-1 font-mono">
-                  <BookOpen className="w-3.5 h-3.5 text-rose-500" />
+                <span className="px-3 py-1 rounded-xl bg-[#fff1f2] dark:bg-[#4c0519] text-[#be123c] dark:text-[#fda4af] border border-[#fecdd3] dark:border-[#881337] flex items-center gap-1 font-mono">
+                  <BookOpen width={14} height={14} fill="none" stroke="#f43f5e" className="w-3.5 h-3.5" />
                   Akıllı Tekrar Paketi
                 </span>
               )}
 
-              <span className="px-3 py-1 rounded-xl bg-indigo-50 dark:bg-indigo-950/50 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-900/60 flex items-center gap-1 font-mono">
-                <CheckCircle2 className="w-3.5 h-3.5 text-indigo-500" />
+              <span className="px-3 py-1 rounded-xl bg-[#eef2ff] dark:bg-[#1e1b4b] text-[#4338ca] dark:text-[#a5b4fc] border border-[#c7d2fe] dark:border-[#3730a3] flex items-center gap-1 font-mono">
+                <CheckCircle2 width={14} height={14} fill="none" stroke="#6366f1" className="w-3.5 h-3.5" />
                 İsabet: %{accuracyPercentage}
               </span>
             </div>
@@ -1257,9 +1298,10 @@ export const SpeedMatchGame: React.FC<SpeedMatchGameProps> = ({
               <button
                 type="button"
                 onClick={() => handleStartGame(deckFilter, gameMode)}
-                className="w-full sm:flex-1 py-3.5 px-5 bg-emerald-600 hover:bg-emerald-700 active:scale-95 text-white font-bold text-sm rounded-xl shadow-md shadow-emerald-600/30 transition-all flex items-center justify-center gap-2 cursor-pointer"
+                style={{ backgroundColor: '#16a34a', color: '#ffffff' }}
+                className="legacy-btn-green w-full sm:flex-1 py-3.5 px-5 bg-[#16a34a] hover:bg-[#15803d] active:scale-95 text-[#ffffff] font-bold text-sm rounded-xl shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer"
               >
-                <RotateCcw className="w-4 h-4" />
+                <RotateCcw width={16} height={16} fill="none" stroke="#ffffff" className="w-4 h-4" />
                 <span>
                   {gameMode === 'time_attack'
                     ? 'Tekrar Yarış ⏱️'
@@ -1272,9 +1314,9 @@ export const SpeedMatchGame: React.FC<SpeedMatchGameProps> = ({
               <button
                 type="button"
                 onClick={() => setGameState('idle')}
-                className="w-full sm:flex-1 py-3.5 px-5 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 font-bold text-sm rounded-xl transition-colors cursor-pointer flex items-center justify-center gap-2"
+                className="w-full sm:flex-1 py-3.5 px-5 bg-[#f1f5f9] dark:bg-[#1e293b] hover:bg-[#e2e8f0] dark:hover:bg-[#334155] text-[#334155] dark:text-[#e2e8f0] font-bold text-sm rounded-xl transition-colors cursor-pointer flex items-center justify-center gap-2"
               >
-                <ArrowLeft className="w-4 h-4" />
+                <ArrowLeft width={16} height={16} fill="none" stroke="#334155" className="w-4 h-4" />
                 <span>Oyuna Geri Dön</span>
               </button>
             </div>

@@ -428,18 +428,18 @@ export const VerbConjugationBadge: React.FC<VerbConjugationBadgeProps> = ({
   if (conjugation.isIrregular) {
     return (
       <div className={`flex flex-wrap items-center gap-1.5 pt-1.5 text-xs font-mono select-none ${className}`}>
-        <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-lg bg-indigo-50/90 dark:bg-indigo-950/70 border border-indigo-200/80 dark:border-indigo-800/70 text-indigo-800 dark:text-indigo-200 font-semibold shadow-2xs">
-          <span className="text-[10px] font-bold text-indigo-500 uppercase tracking-wider">V1</span>
+        <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-lg bg-[#eef2ff] dark:bg-[#1e1b4b] border border-[#c7d2fe] dark:border-[#3730a3] text-[#3730a3] dark:text-[#c7d2fe] font-semibold shadow-2xs">
+          <span className="text-[10px] font-bold text-[#6366f1] uppercase tracking-wider">V1</span>
           <span>{conjugation.v1}</span>
         </span>
-        <span className="text-slate-400 dark:text-slate-500 text-xs font-sans">→</span>
-        <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-lg bg-amber-50/90 dark:bg-amber-950/70 border border-amber-200/80 dark:border-amber-800/70 text-amber-800 dark:text-amber-200 font-semibold shadow-2xs">
-          <span className="text-[10px] font-bold text-amber-500 uppercase tracking-wider">V2</span>
+        <span className="text-[#94a3b8] dark:text-[#64748b] text-xs font-sans">→</span>
+        <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-lg bg-[#fffbeb] dark:bg-[#451a03] border border-[#fde68a] dark:border-[#92400e] text-[#92400e] dark:text-[#fde68a] font-semibold shadow-2xs">
+          <span className="text-[10px] font-bold text-[#f59e0b] uppercase tracking-wider">V2</span>
           <span>{conjugation.v2}</span>
         </span>
-        <span className="text-slate-400 dark:text-slate-500 text-xs font-sans">→</span>
-        <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-lg bg-emerald-50/90 dark:bg-emerald-950/70 border border-emerald-200/80 dark:border-emerald-800/70 text-emerald-800 dark:text-emerald-200 font-semibold shadow-2xs">
-          <span className="text-[10px] font-bold text-emerald-500 uppercase tracking-wider">V3</span>
+        <span className="text-[#94a3b8] dark:text-[#64748b] text-xs font-sans">→</span>
+        <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-lg bg-[#ecfdf5] dark:bg-[#022c22] border border-[#a7f3d0] dark:border-[#065f46] text-[#065f46] dark:text-[#a7f3d0] font-semibold shadow-2xs">
+          <span className="text-[10px] font-bold text-[#10b981] uppercase tracking-wider">V3</span>
           <span>{conjugation.v3}</span>
         </span>
       </div>
@@ -449,11 +449,11 @@ export const VerbConjugationBadge: React.FC<VerbConjugationBadgeProps> = ({
   // If regular verb, render accurate computed past form: "Düzenli Fiil • (V2/V3: [computedForm])"
   return (
     <div className={`pt-1.5 select-none ${className}`}>
-      <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-lg bg-slate-100/90 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 text-[11px] font-medium border border-slate-200/70 dark:border-slate-700/70 shadow-2xs">
-        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0" />
-        <span className="font-semibold text-slate-800 dark:text-slate-200">Düzenli Fiil</span>
-        <span className="text-slate-400 dark:text-slate-500">•</span>
-        <span className="font-mono text-emerald-700 dark:text-emerald-400">
+      <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-lg bg-[#f1f5f9] dark:bg-[#1e293b] text-[#334155] dark:text-[#cbd5e1] text-[11px] font-medium border border-[#e2e8f0] dark:border-[#334155] shadow-2xs">
+        <span className="w-1.5 h-1.5 rounded-full bg-[#10b981] shrink-0" />
+        <span className="font-semibold text-[#1e293b] dark:text-[#e2e8f0]">Düzenli Fiil</span>
+        <span className="text-[#94a3b8] dark:text-[#64748b]">•</span>
+        <span className="font-mono text-[#047857] dark:text-[#34d399]">
           (V2/V3: {conjugation.regularPast})
         </span>
       </span>

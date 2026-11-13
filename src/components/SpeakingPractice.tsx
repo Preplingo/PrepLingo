@@ -160,9 +160,9 @@ export const SpeakingPractice: React.FC<SpeakingPracticeProps> = ({ words, initi
   return (
     <div className="space-y-6 max-w-2xl mx-auto">
       {/* Practice Card */}
-      <div className="bg-white dark:bg-slate-900 rounded-3xl p-5 sm:p-7 border border-slate-200/80 dark:border-slate-800 shadow-sm space-y-5">
+      <div className="bg-[#ffffff] dark:bg-[#0f172a] rounded-3xl p-5 sm:p-7 border border-[#e2e8f0] dark:border-[#1e293b] shadow-sm space-y-5">
         {/* Top Header: Word + Level + Index */}
-        <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-800/80 pb-4">
+        <div className="flex items-center justify-between border-b border-[#f1f5f9] dark:border-[#1e293b] pb-4">
           <div className="flex items-center gap-2">
             <span className={`text-xs uppercase px-2.5 py-1 rounded-lg tracking-wide ${getCefrBadgeClass(currentWord.cefrLevel)}`}>
               {currentWord.cefrLevel}
@@ -177,21 +177,21 @@ export const SpeakingPractice: React.FC<SpeakingPracticeProps> = ({ words, initi
             <button
               type="button"
               onClick={handlePrevWord}
-              className="p-1.5 rounded-xl text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+              className="p-1.5 rounded-xl text-[#475569] hover:bg-[#f1f5f9] dark:hover:bg-[#1e293b] transition-colors cursor-pointer"
               title="Önceki cümle"
             >
-              <ChevronLeft className="w-5 h-5" />
+              <ChevronLeft width={20} height={20} fill="none" stroke="#475569" className="w-5 h-5" />
             </button>
-            <span className="text-xs font-mono text-slate-400">
+            <span className="text-xs font-mono text-[#64748b]">
               {selectedWordIndex + 1} / {words.length}
             </span>
             <button
               type="button"
               onClick={handleNextWord}
-              className="p-1.5 rounded-xl text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+              className="p-1.5 rounded-xl text-[#475569] hover:bg-[#f1f5f9] dark:hover:bg-[#1e293b] transition-colors cursor-pointer"
               title="Sonraki cümle"
             >
-              <ChevronRight className="w-5 h-5" />
+              <ChevronRight width={20} height={20} fill="none" stroke="#475569" className="w-5 h-5" />
             </button>
           </div>
         </div>
@@ -199,7 +199,7 @@ export const SpeakingPractice: React.FC<SpeakingPracticeProps> = ({ words, initi
         {/* Word Info & English Audio */}
         <div className="flex items-center justify-between">
           <div>
-            <h2 className="text-2xl font-bold font-['Outfit'] text-slate-900 dark:text-white">
+            <h2 className="text-2xl font-bold font-['Outfit'] text-[#0f172a] dark:text-[#ffffff]">
               {currentWord.word}
             </h2>
           </div>
@@ -207,48 +207,48 @@ export const SpeakingPractice: React.FC<SpeakingPracticeProps> = ({ words, initi
           <button
             type="button"
             onClick={() => handleListenSample(currentWord.word)}
-            className="p-2 rounded-xl bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400 hover:bg-indigo-100 transition-colors"
+            className="p-2 rounded-xl bg-[#eef2ff] dark:bg-[#1e1b4b] text-[#4f46e5] dark:text-[#818cf8] hover:bg-[#e0e7ff] transition-colors cursor-pointer"
             title="İngilizce kelimeyi dinle"
           >
-            <Volume2 className="w-5 h-5" />
+            <Volume2 width={20} height={20} fill="none" stroke="#4f46e5" className="w-5 h-5" />
           </button>
         </div>
 
         {/* Target Sentence Box */}
-        <div className="bg-slate-50/90 dark:bg-slate-950/60 rounded-2xl p-4 sm:p-5 border border-slate-200/60 dark:border-slate-800 space-y-3">
+        <div className="bg-[#f8fafc] dark:bg-[#020617] rounded-2xl p-4 sm:p-5 border border-[#e2e8f0] dark:border-[#1e293b] space-y-3">
           <div className="space-y-1">
-            <span className="text-[11px] font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400 block">
+            <span className="text-[11px] font-bold uppercase tracking-wider text-[#4f46e5] dark:text-[#818cf8] block">
               Seslendirilecek İngilizce Cümle:
             </span>
-            <p className="text-base sm:text-lg font-semibold text-slate-900 dark:text-white leading-relaxed">
+            <p className="text-base sm:text-lg font-semibold text-[#0f172a] dark:text-[#ffffff] leading-relaxed">
               &quot;{currentWord.enExample}&quot;
             </p>
             {/* Turkish translation: NO AUDIO BUTTON */}
-            <p className="text-xs text-slate-500 dark:text-slate-400 italic">
+            <p className="text-xs text-[#64748b] dark:text-[#94a3b8] italic">
               &quot;{currentWord.trExample}&quot;
             </p>
           </div>
 
           {/* Audio Pacing Controls (ENGLISH ONLY) */}
-          <div className="pt-2 flex flex-wrap items-center gap-2 border-t border-slate-200/50 dark:border-slate-800/60">
+          <div className="pt-2 flex flex-wrap items-center gap-2 border-t border-[#e2e8f0] dark:border-[#1e293b]">
             <button
               type="button"
               onClick={() => handleListenSample(currentWord.enExample)}
-              className={`px-3 py-1.5 rounded-xl text-xs font-semibold bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:border-indigo-400 flex items-center gap-1.5 transition-colors ${
-                isListeningAudio ? 'animate-pulse text-indigo-600' : ''
+              className={`px-3 py-1.5 rounded-xl text-xs font-semibold bg-[#ffffff] dark:bg-[#0f172a] border border-[#e2e8f0] dark:border-[#334155] text-[#334155] dark:text-[#e2e8f0] hover:border-[#818cf8] flex items-center gap-1.5 transition-colors cursor-pointer ${
+                isListeningAudio ? 'animate-pulse text-[#4f46e5]' : ''
               }`}
             >
-              <Volume2 className="w-3.5 h-3.5" />
+              <Volume2 width={14} height={14} fill="none" stroke={isListeningAudio ? '#4f46e5' : '#475569'} className="w-3.5 h-3.5" />
               <span>Önce Doğru Telaffuzu Dinle</span>
             </button>
 
             <button
               type="button"
               onClick={() => setIsSlowAudio(!isSlowAudio)}
-              className={`px-2.5 py-1.5 rounded-xl text-[11px] font-mono border transition-colors ${
+              className={`px-2.5 py-1.5 rounded-xl text-[11px] font-mono border transition-colors cursor-pointer ${
                 isSlowAudio
-                  ? 'bg-indigo-100 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300 border-indigo-300 dark:border-indigo-800'
-                  : 'bg-white dark:bg-slate-900 text-slate-400 border-slate-200 dark:border-slate-700'
+                  ? 'bg-[#e0e7ff] dark:bg-[#1e1b4b] text-[#4338ca] dark:text-[#a5b4fc] border-[#a5b4fc] dark:border-[#3730a3]'
+                  : 'bg-[#ffffff] dark:bg-[#0f172a] text-[#64748b] border-[#e2e8f0] dark:border-[#334155]'
               }`}
               title="Yavaş oynatmayı aç/kapat"
             >
@@ -259,8 +259,8 @@ export const SpeakingPractice: React.FC<SpeakingPracticeProps> = ({ words, initi
 
         {/* Error message if microphone issue */}
         {micError && (
-          <div className="p-3 bg-rose-50 dark:bg-rose-950/40 rounded-xl border border-rose-200 dark:border-rose-900 text-xs text-rose-700 dark:text-rose-300 flex items-start gap-2">
-            <AlertCircle className="w-4 h-4 shrink-0 mt-0.5" />
+          <div className="p-3 bg-[#fff1f2] dark:bg-[#4c0519] rounded-xl border border-[#fecdd3] dark:border-[#881337] text-xs text-[#be123c] dark:text-[#fda4af] flex items-start gap-2">
+            <AlertCircle width={16} height={16} fill="none" stroke="#be123c" className="w-4 h-4 shrink-0 mt-0.5" />
             <div className="space-y-1">
               <p>{micError}</p>
             </div>
@@ -272,21 +272,26 @@ export const SpeakingPractice: React.FC<SpeakingPracticeProps> = ({ words, initi
           <button
             type="button"
             onClick={isRecording ? stopRecording : startRecording}
-            className={`w-20 h-20 sm:w-24 sm:h-24 mx-auto rounded-full flex flex-col items-center justify-center transition-all duration-300 shadow-lg ${
+            style={{ backgroundColor: isRecording ? '#e11d48' : '#4f46e5', color: '#ffffff' }}
+            className={`w-20 h-20 sm:w-24 sm:h-24 mx-auto rounded-full flex flex-col items-center justify-center transition-all duration-300 shadow-lg cursor-pointer ${
               isRecording
-                ? 'bg-rose-600 text-white animate-pulse ring-8 ring-rose-500/20 shadow-rose-600/30'
-                : 'bg-indigo-600 hover:bg-indigo-700 text-white hover:scale-105 active:scale-95 shadow-indigo-600/30'
+                ? 'bg-[#e11d48] text-[#ffffff] animate-pulse'
+                : 'legacy-btn-indigo bg-[#4f46e5] hover:bg-[#4338ca] text-[#ffffff] hover:scale-105 active:scale-95'
             }`}
             aria-label={isRecording ? 'Kaydı Durdur' : 'Kaydı Başlat'}
           >
-            {isRecording ? <MicOff className="w-8 h-8" /> : <Mic className="w-8 h-8" />}
+            {isRecording ? (
+              <MicOff width={32} height={32} fill="none" stroke="#ffffff" className="w-8 h-8" />
+            ) : (
+              <Mic width={32} height={32} fill="none" stroke="#ffffff" className="w-8 h-8" />
+            )}
           </button>
 
           <div>
-            <span className="text-sm font-semibold text-slate-800 dark:text-slate-200 block">
+            <span className="text-sm font-semibold text-[#1e293b] dark:text-[#e2e8f0] block">
               {isRecording ? 'Dinleniyor... Cümleyi şimdi seslendirin!' : 'Mikrofona Dokun ve Telaffuzunu Test Et'}
             </span>
-            <p className="text-xs text-slate-400 dark:text-slate-500">
+            <p className="text-xs text-[#64748b] dark:text-[#94a3b8]">
               {isRecording ? 'Konuşmayı bitirince tekrar dokunun' : 'İngilizce cümleyi sesli olarak okuyun'}
             </p>
           </div>
@@ -294,26 +299,26 @@ export const SpeakingPractice: React.FC<SpeakingPracticeProps> = ({ words, initi
 
         {/* Evaluation Feedback Panel */}
         {evaluationResult && (
-          <div className="mt-4 p-5 rounded-2xl bg-indigo-50/70 dark:bg-indigo-950/30 border border-indigo-200/80 dark:border-indigo-800/80 space-y-4 animate-in fade-in duration-200">
+          <div className="mt-4 p-5 rounded-2xl bg-[#eef2ff] dark:bg-[#1e1b4b] border border-[#c7d2fe] dark:border-[#3730a3] space-y-4 animate-in fade-in duration-200">
             {/* Accuracy Score Banner */}
             <div className="flex items-center justify-between">
               <div>
-                <span className="text-[11px] font-bold uppercase tracking-wider text-indigo-700 dark:text-indigo-300 block">
+                <span className="text-[11px] font-bold uppercase tracking-wider text-[#4338ca] dark:text-[#a5b4fc] block">
                   Telaffuz Doğruluk Skoru
                 </span>
                 <div className="flex items-baseline gap-2">
                   <span
                     className={`text-3xl font-extrabold font-mono ${
                       evaluationResult.accuracy >= 80
-                        ? 'text-emerald-600 dark:text-emerald-400'
+                        ? 'text-[#16a34a] dark:text-[#34d399]'
                         : evaluationResult.accuracy >= 60
-                        ? 'text-amber-600 dark:text-amber-400'
-                        : 'text-rose-600 dark:text-rose-400'
+                        ? 'text-[#d97706] dark:text-[#fbbf24]'
+                        : 'text-[#e11d48] dark:text-[#fb7185]'
                     }`}
                   >
                     %{evaluationResult.accuracy}
                   </span>
-                  <span className="text-xs text-slate-500 dark:text-slate-400">
+                  <span className="text-xs text-[#64748b] dark:text-[#94a3b8]">
                     {evaluationResult.accuracy >= 85 ? 'Mükemmel Telaffuz!' : evaluationResult.accuracy >= 60 ? 'Başarılı' : 'Geliştirilmeli'}
                   </span>
                 </div>
@@ -323,28 +328,29 @@ export const SpeakingPractice: React.FC<SpeakingPracticeProps> = ({ words, initi
                 <button
                   type="button"
                   onClick={handleNextWord}
-                  className="px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-semibold shadow-xs flex items-center gap-1.5 transition-colors"
+                  style={{ backgroundColor: '#4f46e5', color: '#ffffff' }}
+                  className="legacy-btn-indigo px-4 py-2 rounded-xl bg-[#4f46e5] hover:bg-[#4338ca] text-[#ffffff] text-xs font-semibold shadow-xs flex items-center gap-1.5 transition-colors cursor-pointer"
                 >
                   <span>Sonraki Cümle</span>
-                  <ChevronRight className="w-4 h-4" />
+                  <ChevronRight width={16} height={16} fill="none" stroke="#ffffff" className="w-4 h-4" />
                 </button>
               </div>
             </div>
 
             {/* Word-by-Word Breakdown Tokens */}
             <div className="space-y-1.5">
-              <span className="text-xs font-semibold text-slate-700 dark:text-slate-300 block">
+              <span className="text-xs font-semibold text-[#334155] dark:text-[#cbd5e1] block">
                 Kelime Bazında Artikülasyon:
               </span>
               <div className="flex flex-wrap gap-1.5">
                 {evaluationResult.wordsAnalysis.map((item, idx) => {
                   let badgeClass = '';
                   if (item.status === 'matched') {
-                    badgeClass = 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950/80 dark:text-emerald-300 border-emerald-300 dark:border-emerald-800';
+                    badgeClass = 'bg-[#d1fae5] text-[#065f46] dark:bg-[#022c22] dark:text-[#6ee7b7] border-[#6ee7b7] dark:border-[#065f46]';
                   } else if (item.status === 'near') {
-                    badgeClass = 'bg-amber-100 text-amber-800 dark:bg-amber-950/80 dark:text-amber-300 border-amber-300 dark:border-amber-800';
+                    badgeClass = 'bg-[#fef3c7] text-[#92400e] dark:bg-[#451a03] dark:text-[#fcd34d] border-[#fcd34d] dark:border-[#92400e]';
                   } else {
-                    badgeClass = 'bg-rose-100 text-rose-800 dark:bg-rose-950/80 dark:text-rose-300 border-rose-300 dark:border-rose-800';
+                    badgeClass = 'bg-[#ffe4e6] text-[#9f1239] dark:bg-[#4c0519] dark:text-[#fda4af] border-[#fda4af] dark:border-[#881337]';
                   }
 
                   return (
@@ -354,7 +360,7 @@ export const SpeakingPractice: React.FC<SpeakingPracticeProps> = ({ words, initi
                     >
                       <span>{item.word}</span>
                       {item.status === 'matched' ? (
-                        <CheckCircle2 className="w-3 h-3 text-emerald-600 dark:text-emerald-400" />
+                        <CheckCircle2 width={12} height={12} fill="none" stroke="#16a34a" className="w-3 h-3" />
                       ) : null}
                     </span>
                   );
@@ -363,18 +369,18 @@ export const SpeakingPractice: React.FC<SpeakingPracticeProps> = ({ words, initi
             </div>
 
             {/* Academic Feedback Tip */}
-            <div className="p-3.5 bg-white dark:bg-slate-900 rounded-xl border border-indigo-100 dark:border-slate-800 text-xs text-slate-700 dark:text-slate-300 flex items-start gap-2.5">
-              <Sparkles className="w-4 h-4 text-indigo-600 dark:text-indigo-400 shrink-0 mt-0.5" />
+            <div className="p-3.5 bg-[#ffffff] dark:bg-[#0f172a] rounded-xl border border-[#e0e7ff] dark:border-[#1e293b] text-xs text-[#334155] dark:text-[#cbd5e1] flex items-start gap-2.5">
+              <Sparkles width={16} height={16} fill="none" stroke="#4f46e5" className="w-4 h-4 shrink-0 mt-0.5" />
               <div>
-                <strong className="font-semibold block mb-0.5 text-slate-900 dark:text-white">Telaffuz Testi Değerlendirmesi:</strong>
+                <strong className="font-semibold block mb-0.5 text-[#0f172a] dark:text-[#ffffff]">Telaffuz Testi Değerlendirmesi:</strong>
                 <span className="leading-relaxed">{evaluationResult.feedback}</span>
               </div>
             </div>
 
             {/* Recognized Speech Transcript */}
-            <div className="text-[11px] text-slate-500 dark:text-slate-400 pt-1">
+            <div className="text-[11px] text-[#64748b] dark:text-[#94a3b8] pt-1">
               <span>Algılanan Konuşma: </span>
-              <span className="italic font-mono text-slate-700 dark:text-slate-300">
+              <span className="italic font-mono text-[#334155] dark:text-[#cbd5e1]">
                 &quot;{evaluationResult.transcript}&quot;
               </span>
             </div>

@@ -274,7 +274,7 @@ export default function App() {
   const favoritesCount = words.filter((w) => w.isFavorite).length;
 
   return (
-    <div className="min-h-screen overflow-x-hidden bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 flex flex-col font-['Plus_Jakarta_Sans',sans-serif] selection:bg-indigo-500/20">
+    <div className="min-h-screen overflow-x-hidden bg-[#f8fafc] dark:bg-[#020617] text-[#0f172a] dark:text-[#f1f5f9] flex flex-col font-['Plus_Jakarta_Sans',sans-serif]">
       {/* Animated Splash Screen on first load (3.5s) */}
       {showSplash && <SplashScreen onComplete={handleSplashComplete} durationMs={3500} />}
 

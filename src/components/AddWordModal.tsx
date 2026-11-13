@@ -50,25 +50,25 @@ export const AddWordModal: React.FC<AddWordModalProps> = ({ isOpen, onClose, onA
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs animate-in fade-in duration-150">
-      <div className="bg-white dark:bg-slate-900 rounded-3xl w-full max-w-lg overflow-hidden border border-slate-200 dark:border-slate-800 shadow-2xl space-y-4 max-h-[90vh] flex flex-col">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#000000]/60 backdrop-blur-xs animate-in fade-in duration-150">
+      <div className="bg-[#ffffff] dark:bg-[#0f172a] rounded-3xl w-full max-w-lg overflow-hidden border border-[#e2e8f0] dark:border-[#1e293b] shadow-2xl space-y-4 max-h-[90vh] flex flex-col">
         {/* Modal Header */}
-        <div className="px-6 py-4 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between">
+        <div className="px-6 py-4 border-b border-[#f1f5f9] dark:border-[#1e293b] flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400 flex items-center justify-center">
-              <Plus className="w-4 h-4" />
+            <div className="w-8 h-8 rounded-lg bg-[#eef2ff] dark:bg-[#1e1b4b] text-[#4f46e5] dark:text-[#818cf8] flex items-center justify-center">
+              <Plus width={16} height={16} stroke="currentColor" fill="none" className="w-4 h-4" />
             </div>
-            <h3 className="text-base font-bold text-slate-900 dark:text-white">
+            <h3 className="text-base font-bold text-[#0f172a] dark:text-[#ffffff]">
               Yeni Hazırlık Kelimesi Ekle
             </h3>
           </div>
           <button
             type="button"
             onClick={onClose}
-            className="p-1 rounded-lg text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-colors"
+            className="p-1 rounded-lg text-[#94a3b8] hover:text-[#475569] dark:hover:text-[#e2e8f0] transition-colors cursor-pointer"
             title="Kapat"
           >
-            <X className="w-5 h-5" />
+            <X width={20} height={20} stroke="currentColor" fill="none" className="w-5 h-5" />
           </button>
         </div>
 
@@ -77,7 +77,7 @@ export const AddWordModal: React.FC<AddWordModalProps> = ({ isOpen, onClose, onA
           {/* English Word & Phonetic */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div>
-              <label className="text-xs font-semibold text-slate-700 dark:text-slate-300 block mb-1">
+              <label className="text-xs font-semibold text-[#334155] dark:text-[#cbd5e1] block mb-1">
                 İngilizce Kelime *
               </label>
               <input
@@ -86,11 +86,11 @@ export const AddWordModal: React.FC<AddWordModalProps> = ({ isOpen, onClose, onA
                 value={word}
                 onChange={(e) => setWord(e.target.value)}
                 placeholder="Örn: formulate"
-                className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950/60 text-slate-900 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20"
+                className="w-full px-3.5 py-2.5 rounded-xl border border-[#e2e8f0] dark:border-[#334155] bg-[#f8fafc] dark:bg-[#020617] text-[#0f172a] dark:text-[#ffffff] text-sm focus:outline-none focus:ring-2 focus:ring-[#6366f1]"
               />
             </div>
             <div>
-              <label className="text-xs font-semibold text-slate-700 dark:text-slate-300 block mb-1">
+              <label className="text-xs font-semibold text-[#334155] dark:text-[#cbd5e1] block mb-1">
                 Fonetik / Telaffuz (isteğe bağlı)
               </label>
               <input
@@ -98,7 +98,7 @@ export const AddWordModal: React.FC<AddWordModalProps> = ({ isOpen, onClose, onA
                 value={phonetic}
                 onChange={(e) => setPhonetic(e.target.value)}
                 placeholder="/ˈfɔː.mjə.leɪt/"
-                className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950/60 text-slate-900 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20"
+                className="w-full px-3.5 py-2.5 rounded-xl border border-[#e2e8f0] dark:border-[#334155] bg-[#f8fafc] dark:bg-[#020617] text-[#0f172a] dark:text-[#ffffff] text-sm focus:outline-none focus:ring-2 focus:ring-[#6366f1]"
               />
             </div>
           </div>
@@ -106,13 +106,13 @@ export const AddWordModal: React.FC<AddWordModalProps> = ({ isOpen, onClose, onA
           {/* CEFR Level & Part of Speech */}
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label className="text-xs font-semibold text-slate-700 dark:text-slate-300 block mb-1">
+              <label className="text-xs font-semibold text-[#334155] dark:text-[#cbd5e1] block mb-1">
                 CEFR Seviyesi
               </label>
               <select
                 value={cefrLevel}
                 onChange={(e) => setCefrLevel(e.target.value as CefrLevel)}
-                className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950/60 text-slate-900 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20"
+                className="w-full px-3.5 py-2.5 rounded-xl border border-[#e2e8f0] dark:border-[#334155] bg-[#f8fafc] dark:bg-[#020617] text-[#0f172a] dark:text-[#ffffff] text-sm focus:outline-none focus:ring-2 focus:ring-[#6366f1]"
               >
                 <option value="A1">A1 - Başlangıç</option>
                 <option value="A2">A2 - Temel</option>
@@ -121,13 +121,13 @@ export const AddWordModal: React.FC<AddWordModalProps> = ({ isOpen, onClose, onA
               </select>
             </div>
             <div>
-              <label className="text-xs font-semibold text-slate-700 dark:text-slate-300 block mb-1">
+              <label className="text-xs font-semibold text-[#334155] dark:text-[#cbd5e1] block mb-1">
                 Kelime Türü
               </label>
               <select
                 value={partOfSpeech}
                 onChange={(e) => setPartOfSpeech(e.target.value as PartOfSpeech)}
-                className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950/60 text-slate-900 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20"
+                className="w-full px-3.5 py-2.5 rounded-xl border border-[#e2e8f0] dark:border-[#334155] bg-[#f8fafc] dark:bg-[#020617] text-[#0f172a] dark:text-[#ffffff] text-sm focus:outline-none focus:ring-2 focus:ring-[#6366f1]"
               >
                 <option value="noun">İsim (Noun)</option>
                 <option value="verb">Fiil (Verb)</option>
@@ -139,7 +139,7 @@ export const AddWordModal: React.FC<AddWordModalProps> = ({ isOpen, onClose, onA
 
           {/* Turkish Meaning */}
           <div>
-            <label className="text-xs font-semibold text-slate-700 dark:text-slate-300 block mb-1">
+            <label className="text-xs font-semibold text-[#334155] dark:text-[#cbd5e1] block mb-1">
               Türkçe Anlamı *
             </label>
             <input
@@ -148,14 +148,14 @@ export const AddWordModal: React.FC<AddWordModalProps> = ({ isOpen, onClose, onA
               value={trMeaning}
               onChange={(e) => setTrMeaning(e.target.value)}
               placeholder="Örn: formüle etmek, açıkça ifade etmek"
-              className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950/60 text-slate-900 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20"
+              className="w-full px-3.5 py-2.5 rounded-xl border border-[#e2e8f0] dark:border-[#334155] bg-[#f8fafc] dark:bg-[#020617] text-[#0f172a] dark:text-[#ffffff] text-sm focus:outline-none focus:ring-2 focus:ring-[#6366f1]"
             />
           </div>
 
           {/* English Example & Turkish Example */}
           <div className="space-y-3">
             <div>
-              <label className="text-xs font-semibold text-slate-700 dark:text-slate-300 block mb-1">
+              <label className="text-xs font-semibold text-[#334155] dark:text-[#cbd5e1] block mb-1">
                 İngilizce Örnek Cümle
               </label>
               <textarea
@@ -163,11 +163,11 @@ export const AddWordModal: React.FC<AddWordModalProps> = ({ isOpen, onClose, onA
                 value={enExample}
                 onChange={(e) => setEnExample(e.target.value)}
                 placeholder="The team must formulate a new hypothesis before testing."
-                className="w-full px-3.5 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950/60 text-slate-900 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20 resize-none"
+                className="w-full px-3.5 py-2 rounded-xl border border-[#e2e8f0] dark:border-[#334155] bg-[#f8fafc] dark:bg-[#020617] text-[#0f172a] dark:text-[#ffffff] text-sm focus:outline-none focus:ring-2 focus:ring-[#6366f1] resize-none"
               />
             </div>
             <div>
-              <label className="text-xs font-semibold text-slate-700 dark:text-slate-300 block mb-1">
+              <label className="text-xs font-semibold text-[#334155] dark:text-[#cbd5e1] block mb-1">
                 Örnek Cümlenin Türkçe Çevirisi
               </label>
               <textarea
@@ -175,14 +175,14 @@ export const AddWordModal: React.FC<AddWordModalProps> = ({ isOpen, onClose, onA
                 value={trExample}
                 onChange={(e) => setTrExample(e.target.value)}
                 placeholder="Ekip test yapmadan önce yeni bir hipotez formüle etmelidir."
-                className="w-full px-3.5 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950/60 text-slate-900 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20 resize-none"
+                className="w-full px-3.5 py-2 rounded-xl border border-[#e2e8f0] dark:border-[#334155] bg-[#f8fafc] dark:bg-[#020617] text-[#0f172a] dark:text-[#ffffff] text-sm focus:outline-none focus:ring-2 focus:ring-[#6366f1] resize-none"
               />
             </div>
           </div>
 
           {/* Collocations */}
           <div>
-            <label className="text-xs font-semibold text-slate-700 dark:text-slate-300 block mb-1">
+            <label className="text-xs font-semibold text-[#334155] dark:text-[#cbd5e1] block mb-1">
               Birlikte Kullanımlar (Collocations - virgülle ayırın)
             </label>
             <input
@@ -190,13 +190,13 @@ export const AddWordModal: React.FC<AddWordModalProps> = ({ isOpen, onClose, onA
               value={collocationsText}
               onChange={(e) => setCollocationsText(e.target.value)}
               placeholder="Örn: formulate a policy, formulate a plan"
-              className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950/60 text-slate-900 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20"
+              className="w-full px-3.5 py-2.5 rounded-xl border border-[#e2e8f0] dark:border-[#334155] bg-[#f8fafc] dark:bg-[#020617] text-[#0f172a] dark:text-[#ffffff] text-sm focus:outline-none focus:ring-2 focus:ring-[#6366f1]"
             />
           </div>
 
           {/* Academic Tip */}
           <div>
-            <label className="text-xs font-semibold text-slate-700 dark:text-slate-300 block mb-1">
+            <label className="text-xs font-semibold text-[#334155] dark:text-[#cbd5e1] block mb-1">
               Hazırlık Sınavı İpucu / Not (isteğe bağlı)
             </label>
             <input
@@ -204,7 +204,7 @@ export const AddWordModal: React.FC<AddWordModalProps> = ({ isOpen, onClose, onA
               value={academicNote}
               onChange={(e) => setAcademicNote(e.target.value)}
               placeholder="Örn: Akademik kompozisyon ve makale girişlerinde sıkça kullanılır."
-              className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950/60 text-slate-900 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20"
+              className="w-full px-3.5 py-2.5 rounded-xl border border-[#e2e8f0] dark:border-[#334155] bg-[#f8fafc] dark:bg-[#020617] text-[#0f172a] dark:text-[#ffffff] text-sm focus:outline-none focus:ring-2 focus:ring-[#6366f1]"
             />
           </div>
 
@@ -213,15 +213,16 @@ export const AddWordModal: React.FC<AddWordModalProps> = ({ isOpen, onClose, onA
             <button
               type="button"
               onClick={onClose}
-              className="px-4 py-2 text-xs font-semibold text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl transition-colors"
+              className="px-4 py-2 text-xs font-semibold text-[#475569] dark:text-[#cbd5e1] hover:bg-[#f1f5f9] dark:hover:bg-[#1e293b] rounded-xl transition-colors cursor-pointer"
             >
               İptal
             </button>
             <button
               type="submit"
-              className="px-5 py-2.5 bg-indigo-600 hover:bg-indigo-700 active:scale-95 text-white font-semibold text-xs rounded-xl shadow-sm shadow-indigo-600/30 transition-all flex items-center gap-1.5"
+              style={{ backgroundColor: '#4f46e5', color: '#ffffff' }}
+              className="legacy-btn-indigo px-5 py-2.5 bg-[#4f46e5] hover:bg-[#4338ca] active:scale-95 text-[#ffffff] font-semibold text-xs rounded-xl shadow-sm transition-all flex items-center gap-1.5 cursor-pointer"
             >
-              <Plus className="w-4 h-4" />
+              <Plus width={16} height={16} stroke="#ffffff" fill="none" className="w-4 h-4" />
               <span>Kelimeyi Kaydet</span>
             </button>
           </div>

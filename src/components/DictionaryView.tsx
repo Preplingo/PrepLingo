@@ -531,30 +531,44 @@ export const DictionaryView: React.FC<DictionaryViewProps> = ({
   return (
     <div className="space-y-6 pb-24">
       {/* View Switcher: Sözlük Arama vs A-Z Dizin (Fihrist) */}
-      <div className="bg-white dark:bg-slate-900 rounded-3xl p-2 sm:p-2.5 border border-slate-200/90 dark:border-slate-800 shadow-xs">
+      <div className="bg-[#ffffff] dark:bg-[#0f172a] rounded-3xl p-2 sm:p-2.5 border border-[#e2e8f0] dark:border-[#1e293b] shadow-xs">
         <div className="grid grid-cols-2 gap-2">
           <button
             type="button"
             onClick={() => setViewMode('standard')}
+            style={viewMode === 'standard' ? { backgroundColor: '#4f46e5', color: '#ffffff' } : undefined}
             className={`flex items-center justify-center gap-2 py-2.5 px-4 rounded-2xl text-xs sm:text-sm font-bold transition-all cursor-pointer ${
               viewMode === 'standard'
-                ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/30 ring-2 ring-indigo-500/20'
-                : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800'
+                ? 'legacy-btn-indigo bg-[#4f46e5] text-[#ffffff] shadow-md'
+                : 'bg-[#f8fafc] dark:bg-[#1e293b] text-[#475569] dark:text-[#cbd5e1] hover:text-[#0f172a] dark:hover:text-[#ffffff] hover:bg-[#f1f5f9] dark:hover:bg-[#334155]'
             }`}
           >
-            <Search className="w-4 h-4" />
+            <Search
+              width={16}
+              height={16}
+              fill="none"
+              stroke={viewMode === 'standard' ? '#ffffff' : '#475569'}
+              className="w-4 h-4 shrink-0"
+            />
             <span>Sözlük Arama</span>
           </button>
           <button
             type="button"
             onClick={() => setViewMode('directory')}
+            style={viewMode === 'directory' ? { backgroundColor: '#4f46e5', color: '#ffffff' } : undefined}
             className={`flex items-center justify-center gap-2 py-2.5 px-4 rounded-2xl text-xs sm:text-sm font-bold transition-all cursor-pointer ${
               viewMode === 'directory'
-                ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/30 ring-2 ring-indigo-500/20'
-                : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800'
+                ? 'legacy-btn-indigo bg-[#4f46e5] text-[#ffffff] shadow-md'
+                : 'bg-[#f8fafc] dark:bg-[#1e293b] text-[#475569] dark:text-[#cbd5e1] hover:text-[#0f172a] dark:hover:text-[#ffffff] hover:bg-[#f1f5f9] dark:hover:bg-[#334155]'
             }`}
           >
-            <BookA className="w-4 h-4" />
+            <BookA
+              width={16}
+              height={16}
+              fill="none"
+              stroke={viewMode === 'directory' ? '#ffffff' : '#475569'}
+              className="w-4 h-4 shrink-0"
+            />
             <span>A-Z Dizin (Fihrist)</span>
           </button>
         </div>
@@ -564,15 +578,15 @@ export const DictionaryView: React.FC<DictionaryViewProps> = ({
         /* A-Z Directory / Glossary Mode */
         <div className="space-y-6">
           {/* Directory Filter Box: Part of Speech + Alphabet Selector */}
-          <div className="bg-white dark:bg-slate-900 rounded-3xl p-4 sm:p-6 border border-slate-200/90 dark:border-slate-800 shadow-sm space-y-4">
+          <div className="bg-[#ffffff] dark:bg-[#0f172a] rounded-3xl p-4 sm:p-6 border border-[#e2e8f0] dark:border-[#1e293b] shadow-sm space-y-4">
             {/* Top filter bar: Part of Speech buttons ("Tümü", "Fiil", "İsim", "Sıfat", "Zarf"), with "Fiil" selected by DEFAULT */}
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
               <div>
-                <h3 className="text-sm font-bold text-slate-900 dark:text-white flex items-center gap-1.5">
-                  <Filter className="w-4 h-4 text-indigo-500" />
+                <h3 className="text-sm font-bold text-[#0f172a] dark:text-[#ffffff] flex items-center gap-1.5">
+                  <Filter width={16} height={16} fill="none" stroke="#4f46e5" className="w-4 h-4 shrink-0" />
                   <span>Sözcük Türü (Fihrist)</span>
                 </h3>
-                <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+                <p className="text-xs text-[#64748b] dark:text-[#94a3b8] mt-0.5">
                   Fihristte listelemek istediğiniz sözcük türünü seçin
                 </p>
               </div>
@@ -592,10 +606,11 @@ export const DictionaryView: React.FC<DictionaryViewProps> = ({
                       key={p.id}
                       type="button"
                       onClick={() => setDirectoryPos(p.id as PosFilter)}
+                      style={isActive ? { backgroundColor: '#4f46e5', color: '#ffffff' } : undefined}
                       className={`px-3.5 py-2 rounded-xl text-xs tracking-tight transition-all shrink-0 cursor-pointer ${
                         isActive
-                          ? 'bg-indigo-600 text-white font-bold shadow-md shadow-indigo-600/30 ring-2 ring-indigo-500/20 scale-102'
-                          : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 font-medium'
+                          ? 'legacy-btn-indigo bg-[#4f46e5] text-[#ffffff] font-bold shadow-md'
+                          : 'bg-[#f1f5f9] dark:bg-[#1e293b] text-[#334155] dark:text-[#cbd5e1] hover:bg-[#e2e8f0] dark:hover:bg-[#334155] font-medium'
                       }`}
                     >
                       {p.label}
@@ -606,12 +621,12 @@ export const DictionaryView: React.FC<DictionaryViewProps> = ({
             </div>
 
             {/* Sub-header / Alphabet Selector: Clean wrap-around grid of uppercase letters A to Z */}
-            <div className="pt-3 border-t border-slate-100 dark:border-slate-800/80">
+            <div className="pt-3 border-t border-[#f1f5f9] dark:border-[#1e293b]">
               <div className="flex items-center justify-between mb-2.5">
-                <span className="text-xs font-semibold text-slate-600 dark:text-slate-400">
+                <span className="text-xs font-semibold text-[#475569] dark:text-[#94a3b8]">
                   Harf Seçin (A - Z):
                 </span>
-                <span className="text-xs font-mono text-indigo-600 dark:text-indigo-400 font-bold">
+                <span className="text-xs font-mono text-[#4f46e5] dark:text-[#818cf8] font-bold">
                   Seçili Harf: &quot;{selectedLetter}&quot; ({letterCounts[selectedLetter] || 0} kelime)
                 </span>
               </div>
@@ -630,12 +645,13 @@ export const DictionaryView: React.FC<DictionaryViewProps> = ({
                         setSelectedLetter(char);
                         setExpandedDirCardId(null);
                       }}
+                      style={isSelected ? { backgroundColor: '#4f46e5', color: '#ffffff' } : undefined}
                       className={`h-11 rounded-xl flex flex-col items-center justify-center transition-all cursor-pointer select-none ${
                         isSelected
-                          ? 'bg-indigo-600 text-white font-bold shadow-md shadow-indigo-600/30 scale-105 z-10 ring-2 ring-indigo-400/40'
+                          ? 'legacy-btn-indigo bg-[#4f46e5] text-[#ffffff] font-bold shadow-md z-10'
                           : hasWords
-                          ? 'bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 hover:bg-indigo-50 dark:hover:bg-indigo-950/60 hover:text-indigo-600 font-semibold'
-                          : 'bg-slate-50/60 dark:bg-slate-900/40 text-slate-400 dark:text-slate-600 hover:bg-slate-100/60 font-normal'
+                          ? 'bg-[#f1f5f9] dark:bg-[#1e293b] text-[#1e293b] dark:text-[#e2e8f0] hover:bg-[#eef2ff] dark:hover:bg-[#1e1b4b] hover:text-[#4f46e5] font-semibold'
+                          : 'bg-[#f8fafc] dark:bg-[#0f172a] text-[#94a3b8] dark:text-[#475569] hover:bg-[#f1f5f9] font-normal'
                       }`}
                       title={`${char} ile başlayan ${count} kelime`}
                     >
@@ -643,10 +659,10 @@ export const DictionaryView: React.FC<DictionaryViewProps> = ({
                       <span
                         className={`text-[9px] font-mono leading-none mt-0.5 ${
                           isSelected
-                            ? 'text-indigo-100 font-medium'
+                            ? 'text-[#e0e7ff] font-medium'
                             : hasWords
-                            ? 'text-slate-500 dark:text-slate-400'
-                            : 'text-slate-300 dark:text-slate-700'
+                            ? 'text-[#64748b] dark:text-[#94a3b8]'
+                            : 'text-[#cbd5e1] dark:text-[#334155]'
                         }`}
                       >
                         {count}
@@ -675,19 +691,20 @@ export const DictionaryView: React.FC<DictionaryViewProps> = ({
 
           {/* Directory Word List or Empty State */}
           {directoryWords.length === 0 ? (
-            <div className="bg-white dark:bg-slate-900 rounded-3xl p-8 sm:p-12 text-center border border-slate-200/90 dark:border-slate-800 transition-colors">
-              <BookOpen className="w-12 h-12 mx-auto text-slate-300 dark:text-slate-600 mb-3" />
-              <h3 className="text-base font-bold text-slate-800 dark:text-slate-200">
+            <div className="bg-[#ffffff] dark:bg-[#0f172a] rounded-3xl p-8 sm:p-12 text-center border border-[#e2e8f0] dark:border-[#1e293b] transition-colors">
+              <BookOpen width={48} height={48} fill="none" stroke="#94a3b8" className="w-12 h-12 mx-auto mb-3" />
+              <h3 className="text-base font-bold text-[#1e293b] dark:text-[#e2e8f0]">
                 Bu harf ile başlayan kelime bulunamadı.
               </h3>
-              <p className="text-sm text-slate-500 dark:text-slate-400 mt-1 max-w-sm mx-auto">
+              <p className="text-sm text-[#64748b] dark:text-[#94a3b8] mt-1 max-w-sm mx-auto">
                 &quot;{selectedLetter}&quot; harfi ile başlayan {directoryPos === 'all' ? '' : getPosTurkishLabel(directoryPos).toLowerCase() + ' '}kelime mevcut veri setinde yer almıyor. Başka bir harf veya &quot;Tümü&quot; türünü deneyebilirsiniz.
               </p>
               {directoryPos !== 'all' && (
                 <button
                   type="button"
                   onClick={() => setDirectoryPos('all')}
-                  className="mt-4 px-4 py-2 bg-indigo-600 text-white rounded-xl text-xs font-semibold hover:bg-indigo-700 transition-colors cursor-pointer"
+                  style={{ backgroundColor: '#4f46e5', color: '#ffffff' }}
+                  className="legacy-btn-indigo mt-4 px-4 py-2 bg-[#4f46e5] text-[#ffffff] rounded-xl text-xs font-semibold hover:bg-[#4338ca] transition-colors cursor-pointer"
                 >
                   Tüm Türleri Göster
                 </button>
@@ -727,13 +744,19 @@ export const DictionaryView: React.FC<DictionaryViewProps> = ({
                           <button
                             type="button"
                             onClick={() => handleSpeakEnglish(item.word, `dir-word-${item.id}`)}
-                            className={`p-1.5 rounded-xl text-slate-500 hover:text-indigo-600 hover:bg-indigo-50 dark:hover:bg-indigo-950/50 transition-colors ${
-                              isSpeakingWord ? 'text-indigo-600 bg-indigo-50 dark:bg-indigo-950 animate-pulse' : ''
+                            className={`p-1.5 rounded-xl text-[#64748b] hover:text-[#4f46e5] hover:bg-[#eef2ff] dark:hover:bg-[#1e1b4b] transition-colors ${
+                              isSpeakingWord ? 'text-[#4f46e5] bg-[#eef2ff] dark:bg-[#1e1b4b] animate-pulse' : ''
                             }`}
                             title="İngilizce kelime telaffuzunu dinle"
                             aria-label={`İngilizce telaffuz: ${item.word}`}
                           >
-                            <Volume2 className="w-5 h-5" />
+                            <Volume2
+                              width={20}
+                              height={20}
+                              fill="none"
+                              stroke={isSpeakingWord ? '#4f46e5' : '#64748b'}
+                              className="w-5 h-5"
+                            />
                           </button>
                         </div>
 
@@ -766,19 +789,19 @@ export const DictionaryView: React.FC<DictionaryViewProps> = ({
                               }
                               className={`text-[10px] font-bold px-2 py-0.5 rounded-lg border flex items-center gap-1 transition-all ${
                                 item.status === 'ogrenildi'
-                                  ? 'bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 border-emerald-300 dark:border-emerald-800'
-                                  : 'bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-300 border-amber-300 dark:border-amber-800'
+                                  ? 'bg-[#ecfdf5] dark:bg-[#022c22] text-[#15803d] dark:text-[#6ee7b7] border-[#a7f3d0] dark:border-[#065f46]'
+                                  : 'bg-[#fffbeb] dark:bg-[#451a03] text-[#b45309] dark:text-[#fcd34d] border-[#fde68a] dark:border-[#92400e]'
                               }`}
                               title="Durumu değiştir"
                             >
                               {item.status === 'ogrenildi' ? (
                                 <>
-                                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
+                                  <CheckCircle2 width={14} height={14} fill="none" stroke="#16a34a" className="w-3.5 h-3.5" />
                                   <span>Öğrenildi</span>
                                 </>
                               ) : (
                                 <>
-                                  <Clock className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400" />
+                                  <Clock width={14} height={14} fill="none" stroke="#d97706" className="w-3.5 h-3.5" />
                                   <span>Çalışılıyor</span>
                                 </>
                               )}
@@ -803,9 +826,11 @@ export const DictionaryView: React.FC<DictionaryViewProps> = ({
                         aria-label={item.isFavorite ? 'Kelime defterinden çıkar' : 'Kelime defterine ekle'}
                       >
                         <Heart
-                          className={`w-5 h-5 transition-colors ${
-                            item.isFavorite ? 'fill-rose-500 text-rose-500' : 'text-slate-400 dark:text-slate-500'
-                          }`}
+                          width={20}
+                          height={20}
+                          fill={item.isFavorite ? '#f43f5e' : 'none'}
+                          stroke={item.isFavorite ? '#f43f5e' : '#94a3b8'}
+                          className="w-5 h-5 transition-colors"
                         />
                       </button>
                     </div>
@@ -813,51 +838,61 @@ export const DictionaryView: React.FC<DictionaryViewProps> = ({
                     {/* Turkish Meaning - Tap to Expand */}
                     <div
                       onClick={() => setExpandedDirCardId(isExpanded ? null : item.id)}
-                      className="mt-3.5 pt-3 border-t border-slate-100 dark:border-slate-800/80 cursor-pointer flex items-center justify-between gap-2 hover:opacity-90"
+                      className="mt-3.5 pt-3 border-t border-[#f1f5f9] dark:border-[#1e293b] cursor-pointer flex items-center justify-between gap-2 hover:opacity-90"
                     >
-                      <p className="text-base sm:text-lg font-bold text-slate-900 dark:text-white">
+                      <p className="text-base sm:text-lg font-bold text-[#0f172a] dark:text-[#ffffff]">
                         {item.trMeaning}
                       </p>
                       <button
                         type="button"
-                        className="text-xs font-semibold text-slate-500 hover:text-indigo-600 dark:text-slate-400 dark:hover:text-indigo-400 flex items-center gap-1 shrink-0"
+                        className="text-xs font-semibold text-[#64748b] hover:text-[#4f46e5] dark:text-[#94a3b8] dark:hover:text-[#818cf8] flex items-center gap-1 shrink-0"
                       >
                         <span>{isExpanded ? 'Gizle' : 'Detaylar'}</span>
-                        {isExpanded ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+                        {isExpanded ? (
+                          <ChevronUp width={16} height={16} fill="none" stroke="#64748b" className="w-4 h-4" />
+                        ) : (
+                          <ChevronDown width={16} height={16} fill="none" stroke="#64748b" className="w-4 h-4" />
+                        )}
                       </button>
                     </div>
 
                     {/* Expandable Details Drawer */}
                     {isExpanded && (
-                      <div className="mt-3.5 pt-3 border-t border-dashed border-slate-200 dark:border-slate-800 space-y-3 animate-in fade-in duration-150">
+                      <div className="mt-3.5 pt-3 border-t border-dashed border-[#e2e8f0] dark:border-[#1e293b] space-y-3 animate-in fade-in duration-150">
                         {/* Example sentence with English Audio */}
-                        <div className="bg-slate-50/90 dark:bg-slate-950/60 rounded-2xl p-4 border border-slate-200/70 dark:border-slate-800/80 space-y-1.5">
+                        <div className="bg-[#f8fafc] dark:bg-[#020617] rounded-2xl p-4 border border-[#e2e8f0] dark:border-[#1e293b] space-y-1.5">
                           <div className="flex items-start justify-between gap-2">
-                            <p className="text-sm font-semibold text-slate-900 dark:text-white leading-relaxed">
+                            <p className="text-sm font-semibold text-[#0f172a] dark:text-[#ffffff] leading-relaxed">
                               &quot;{item.enExample}&quot;
                             </p>
                             <button
                               type="button"
                               onClick={() => handleSpeakEnglish(item.enExample, `dir-ex-${item.id}`)}
-                              className={`p-1.5 shrink-0 rounded-xl text-slate-400 hover:text-indigo-600 hover:bg-indigo-50 dark:hover:bg-indigo-950/50 transition-colors ${
-                                isSpeakingEx ? 'text-indigo-600 animate-pulse' : ''
+                              className={`p-1.5 shrink-0 rounded-xl text-[#64748b] hover:text-[#4f46e5] hover:bg-[#eef2ff] dark:hover:bg-[#1e1b4b] transition-colors ${
+                                isSpeakingEx ? 'text-[#4f46e5] animate-pulse' : ''
                               }`}
                               title="İngilizce örnek cümleyi dinle"
                             >
-                              <Volume2 className="w-4 h-4" />
+                              <Volume2
+                                width={16}
+                                height={16}
+                                fill="none"
+                                stroke={isSpeakingEx ? '#4f46e5' : '#64748b'}
+                                className="w-4 h-4"
+                              />
                             </button>
                           </div>
-                          <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 italic">
+                          <p className="text-xs sm:text-sm text-[#475569] dark:text-[#cbd5e1] italic">
                             &quot;{item.trExample}&quot;
                           </p>
                         </div>
 
                         {/* Exam Tip */}
                         {hasTip && (
-                          <div className="flex items-start gap-2.5 text-xs bg-amber-50/90 dark:bg-amber-950/40 p-3.5 rounded-2xl border border-amber-200/70 dark:border-amber-800/60 text-amber-950 dark:text-amber-100">
-                            <Sparkles className="w-4 h-4 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5" />
+                          <div className="flex items-start gap-2.5 text-xs bg-[#fffbeb] dark:bg-[#451a03] p-3.5 rounded-2xl border border-[#fde68a] dark:border-[#92400e] text-[#451a03] dark:text-[#fef3c7]">
+                            <Sparkles width={16} height={16} fill="none" stroke="#d97706" className="w-4 h-4 shrink-0 mt-0.5" />
                             <div>
-                              <strong className="font-bold block mb-0.5 text-amber-950 dark:text-amber-200">
+                              <strong className="font-bold block mb-0.5 text-[#451a03] dark:text-[#fde68a]">
                                 Hazırlık Sınavı İpucu:
                               </strong>
                               <span className="leading-relaxed">{item.academicNote}</span>
@@ -868,14 +903,14 @@ export const DictionaryView: React.FC<DictionaryViewProps> = ({
                         {/* Collocations */}
                         {hasCollocations && item.collocations && (
                           <div className="text-xs">
-                            <span className="font-bold text-slate-900 dark:text-white block mb-1.5">
+                            <span className="font-bold text-[#0f172a] dark:text-[#ffffff] block mb-1.5">
                               Sık Kullanılan Birlikte Kullanımlar (Collocations):
                             </span>
                             <div className="flex flex-wrap gap-1.5">
                               {item.collocations.filter(Boolean).map((col, idx) => (
                                 <span
                                   key={idx}
-                                  className="bg-white dark:bg-slate-800 px-2.5 py-1 rounded-xl border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-200 font-mono text-[11px]"
+                                  className="bg-[#ffffff] dark:bg-[#1e293b] px-2.5 py-1 rounded-xl border border-[#e2e8f0] dark:border-[#334155] text-[#1e293b] dark:text-[#e2e8f0] font-mono text-[11px]"
                                 >
                                   {col}
                                 </span>
@@ -889,9 +924,9 @@ export const DictionaryView: React.FC<DictionaryViewProps> = ({
                             <button
                               type="button"
                               onClick={() => onPracticeWord(item)}
-                              className="text-xs font-bold text-indigo-600 dark:text-indigo-400 hover:underline flex items-center gap-1.5"
+                              className="text-xs font-bold text-[#4f46e5] dark:text-[#818cf8] hover:underline flex items-center gap-1.5"
                             >
-                              <Mic className="w-3.5 h-3.5" />
+                              <Mic width={14} height={14} fill="none" stroke="#4f46e5" className="w-3.5 h-3.5" />
                               <span>Telaffuz Testi Yap</span>
                             </button>
                           </div>
@@ -908,7 +943,7 @@ export const DictionaryView: React.FC<DictionaryViewProps> = ({
         /* Standard Search & List View */
         <>
           {/* Search & Filter Header Box */}
-          <div className="bg-white dark:bg-slate-900 rounded-3xl p-4 sm:p-6 border border-slate-200/90 dark:border-slate-800 shadow-sm transition-colors space-y-4">
+          <div className="bg-[#ffffff] dark:bg-[#0f172a] rounded-3xl p-4 sm:p-6 border border-[#e2e8f0] dark:border-[#1e293b] shadow-sm transition-colors space-y-4">
         {/* Instant Search Bar with Search Action Button & Floating Autocomplete Suggestions */}
         <form
           onSubmit={(e) => {
@@ -918,8 +953,8 @@ export const DictionaryView: React.FC<DictionaryViewProps> = ({
           className="relative w-full"
         >
           <div className="relative flex items-center w-full">
-            <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400 dark:text-slate-500">
-              <Search className="w-5 h-5" />
+            <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-[#64748b] dark:text-[#94a3b8]">
+              <Search width={20} height={20} fill="none" stroke="#64748b" className="w-5 h-5" />
             </div>
             <input
               ref={inputRef}
@@ -939,7 +974,7 @@ export const DictionaryView: React.FC<DictionaryViewProps> = ({
               }}
               onKeyDown={handleKeyDown}
               placeholder="Kelime veya anlam ara (İngilizce / Türkçe)..."
-              className={`w-full pl-11 py-3.5 bg-slate-50 dark:bg-slate-950/60 border border-slate-200 dark:border-slate-800 rounded-2xl text-slate-900 dark:text-slate-100 placeholder:text-slate-400 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-indigo-500/25 focus:border-indigo-500 transition-all ${
+              className={`w-full pl-11 py-3.5 bg-[#f8fafc] dark:bg-[#020617] border border-[#cbd5e1] dark:border-[#1e293b] rounded-2xl text-[#0f172a] dark:text-[#f1f5f9] placeholder:text-[#64748b] text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-[#4f46e5] focus:border-[#4f46e5] transition-all ${
                 searchQuery ? 'pr-20' : 'pr-12'
               }`}
               autoComplete="off"
@@ -955,11 +990,11 @@ export const DictionaryView: React.FC<DictionaryViewProps> = ({
                   setOnlineErrorReason(null);
                   inputRef.current?.focus();
                 }}
-                className="absolute right-12 w-8 h-8 rounded-full flex items-center justify-center text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 hover:bg-slate-200/70 dark:hover:bg-slate-800 transition-colors cursor-pointer"
+                className="absolute right-12 w-8 h-8 rounded-full flex items-center justify-center text-[#64748b] hover:text-[#0f172a] dark:hover:text-[#ffffff] hover:bg-[#e2e8f0] dark:hover:bg-[#1e293b] transition-colors cursor-pointer"
                 aria-label="Aramayı temizle"
                 title="Temizle"
               >
-                <X className="w-4 h-4" />
+                <X width={16} height={16} fill="none" stroke="#64748b" className="w-4 h-4" />
               </button>
             )}
             <button
@@ -967,9 +1002,17 @@ export const DictionaryView: React.FC<DictionaryViewProps> = ({
               onClick={() => handleExplicitSearch()}
               aria-label="Ara"
               title="Ara"
-              className="absolute right-2 flex items-center justify-center w-9 h-9 rounded-full bg-emerald-600 hover:bg-emerald-700 active:scale-95 text-white shadow-sm transition cursor-pointer"
+              style={{ backgroundColor: '#16a34a', color: '#ffffff' }}
+              className="legacy-btn-green absolute right-2 flex items-center justify-center w-9 h-9 rounded-full bg-[#16a34a] hover:bg-[#15803d] active:scale-95 text-[#ffffff] shadow-sm transition cursor-pointer"
             >
-              <ArrowRight className="w-4 h-4" aria-hidden="true" />
+              <ArrowRight
+                width={18}
+                height={18}
+                fill="none"
+                stroke="#ffffff"
+                className="w-[18px] h-[18px]"
+                aria-hidden="true"
+              />
             </button>
           </div>
 
@@ -1027,7 +1070,7 @@ export const DictionaryView: React.FC<DictionaryViewProps> = ({
                             {item.cefrLevel}
                           </span>
                         )}
-                        <ArrowUpRight className="w-3.5 h-3.5 text-slate-400" />
+                        <ArrowUpRight width={14} height={14} fill="none" stroke="#94a3b8" className="w-3.5 h-3.5" />
                       </div>
                     </li>
                   );
@@ -1044,12 +1087,12 @@ export const DictionaryView: React.FC<DictionaryViewProps> = ({
             (typeof navigator !== 'undefined' && navigator.onLine === false) ||
             onlineErrorReason === 'offline' ||
             onlineErrorReason === 'network_error' ? (
-              <div className="rounded-2xl p-4 sm:p-5 bg-amber-50/80 dark:bg-amber-950/30 border border-amber-200/90 dark:border-amber-800/70 flex flex-col sm:flex-row items-center sm:items-start gap-3 text-center sm:text-left animate-in fade-in duration-150">
-                <div className="w-10 h-10 rounded-full bg-amber-100 dark:bg-amber-900/50 flex items-center justify-center shrink-0">
-                  <WifiOff className="w-5 h-5 text-amber-600 dark:text-amber-400" />
+              <div className="rounded-2xl p-4 sm:p-5 bg-[#fffbeb] dark:bg-[#451a03] border border-[#fde68a] dark:border-[#92400e] flex flex-col sm:flex-row items-center sm:items-start gap-3 text-center sm:text-left animate-in fade-in duration-150">
+                <div className="w-10 h-10 rounded-full bg-[#fef3c7] dark:bg-[#78350f] flex items-center justify-center shrink-0">
+                  <WifiOff width={20} height={20} fill="none" stroke="#d97706" className="w-5 h-5" />
                 </div>
                 <div className="flex-1 space-y-1">
-                  <p className="text-sm font-semibold text-slate-900 dark:text-white leading-relaxed">
+                  <p className="text-sm font-semibold text-[#0f172a] dark:text-[#ffffff] leading-relaxed">
                     &lsquo;{searchQuery.trim()}&rsquo; yerel veritabanında bulunamadı. Çevrimiçi sözlükte aramak için internet bağlantınızı açın.
                   </p>
                 </div>
@@ -1060,28 +1103,28 @@ export const DictionaryView: React.FC<DictionaryViewProps> = ({
                     setOnlineResults([]);
                     setOnlineErrorReason(null);
                   }}
-                  className="px-3.5 py-2 bg-white dark:bg-slate-800 border border-amber-200 dark:border-amber-800 text-slate-700 dark:text-slate-200 rounded-xl text-xs font-semibold hover:bg-amber-100/60 dark:hover:bg-slate-700 transition-colors shrink-0 cursor-pointer"
+                  className="px-3.5 py-2 bg-[#ffffff] dark:bg-[#1e293b] border border-[#fde68a] dark:border-[#92400e] text-[#334155] dark:text-[#e2e8f0] rounded-xl text-xs font-semibold hover:bg-[#fef3c7] dark:hover:bg-[#334155] transition-colors shrink-0 cursor-pointer"
                 >
                   Temizle
                 </button>
               </div>
             ) : isOnlineLoading || !isGeneralDictLoaded || onlineErrorReason === null ? (
-              <div className="rounded-2xl p-4 sm:p-5 bg-indigo-50/70 dark:bg-indigo-950/30 border border-indigo-200/80 dark:border-indigo-800/60 flex items-center gap-3 animate-in fade-in duration-150">
-                <Loader2 className="w-5 h-5 text-indigo-600 dark:text-indigo-400 animate-spin shrink-0" />
+              <div className="rounded-2xl p-4 sm:p-5 bg-[#eef2ff] dark:bg-[#1e1b4b] border border-[#c7d2fe] dark:border-[#3730a3] flex items-center gap-3 animate-in fade-in duration-150">
+                <Loader2 width={20} height={20} fill="none" stroke="#4f46e5" className="w-5 h-5 animate-spin shrink-0" />
                 <div className="text-left">
-                  <p className="text-sm font-bold text-slate-900 dark:text-white">
+                  <p className="text-sm font-bold text-[#0f172a] dark:text-[#ffffff]">
                     Çevrimiçi sözlükte aranıyor...
                   </p>
-                  <p className="text-xs text-slate-600 dark:text-slate-300">
+                  <p className="text-xs text-[#475569] dark:text-[#cbd5e1]">
                     &lsquo;{searchQuery.trim()}&rsquo; için anlam, telaffuz ve tanım getiriliyor.
                   </p>
                 </div>
               </div>
             ) : (
-              <div className="rounded-2xl p-4 sm:p-5 bg-slate-50 dark:bg-slate-950/60 border border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left animate-in fade-in duration-150">
+              <div className="rounded-2xl p-4 sm:p-5 bg-[#f8fafc] dark:bg-[#020617] border border-[#e2e8f0] dark:border-[#1e293b] flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left animate-in fade-in duration-150">
                 <div className="flex items-center gap-3">
-                  <BookOpen className="w-5 h-5 text-slate-400 shrink-0" />
-                  <p className="text-sm font-semibold text-slate-800 dark:text-slate-200">
+                  <BookOpen width={20} height={20} fill="none" stroke="#64748b" className="w-5 h-5 shrink-0" />
+                  <p className="text-sm font-semibold text-[#1e293b] dark:text-[#e2e8f0]">
                     Bu kelime sözlüklerde bulunamadı.
                   </p>
                 </div>
@@ -1093,7 +1136,8 @@ export const DictionaryView: React.FC<DictionaryViewProps> = ({
                     setPosFilter('all');
                     setStatusFilter('all');
                   }}
-                  className="px-3.5 py-2 bg-indigo-600 text-white rounded-xl text-xs font-semibold hover:bg-indigo-700 transition-colors shrink-0 cursor-pointer"
+                  style={{ backgroundColor: '#4f46e5', color: '#ffffff' }}
+                  className="legacy-btn-indigo px-3.5 py-2 bg-[#4f46e5] text-[#ffffff] rounded-xl text-xs font-semibold hover:bg-[#4338ca] transition-colors shrink-0 cursor-pointer"
                 >
                   Aramayı Temizle
                 </button>
@@ -1105,16 +1149,17 @@ export const DictionaryView: React.FC<DictionaryViewProps> = ({
         {/* Filter Controls Row: CEFR Level & Part of Speech */}
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3 pt-1">
           {/* CEFR Level Segmented Control Tabs */}
-          <div className="flex items-center gap-1.5 p-1 bg-slate-100/90 dark:bg-slate-800/80 rounded-2xl w-full sm:w-auto">
+          <div className="flex items-center gap-1.5 p-1 bg-[#f1f5f9] dark:bg-[#1e293b] rounded-2xl w-full sm:w-auto">
             {(['Tümü', 'A1-A2', 'B1-B2'] as CefrFilter[]).map((tab) => (
               <button
                 key={tab}
                 type="button"
                 onClick={() => setCefrFilter(tab)}
-                className={`flex-1 sm:flex-initial px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all ${
+                style={cefrFilter === tab ? { backgroundColor: '#4f46e5', color: '#ffffff' } : undefined}
+                className={`flex-1 sm:flex-initial px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer ${
                   cefrFilter === tab
-                    ? 'bg-white dark:bg-slate-900 text-indigo-600 dark:text-indigo-400 shadow-sm'
-                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white font-medium'
+                    ? 'legacy-btn-indigo bg-[#4f46e5] text-[#ffffff] shadow-sm'
+                    : 'text-[#475569] dark:text-[#cbd5e1] hover:text-[#0f172a] dark:hover:text-[#ffffff] font-medium'
                 }`}
               >
                 {tab === 'Tümü' ? 'Tüm Seviyeler' : tab}
@@ -1124,8 +1169,8 @@ export const DictionaryView: React.FC<DictionaryViewProps> = ({
 
           {/* Part of Speech Filter - HIGH CONTRAST ACTIVE STATE & VIBRANT PRIMARY COLOR */}
           <div className="flex items-center gap-1.5 overflow-x-auto pb-1 sm:pb-0 scrollbar-none text-xs">
-            <span className="text-slate-700 dark:text-slate-300 font-bold shrink-0 mr-1 text-[11px] flex items-center gap-1">
-              <Filter className="w-3 h-3 text-indigo-500" />
+            <span className="text-[#334155] dark:text-[#cbd5e1] font-bold shrink-0 mr-1 text-[11px] flex items-center gap-1">
+              <Filter width={12} height={12} fill="none" stroke="#4f46e5" className="w-3 h-3" />
               <span>Tür:</span>
             </span>
             {[
@@ -1141,10 +1186,11 @@ export const DictionaryView: React.FC<DictionaryViewProps> = ({
                   key={p.id}
                   type="button"
                   onClick={() => setPosFilter(p.id as PosFilter)}
+                  style={isActive ? { backgroundColor: '#4f46e5', color: '#ffffff' } : undefined}
                   className={`px-3 py-1.5 rounded-xl text-xs tracking-tight transition-all shrink-0 cursor-pointer ${
                     isActive
-                      ? 'bg-indigo-600 text-white font-bold shadow-md shadow-indigo-600/30 ring-2 ring-indigo-500/20 scale-102'
-                      : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 font-medium'
+                      ? 'legacy-btn-indigo bg-[#4f46e5] text-[#ffffff] font-bold shadow-md'
+                      : 'bg-[#f1f5f9] dark:bg-[#1e293b] text-[#334155] dark:text-[#cbd5e1] hover:bg-[#e2e8f0] dark:hover:bg-[#334155] font-medium'
                   }`}
                 >
                   {p.label}
@@ -1155,16 +1201,17 @@ export const DictionaryView: React.FC<DictionaryViewProps> = ({
         </div>
 
         {/* Status Filters: All, Öğrenildi, Çalışılıyor + Audio Speed */}
-        <div className="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-slate-100 dark:border-slate-800/80">
+        <div className="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-[#f1f5f9] dark:border-[#1e293b]">
           <div className="flex flex-wrap items-center gap-1.5 text-xs">
-            <span className="text-slate-600 dark:text-slate-400 font-semibold mr-1 text-[11px]">Durum:</span>
+            <span className="text-[#475569] dark:text-[#94a3b8] font-semibold mr-1 text-[11px]">Durum:</span>
             <button
               type="button"
               onClick={() => setStatusFilter('all')}
-              className={`px-3 py-1 rounded-xl font-semibold text-[11px] transition-all ${
+              style={statusFilter === 'all' ? { backgroundColor: '#0f172a', color: '#ffffff' } : undefined}
+              className={`px-3 py-1 rounded-xl font-semibold text-[11px] transition-all cursor-pointer ${
                 statusFilter === 'all'
-                  ? 'bg-slate-900 text-white dark:bg-white dark:text-slate-900 shadow-xs'
-                  : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700'
+                  ? 'legacy-btn-dark bg-[#0f172a] text-[#ffffff] border border-[#334155] shadow-xs'
+                  : 'bg-[#f1f5f9] dark:bg-[#1e293b] text-[#475569] dark:text-[#cbd5e1] hover:bg-[#e2e8f0] dark:hover:bg-[#334155]'
               }`}
             >
               Tümü
@@ -1172,55 +1219,69 @@ export const DictionaryView: React.FC<DictionaryViewProps> = ({
             <button
               type="button"
               onClick={() => setStatusFilter('ogrenildi')}
-              className={`px-3 py-1 rounded-xl font-bold text-[11px] flex items-center gap-1 transition-all ${
+              style={statusFilter === 'ogrenildi' ? { backgroundColor: '#16a34a', color: '#ffffff' } : undefined}
+              className={`px-3 py-1 rounded-xl font-bold text-[11px] flex items-center gap-1 transition-all cursor-pointer ${
                 statusFilter === 'ogrenildi'
-                  ? 'bg-emerald-600 text-white shadow-xs'
-                  : 'bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 border border-emerald-200/60 dark:border-emerald-800/60 hover:bg-emerald-100'
+                  ? 'legacy-btn-green bg-[#16a34a] text-[#ffffff] shadow-xs'
+                  : 'bg-[#ecfdf5] dark:bg-[#022c22] text-[#15803d] dark:text-[#6ee7b7] border border-[#a7f3d0] dark:border-[#065f46] hover:bg-[#d1fae5]'
               }`}
             >
-              <CheckCircle2 className="w-3.5 h-3.5" />
+              <CheckCircle2
+                width={14}
+                height={14}
+                fill="none"
+                stroke={statusFilter === 'ogrenildi' ? '#ffffff' : '#16a34a'}
+                className="w-3.5 h-3.5"
+              />
               <span>Öğrenildi</span>
             </button>
             <button
               type="button"
               onClick={() => setStatusFilter('calisiliyor')}
-              className={`px-3 py-1 rounded-xl font-bold text-[11px] flex items-center gap-1 transition-all ${
+              style={statusFilter === 'calisiliyor' ? { backgroundColor: '#d97706', color: '#ffffff' } : undefined}
+              className={`px-3 py-1 rounded-xl font-bold text-[11px] flex items-center gap-1 transition-all cursor-pointer ${
                 statusFilter === 'calisiliyor'
-                  ? 'bg-amber-600 text-white shadow-xs'
-                  : 'bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-300 border border-amber-200/60 dark:border-amber-800/60 hover:bg-amber-100'
+                  ? 'bg-[#d97706] text-[#ffffff] shadow-xs'
+                  : 'bg-[#fffbeb] dark:bg-[#451a03] text-[#b45309] dark:text-[#fcd34d] border border-[#fde68a] dark:border-[#92400e] hover:bg-[#fef3c7]'
               }`}
             >
-              <Clock className="w-3.5 h-3.5" />
+              <Clock
+                width={14}
+                height={14}
+                fill="none"
+                stroke={statusFilter === 'calisiliyor' ? '#ffffff' : '#d97706'}
+                className="w-3.5 h-3.5"
+              />
               <span>Çalışılıyor</span>
             </button>
           </div>
 
           {/* Results Count Line */}
-          <div className="text-xs text-slate-600 dark:text-slate-400">
+          <div className="text-xs text-[#475569] dark:text-[#94a3b8]">
             {isOnlineLoading ? (
-              <span className="flex items-center gap-1.5 font-medium text-indigo-600 dark:text-indigo-400">
-                <Loader2 className="w-3.5 h-3.5 animate-spin shrink-0" />
+              <span className="flex items-center gap-1.5 font-medium text-[#4f46e5] dark:text-[#818cf8]">
+                <Loader2 width={14} height={14} fill="none" stroke="#4f46e5" className="w-3.5 h-3.5 animate-spin shrink-0" />
                 <span>Çevrimiçi sözlükte aranıyor...</span>
               </span>
             ) : isFromOnlineDict ? (
-              <span className="flex items-center gap-1.5 font-medium text-teal-700 dark:text-teal-300">
-                <Globe className="w-3.5 h-3.5 text-teal-500 shrink-0" />
+              <span className="flex items-center gap-1.5 font-medium text-[#0f766e] dark:text-[#5eead4]">
+                <Globe width={14} height={14} fill="none" stroke="#14b8a6" className="w-3.5 h-3.5 shrink-0" />
                 <span>
                   Yerel listede bulunamadı, <strong className="font-bold">Çevrimiçi Sözlük 🌐</strong> üzerinden sonuç gösteriliyor
                 </span>
               </span>
             ) : isFromGeneralDict ? (
-              <span className="flex items-center gap-1.5 font-medium text-sky-700 dark:text-sky-300">
-                <span className="w-2 h-2 rounded-full bg-sky-500 animate-pulse" />
+              <span className="flex items-center gap-1.5 font-medium text-[#0369a1] dark:text-[#7dd3fc]">
+                <span className="w-2 h-2 rounded-full bg-[#0ea5e9] animate-pulse" />
                 <span>
                   Hazırlık listesinde bulunamadı, <strong className="font-bold underline">Genel Sözlük</strong>&apos;ten{' '}
-                  <span className="font-mono font-bold text-sky-600 dark:text-sky-400">{filteredWords.length}</span> sonuç gösteriliyor
+                  <span className="font-mono font-bold text-[#0284c7] dark:text-[#38bdf8]">{filteredWords.length}</span> sonuç gösteriliyor
                 </span>
               </span>
             ) : (
               <span>
                 Toplam <span className="font-mono font-semibold">{words.length}</span> kelimeden{' '}
-                <strong className="text-indigo-600 dark:text-indigo-400 font-mono font-bold">{filteredWords.length}</strong> tanesi gösteriliyor
+                <strong className="text-[#4f46e5] dark:text-[#818cf8] font-mono font-bold">{filteredWords.length}</strong> tanesi gösteriliyor
               </span>
             )}
           </div>
@@ -1230,12 +1291,12 @@ export const DictionaryView: React.FC<DictionaryViewProps> = ({
       {/* Word Entries List */}
       {filteredWords.length === 0 ? (
         searchQuery.trim().length >= 2 ? null : (
-          <div className="bg-white dark:bg-slate-900 rounded-3xl p-8 text-center border border-slate-200/80 dark:border-slate-800 transition-colors">
-            <BookOpen className="w-12 h-12 mx-auto text-slate-300 dark:text-slate-600 mb-3" />
-            <h3 className="text-base font-bold text-slate-800 dark:text-slate-200">
+          <div className="bg-[#ffffff] dark:bg-[#0f172a] rounded-3xl p-8 text-center border border-[#e2e8f0] dark:border-[#1e293b] transition-colors">
+            <BookOpen width={48} height={48} fill="none" stroke="#94a3b8" className="w-12 h-12 mx-auto mb-3" />
+            <h3 className="text-base font-bold text-[#1e293b] dark:text-[#e2e8f0]">
               Kelime bulunamadı
             </h3>
-            <p className="text-sm text-slate-500 dark:text-slate-400 mt-1 max-w-sm mx-auto">
+            <p className="text-sm text-[#64748b] dark:text-[#94a3b8] mt-1 max-w-sm mx-auto">
               Farklı harflerle aramayı deneyebilir veya filtreyi &quot;Tümü&quot; olarak sıfırlayabilirsiniz.
             </p>
             <button
@@ -1246,7 +1307,8 @@ export const DictionaryView: React.FC<DictionaryViewProps> = ({
                 setPosFilter('all');
                 setStatusFilter('all');
               }}
-              className="mt-4 px-4 py-2 bg-indigo-600 text-white rounded-xl text-xs font-semibold hover:bg-indigo-700 transition-colors cursor-pointer"
+              style={{ backgroundColor: '#4f46e5', color: '#ffffff' }}
+              className="legacy-btn-indigo mt-4 px-4 py-2 bg-[#4f46e5] text-[#ffffff] rounded-xl text-xs font-semibold hover:bg-[#4338ca] transition-colors cursor-pointer"
             >
               Tüm Filtreleri Temizle
             </button>
@@ -1293,17 +1355,23 @@ export const DictionaryView: React.FC<DictionaryViewProps> = ({
                       <button
                         type="button"
                         onClick={() => handleSpeakEnglish(item.word, `word-${item.id}`)}
-                        className={`p-1.5 rounded-xl text-slate-500 hover:text-indigo-600 hover:bg-indigo-50 dark:hover:bg-indigo-950/50 transition-colors ${
-                          isSpeakingWord ? 'text-indigo-600 bg-indigo-50 dark:bg-indigo-950 animate-pulse' : ''
+                        className={`p-1.5 rounded-xl text-[#64748b] hover:text-[#4f46e5] hover:bg-[#eef2ff] dark:hover:bg-[#1e1b4b] transition-colors ${
+                          isSpeakingWord ? 'text-[#4f46e5] bg-[#eef2ff] dark:bg-[#1e1b4b] animate-pulse' : ''
                         }`}
                         title="İngilizce kelime telaffuzunu dinle"
                         aria-label={`İngilizce telaffuz: ${item.word}`}
                       >
-                        <Volume2 className="w-5 h-5" />
+                        <Volume2
+                          width={20}
+                          height={20}
+                          fill="none"
+                          stroke={isSpeakingWord ? '#4f46e5' : '#64748b'}
+                          className="w-5 h-5"
+                        />
                       </button>
 
                       {item.isOnlineDict && item.phonetic && (
-                        <span className="text-xs sm:text-sm font-mono text-slate-500 dark:text-slate-400">
+                        <span className="text-xs sm:text-sm font-mono text-[#64748b] dark:text-[#94a3b8]">
                           {item.phonetic}
                         </span>
                       )}
@@ -1314,8 +1382,8 @@ export const DictionaryView: React.FC<DictionaryViewProps> = ({
                       {/* CEFR Badge or Online/Genel Sözlük Badge */}
                       {item.isOnlineDict ? (
                         <>
-                          <span className="text-[11px] font-bold px-2.5 py-0.5 rounded-lg bg-teal-50 dark:bg-teal-950/70 text-teal-700 dark:text-teal-300 border border-teal-300 dark:border-teal-800 flex items-center gap-1 shadow-2xs">
-                            <Globe className="w-3.5 h-3.5 text-teal-600 dark:text-teal-400" />
+                          <span className="text-[11px] font-bold px-2.5 py-0.5 rounded-lg bg-[#f0fdfa] dark:bg-[#042f2e] text-[#0f766e] dark:text-[#5eead4] border border-[#5eead4] dark:border-[#115e59] flex items-center gap-1 shadow-2xs">
+                            <Globe width={14} height={14} fill="none" stroke="#0d9488" className="w-3.5 h-3.5" />
                             <span>Çevrimiçi Sözlük 🌐</span>
                           </span>
                           <span
@@ -1327,8 +1395,8 @@ export const DictionaryView: React.FC<DictionaryViewProps> = ({
                           </span>
                         </>
                       ) : item.isGeneralDict ? (
-                        <span className="text-[11px] font-bold px-2.5 py-0.5 rounded-lg bg-sky-50 dark:bg-sky-950/70 text-sky-700 dark:text-sky-300 border border-sky-300 dark:border-sky-800 flex items-center gap-1 shadow-2xs">
-                          <BookOpen className="w-3.5 h-3.5 text-sky-600 dark:text-sky-400" />
+                        <span className="text-[11px] font-bold px-2.5 py-0.5 rounded-lg bg-[#f0f9ff] dark:bg-[#082f49] text-[#0369a1] dark:text-[#7dd3fc] border border-[#7dd3fc] dark:border-[#075985] flex items-center gap-1 shadow-2xs">
+                          <BookOpen width={14} height={14} fill="none" stroke="#0284c7" className="w-3.5 h-3.5" />
                           <span>Genel Sözlük</span>
                         </span>
                       ) : (
@@ -1363,19 +1431,19 @@ export const DictionaryView: React.FC<DictionaryViewProps> = ({
                                 }
                                 className={`text-[10px] font-bold px-2.5 py-0.5 rounded-lg border flex items-center gap-1 transition-all ${
                                   item.status === 'ogrenildi'
-                                    ? 'bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 border-emerald-300 dark:border-emerald-800 hover:bg-emerald-100'
-                                    : 'bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-300 border-amber-300 dark:border-amber-800 hover:bg-amber-100'
+                                    ? 'bg-[#ecfdf5] dark:bg-[#022c22] text-[#15803d] dark:text-[#6ee7b7] border-[#a7f3d0] dark:border-[#065f46] hover:bg-[#d1fae5]'
+                                    : 'bg-[#fffbeb] dark:bg-[#451a03] text-[#b45309] dark:text-[#fcd34d] border-[#fde68a] dark:border-[#92400e] hover:bg-[#fef3c7]'
                                 }`}
                                 title="Durumu değiştir"
                               >
                                 {item.status === 'ogrenildi' ? (
                                   <>
-                                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
+                                    <CheckCircle2 width={14} height={14} fill="none" stroke="#16a34a" className="w-3.5 h-3.5" />
                                     <span>Öğrenildi</span>
                                   </>
                                 ) : (
                                   <>
-                                    <Clock className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400" />
+                                    <Clock width={14} height={14} fill="none" stroke="#d97706" className="w-3.5 h-3.5" />
                                     <span>Çalışılıyor</span>
                                   </>
                                 )}
@@ -1384,7 +1452,7 @@ export const DictionaryView: React.FC<DictionaryViewProps> = ({
                           )}
 
                           {item.isCustom && (
-                            <span className="text-[10px] font-semibold px-2 py-0.5 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-500">
+                            <span className="text-[10px] font-semibold px-2 py-0.5 rounded-md bg-[#f1f5f9] dark:bg-[#1e293b] text-[#475569] dark:text-[#cbd5e1]">
                               Özel
                             </span>
                           )}
@@ -1409,21 +1477,23 @@ export const DictionaryView: React.FC<DictionaryViewProps> = ({
                     aria-label={item.isFavorite ? 'Kelime defterinden çıkar' : 'Kelime defterine ekle'}
                   >
                     <Heart
-                      className={`w-5 h-5 transition-colors ${
-                        item.isFavorite ? 'fill-rose-500 text-rose-500' : 'text-slate-400 dark:text-slate-500'
-                      }`}
+                      width={20}
+                      height={20}
+                      fill={item.isFavorite ? '#f43f5e' : 'none'}
+                      stroke={item.isFavorite ? '#f43f5e' : '#94a3b8'}
+                      className="w-5 h-5 transition-colors"
                     />
                   </button>
                 </div>
 
                 {/* Primary Turkish Meaning */}
-                <div className="mt-4 pt-3.5 border-t border-slate-100 dark:border-slate-800/80 space-y-1.5">
-                  <p className="text-base sm:text-lg font-bold text-slate-900 dark:text-white">
+                <div className="mt-4 pt-3.5 border-t border-[#f1f5f9] dark:border-[#1e293b] space-y-1.5">
+                  <p className="text-base sm:text-lg font-bold text-[#0f172a] dark:text-[#ffffff]">
                     {item.trMeaning}
                   </p>
                   {item.isOnlineDict && item.enDefinition && item.enDefinition !== item.trMeaning && (
-                    <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-                      <span className="font-semibold text-teal-700 dark:text-teal-400 mr-1.5">
+                    <p className="text-xs sm:text-sm text-[#475569] dark:text-[#cbd5e1] leading-relaxed">
+                      <span className="font-semibold text-[#0f766e] dark:text-[#2dd4bf] mr-1.5">
                         Akademik Tanım (EN):
                       </span>
                       {item.enDefinition}
@@ -1433,32 +1503,38 @@ export const DictionaryView: React.FC<DictionaryViewProps> = ({
 
                 {/* General Dictionary Fallback vs Rich/Online Card Content */}
                 {item.isGeneralDict ? (
-                  <div className="mt-3.5 py-2.5 px-3.5 rounded-2xl bg-slate-50/90 dark:bg-slate-950/60 border border-slate-200/70 dark:border-slate-800 text-xs text-slate-500 dark:text-slate-400 flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-slate-400 shrink-0" />
+                  <div className="mt-3.5 py-2.5 px-3.5 rounded-2xl bg-[#f8fafc] dark:bg-[#020617] border border-[#e2e8f0] dark:border-[#1e293b] text-xs text-[#64748b] dark:text-[#94a3b8] flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#94a3b8] shrink-0" />
                     <span>Temel sözlük kaydı (Hazırlık kartı bulunmamaktadır).</span>
                   </div>
                 ) : (
                   <>
                     {/* English Example Sentence (WITH ENGLISH AUDIO) & Turkish Translation (WITHOUT AUDIO) */}
-                    <div className="mt-3.5 bg-slate-50/90 dark:bg-slate-950/60 rounded-2xl p-4 sm:p-5 border border-slate-200/70 dark:border-slate-800/80 space-y-2">
+                    <div className="mt-3.5 bg-[#f8fafc] dark:bg-[#020617] rounded-2xl p-4 sm:p-5 border border-[#e2e8f0] dark:border-[#1e293b] space-y-2">
                       <div className="flex items-start justify-between gap-2">
-                        <p className="text-sm sm:text-base font-semibold text-slate-900 dark:text-white leading-relaxed">
+                        <p className="text-sm sm:text-base font-semibold text-[#0f172a] dark:text-[#ffffff] leading-relaxed">
                           &quot;{item.enExample}&quot;
                         </p>
                         {/* ENGLISH Example Sentence Audio Speaker Button */}
                         <button
                           type="button"
                           onClick={() => handleSpeakEnglish(item.enExample, `ex-${item.id}`)}
-                          className={`p-1.5 shrink-0 rounded-xl text-slate-400 hover:text-indigo-600 hover:bg-indigo-50 dark:hover:bg-indigo-950/50 transition-colors ${
-                            isSpeakingEx ? 'text-indigo-600 animate-pulse' : ''
+                          className={`p-1.5 shrink-0 rounded-xl text-[#64748b] hover:text-[#4f46e5] hover:bg-[#eef2ff] dark:hover:bg-[#1e1b4b] transition-colors ${
+                            isSpeakingEx ? 'text-[#4f46e5] animate-pulse' : ''
                           }`}
                           title="İngilizce örnek cümleyi dinle"
                         >
-                          <Volume2 className="w-4 h-4" />
+                          <Volume2
+                            width={16}
+                            height={16}
+                            fill="none"
+                            stroke={isSpeakingEx ? '#4f46e5' : '#64748b'}
+                            className="w-4 h-4"
+                          />
                         </button>
                       </div>
                       {/* Turkish translation of example sentence (NO AUDIO BUTTON) */}
-                      <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 italic">
+                      <p className="text-xs sm:text-sm text-[#475569] dark:text-[#cbd5e1] italic">
                         &quot;{item.trExample}&quot;
                       </p>
                     </div>
@@ -1467,27 +1543,27 @@ export const DictionaryView: React.FC<DictionaryViewProps> = ({
                     {(hasTip || hasCollocations) && (
                       <div className="mt-3.5 pt-2">
                         {isExpanded ? (
-                          <div className="space-y-3 pt-2.5 border-t border-dashed border-slate-200 dark:border-slate-800 animate-in fade-in duration-150">
+                          <div className="space-y-3 pt-2.5 border-t border-dashed border-[#e2e8f0] dark:border-[#1e293b] animate-in fade-in duration-150">
                             {hasTip && (
-                              <div className="flex items-start gap-2.5 text-xs bg-amber-50/90 dark:bg-amber-950/40 p-3.5 rounded-2xl border border-amber-200/70 dark:border-amber-800/60 text-amber-950 dark:text-amber-100">
-                                <Sparkles className="w-4 h-4 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5" />
+                              <div className="flex items-start gap-2.5 text-xs bg-[#fffbeb] dark:bg-[#451a03] p-3.5 rounded-2xl border border-[#fde68a] dark:border-[#92400e] text-[#451a03] dark:text-[#fef3c7]">
+                                <Sparkles width={16} height={16} fill="none" stroke="#d97706" className="w-4 h-4 shrink-0 mt-0.5" />
                                 <div>
-                                  <strong className="font-bold block mb-0.5 text-amber-950 dark:text-amber-200">Hazırlık Sınavı İpucu:</strong>
-                                  <span className="leading-relaxed text-amber-900 dark:text-amber-100">{item.academicNote}</span>
+                                  <strong className="font-bold block mb-0.5 text-[#451a03] dark:text-[#fde68a]">Hazırlık Sınavı İpucu:</strong>
+                                  <span className="leading-relaxed text-[#78350f] dark:text-[#fef3c7]">{item.academicNote}</span>
                                 </div>
                               </div>
                             )}
 
                             {hasCollocations && item.collocations && (
-                              <div className="text-xs text-slate-700 dark:text-slate-300">
-                                <span className="font-bold text-slate-900 dark:text-white block mb-1.5">
+                              <div className="text-xs text-[#334155] dark:text-[#cbd5e1]">
+                                <span className="font-bold text-[#0f172a] dark:text-[#ffffff] block mb-1.5">
                                   Sık Kullanılan Birlikte Kullanımlar (Collocations):
                                 </span>
                                 <div className="flex flex-wrap gap-1.5">
                                   {item.collocations.filter(Boolean).map((col, idx) => (
                                     <span
                                       key={idx}
-                                      className="bg-white dark:bg-slate-800 px-2.5 py-1 rounded-xl border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-200 font-mono text-[11px] shadow-2xs"
+                                      className="bg-[#ffffff] dark:bg-[#1e293b] px-2.5 py-1 rounded-xl border border-[#e2e8f0] dark:border-[#334155] text-[#1e293b] dark:text-[#e2e8f0] font-mono text-[11px] shadow-2xs"
                                     >
                                       {col}
                                     </span>
@@ -1503,12 +1579,12 @@ export const DictionaryView: React.FC<DictionaryViewProps> = ({
                           <button
                             type="button"
                             onClick={() => setExpandedCardId(isExpanded ? null : item.id)}
-                            className="text-xs font-semibold text-slate-600 hover:text-indigo-600 dark:text-slate-400 dark:hover:text-indigo-400 flex items-center gap-1 transition-colors"
+                            className="text-xs font-semibold text-[#475569] hover:text-[#4f46e5] dark:text-[#94a3b8] dark:hover:text-[#818cf8] flex items-center gap-1 transition-colors"
                           >
                             {isExpanded ? (
                               <>
                                 <span>Gizle</span>
-                                <ChevronUp className="w-3.5 h-3.5" />
+                                <ChevronUp width={14} height={14} fill="none" stroke="#64748b" className="w-3.5 h-3.5" />
                               </>
                             ) : (
                               <>
@@ -1519,7 +1595,7 @@ export const DictionaryView: React.FC<DictionaryViewProps> = ({
                                     ? 'Birlikte Kullanımlar (Collocations)'
                                     : 'Hazırlık Sınavı İpucu'}
                                 </span>
-                                <ChevronDown className="w-3.5 h-3.5" />
+                                <ChevronDown width={14} height={14} fill="none" stroke="#64748b" className="w-3.5 h-3.5" />
                               </>
                             )}
                           </button>
@@ -1528,9 +1604,9 @@ export const DictionaryView: React.FC<DictionaryViewProps> = ({
                             <button
                               type="button"
                               onClick={() => onPracticeWord(item)}
-                              className="text-xs font-bold text-indigo-600 dark:text-indigo-400 hover:underline flex items-center gap-1.5"
+                              className="text-xs font-bold text-[#4f46e5] dark:text-[#818cf8] hover:underline flex items-center gap-1.5"
                             >
-                              <Mic className="w-3.5 h-3.5" />
+                              <Mic width={14} height={14} fill="none" stroke="#4f46e5" className="w-3.5 h-3.5" />
                               <span>Telaffuz Testi Yap</span>
                             </button>
                           )}
@@ -1540,13 +1616,13 @@ export const DictionaryView: React.FC<DictionaryViewProps> = ({
 
                     {/* Sleek footer for cards without tips or collocations */}
                     {!hasTip && !hasCollocations && onPracticeWord && (
-                      <div className="mt-3 pt-2 border-t border-slate-100 dark:border-slate-800/60 flex justify-end">
+                      <div className="mt-3 pt-2 border-t border-[#f1f5f9] dark:border-[#1e293b] flex justify-end">
                         <button
                           type="button"
                           onClick={() => onPracticeWord(item)}
-                          className="text-xs font-bold text-indigo-600 dark:text-indigo-400 hover:underline flex items-center gap-1.5"
+                          className="text-xs font-bold text-[#4f46e5] dark:text-[#818cf8] hover:underline flex items-center gap-1.5"
                         >
-                          <Mic className="w-3.5 h-3.5" />
+                          <Mic width={14} height={14} fill="none" stroke="#4f46e5" className="w-3.5 h-3.5" />
                           <span>Telaffuz Testi Yap</span>
                         </button>
                       </div>
@@ -1563,10 +1639,10 @@ export const DictionaryView: React.FC<DictionaryViewProps> = ({
               <button
                 type="button"
                 onClick={() => setVisibleBatchCount((prev) => prev + 30)}
-                className="w-full sm:w-auto px-8 py-3.5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 text-sm font-bold text-indigo-600 dark:text-indigo-400 hover:bg-slate-50 dark:hover:bg-slate-800 shadow-xs hover:shadow-md transition-all cursor-pointer inline-flex items-center justify-center gap-2"
+                className="w-full sm:w-auto px-8 py-3.5 rounded-2xl bg-[#ffffff] dark:bg-[#0f172a] border border-[#e2e8f0] dark:border-[#1e293b] text-sm font-bold text-[#4f46e5] dark:text-[#818cf8] hover:bg-[#f8fafc] dark:hover:bg-[#1e293b] shadow-xs hover:shadow-md transition-all cursor-pointer inline-flex items-center justify-center gap-2"
               >
                 <span>Daha Fazla Kelime Göster</span>
-                <span className="text-xs px-2 py-0.5 rounded-lg bg-indigo-50 dark:bg-indigo-950/80 text-indigo-700 dark:text-indigo-300 font-mono">
+                <span className="text-xs px-2 py-0.5 rounded-lg bg-[#eef2ff] dark:bg-[#1e1b4b] text-[#4338ca] dark:text-[#a5b4fc] font-mono">
                   {visibleBatchCount} / {filteredWords.length}
                 </span>
               </button>
