@@ -1,0 +1,8 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "app.netlify.preplingo_sozluk.twa",
+    "sha256_cert_fingerprints": ["E0:49:05:03:D7:9D:1F:66:D2:C5:C0:65:1B:F1:6E:42:4E:D8:02:67:BE:5D:99:0F:AF:85:6A:53:BE:99:A5:6D"]
+  }
+}]
