@@ -29,6 +29,22 @@
         0%, 100% { transform: scale(1) translateY(0); }
         50% { transform: scale(1.03) translateY(-4px); }
       }
+      [data-netlify-deploy-id],
+      [data-netlify-badge],
+      [id*="netlify"],
+      [id*="Netlify"],
+      [class*="netlify"],
+      [class*="Netlify"],
+      a[href*="netlify.com"],
+      iframe[src*="netlify"] {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+        width: 0 !important;
+        height: 0 !important;
+        overflow: hidden !important;
+      }
     </style>
   </head>
   <body class="bg-[#ecfdf5] dark:bg-[#0f172a] text-[#0f172a] dark:text-[#f8fafc] antialiased font-['Plus_Jakarta_Sans',sans-serif]">
@@ -45,6 +61,155 @@
         </div>
       </div>
     </div>
+    <script>
+      (function () {
+        if (typeof window === 'undefined' || typeof document === 'undefined') return;
+
+        function isProtectedAppNode(el) {
+          if (!el || el.nodeType !== 1) return true;
+          var root = document.getElementById('root');
+          if (el === document.documentElement || el === document.head || el === document.body || el === root) {
+            return true;
+          }
+          if (root && (root.contains(el) || el.contains(root))) {
+            return true;
+          }
+          return false;
+        }
+
+        function matchesNetlifyBadge(el) {
+          if (isProtectedAppNode(el)) return false;
+
+          if (
+            el.hasAttribute('data-netlify-deploy-id') ||
+            el.hasAttribute('data-netlify-badge') ||
+            (el.id && /netlify/i.test(el.id)) ||
+            (typeof el.className === 'string' && /netlify/i.test(el.className))
+          ) {
+            return true;
+          }
+
+          var tag = el.tagName;
+          if (tag === 'IFRAME' && /netlify/i.test(el.getAttribute('src') || '')) {
+            return true;
+          }
+          if (tag === 'A' && /netlify\.com/i.test(el.getAttribute('href') || '')) {
+            return true;
+          }
+
+          if (el.querySelector && el.querySelector('[data-netlify-deploy-id], [data-netlify-badge], a[href*="netlify.com"], iframe[src*="netlify"]')) {
+            return true;
+          }
+
+          if (el.shadowRoot) {
+            var shadowText = el.shadowRoot.textContent || '';
+            if (
+              /powered\s+by\s+netlify/i.test(shadowText) ||
+              el.shadowRoot.querySelector('a[href*="netlify.com"], [class*="netlify"], [id*="netlify"]')
+            ) {
+              return true;
+            }
+          }
+
+          var text = (el.textContent || '').trim();
+          if (text && /powered\s+by\s+netlify/i.test(text)) {
+            try {
+              if (window.getComputedStyle(el).position === 'fixed') {
+                return true;
+              }
+            } catch (e) {}
+            if (el.querySelector && el.querySelector('a[href*="netlify"]')) {
+              return true;
+            }
+          }
+
+          return false;
+        }
+
+        function hideAndRemove(el) {
+          if (isProtectedAppNode(el)) return;
+          try {
+            el.style.setProperty('display', 'none', 'important');
+            el.style.setProperty('visibility', 'hidden', 'important');
+            el.style.setProperty('opacity', '0', 'important');
+            el.style.setProperty('pointer-events', 'none', 'important');
+            el.remove();
+          } catch (e) {}
+        }
+
+        function watchShadowRoot(host) {
+          if (!host || !host.shadowRoot || host.__plShadowObserved || isProtectedAppNode(host)) return;
+          host.__plShadowObserved = true;
+          try {
+            var shadowObs = new MutationObserver(function () {
+              if (matchesNetlifyBadge(host)) {
+                hideAndRemove(host);
+              }
+            });
+            shadowObs.observe(host.shadowRoot, { childList: true, subtree: true, characterData: true });
+          } catch (e) {}
+        }
+
+        function scanNode(node) {
+          if (!node || node.nodeType !== 1) return;
+          if (isProtectedAppNode(node)) return;
+
+          if (node.shadowRoot) {
+            watchShadowRoot(node);
+          }
+
+          if (matchesNetlifyBadge(node)) {
+            hideAndRemove(node);
+            return;
+          }
+
+          if (node.children && node.children.length) {
+            var children = Array.prototype.slice.call(node.children);
+            for (var i = 0; i < children.length; i++) {
+              scanNode(children[i]);
+            }
+          }
+        }
+
+        function scanDocument() {
+          var body = document.body;
+          if (!body) return;
+          var children = Array.prototype.slice.call(body.children);
+          for (var i = 0; i < children.length; i++) {
+            scanNode(children[i]);
+          }
+        }
+
+        scanDocument();
+
+        if (typeof MutationObserver !== 'undefined') {
+          var observer = new MutationObserver(function (mutations) {
+            for (var i = 0; i < mutations.length; i++) {
+              var m = mutations[i];
+              if (m.type === 'childList') {
+                for (var j = 0; j < m.addedNodes.length; j++) {
+                  scanNode(m.addedNodes[j]);
+                }
+              } else if (m.type === 'attributes' && m.target && m.target.nodeType === 1) {
+                scanNode(m.target);
+              }
+            }
+          });
+
+          observer.observe(document.documentElement, {
+            childList: true,
+            subtree: true,
+            attributes: true,
+            attributeFilter: ['id', 'class', 'style', 'data-netlify-deploy-id', 'data-netlify-badge', 'src', 'href']
+          });
+        }
+
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', scanDocument);
+        }
+        window.addEventListener('load', scanDocument);
+      })();
+    </script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

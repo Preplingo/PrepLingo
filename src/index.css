@@ -342,3 +342,21 @@ body {
 .preplingo-splash-float {
   animation: preplingoSplashFloat 2.8s ease-in-out infinite;
 }
+
+/* Hide auto-injected Netlify free-plan badge and wrappers */
+[data-netlify-deploy-id],
+[data-netlify-badge],
+[id*="netlify"],
+[id*="Netlify"],
+[class*="netlify"],
+[class*="Netlify"],
+a[href*="netlify.com"],
+iframe[src*="netlify"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  overflow: hidden !important;
+}

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { WordEntry, ActiveTab, WordStatus } from './types';
 import { INITIAL_WORDS, deduplicateWordEntries } from './data/initialWords';
 import { Header } from './components/Header';
@@ -10,7 +10,6 @@ import { GamesView } from './components/GamesView';
 import { ProgressView } from './components/ProgressView';
 import { AddWordModal } from './components/AddWordModal';
 import { AboutModal } from './components/AboutModal';
-import { ExitConfirmModal } from './components/ExitConfirmModal';
 import { SplashScreen } from './components/SplashScreen';
 import { OfflineIndicator } from './components/OfflineIndicator';
 
@@ -110,77 +109,7 @@ export default function App() {
   const [showOnlyFavorites, setShowOnlyFavorites] = useState(false);
   const [isAddWordOpen, setIsAddWordOpen] = useState(false);
   const [isAboutOpen, setIsAboutOpen] = useState(false);
-  const [isExitConfirmOpen, setIsExitConfirmOpen] = useState(false);
-  const isExitingRef = useRef(false);
   const [practiceWordId, setPracticeWordId] = useState<string | undefined>(undefined);
-
-  // Android / Browser Back Button Interception (Exit Safety Guard)
-  useEffect(() => {
-    if (typeof window === 'undefined') return;
-
-    // Push initial history state so back button events trigger popstate
-    window.history.pushState({ appGuard: true }, '', window.location.href);
-
-    const handlePopState = () => {
-      if (isExitingRef.current) {
-        return; // User clicked "Evet, Çık", let browser proceed
-      }
-
-      // Re-arm history guard to avoid leaving the app
-      window.history.pushState({ appGuard: true }, '', window.location.href);
-
-      // Rule 1: If exit confirmation modal is already open and back is pressed again,
-      // dismiss the modal and KEEP the user inside the app.
-      if (isExitConfirmOpen) {
-        setIsExitConfirmOpen(false);
-        return;
-      }
-
-      // Rule 2: If About modal is open, close it
-      if (isAboutOpen) {
-        setIsAboutOpen(false);
-        return;
-      }
-
-      // Rule 3: If Add Word modal is open, close it
-      if (isAddWordOpen) {
-        setIsAddWordOpen(false);
-        return;
-      }
-
-      // Rule 4: If on another tab, navigate back to root view ('dictionary')
-      if (activeTab !== 'dictionary') {
-        setActiveTab('dictionary');
-        return;
-      }
-
-      // Rule 5: User is on root view ('dictionary') with no open modals -> open exit confirm dialog
-      setIsExitConfirmOpen(true);
-    };
-
-    window.addEventListener('popstate', handlePopState);
-    return () => {
-      window.removeEventListener('popstate', handlePopState);
-    };
-  }, [isExitConfirmOpen, isAboutOpen, isAddWordOpen, activeTab]);
-
-  const handleConfirmExit = () => {
-    isExitingRef.current = true;
-    setIsExitConfirmOpen(false);
-    try {
-      if (window.history.length > 1) {
-        window.history.go(-2);
-      } else {
-        window.close();
-      }
-    } catch {
-      window.close();
-    }
-  };
-
-  const handleCancelExit = () => {
-    setIsExitConfirmOpen(false);
-  };
 
   // Sync favorites to localStorage with O(1) set operations
   const handleToggleFavorite = (id: string) => {
@@ -357,13 +286,6 @@ export default function App() {
       <AboutModal
         isOpen={isAboutOpen}
         onClose={() => setIsAboutOpen(false)}
-      />
-
-      {/* Exit Safety Guard Confirmation Modal */}
-      <ExitConfirmModal
-        isOpen={isExitConfirmOpen}
-        onConfirmExit={handleConfirmExit}
-        onCancelExit={handleCancelExit}
       />
 
       {/* Material 3 Bottom Navigation Bar */}

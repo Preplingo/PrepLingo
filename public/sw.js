@@ -1,4 +1,4 @@
-const CACHE_NAME = 'preplingo-v7';
+const CACHE_NAME = 'preplingo-v9';
 
 const CORE_SHELL_ASSETS = [
   '/',
