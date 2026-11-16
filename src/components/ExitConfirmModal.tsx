@@ -32,14 +32,14 @@ export const ExitConfirmModal: React.FC<ExitConfirmModalProps> = ({
       className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#020617]/60 backdrop-blur-sm animate-in fade-in duration-200"
     >
       <div
-        className="relative w-full max-w-sm sm:max-w-md bg-[#ffffff] dark:bg-[#0f172a] rounded-3xl p-6 sm:p-7 shadow-2xl border border-[#e2e8f0] dark:border-[#1e293b] animate-in zoom-in-95 duration-200"
+        className="relative w-full max-w-sm sm:max-w-md bg-[#ffffff] dark:bg-[#1e293b] rounded-3xl p-6 sm:p-7 shadow-2xl border border-[#e2e8f0] dark:border-[#334155] animate-in zoom-in-95 duration-200"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close Button */}
         <button
           type="button"
           onClick={onCancelExit}
-          className="absolute top-4 right-4 p-2 text-[#94a3b8] hover:text-[#475569] dark:hover:text-[#e2e8f0] rounded-xl hover:bg-[#f1f5f9] dark:hover:bg-[#1e293b] transition-colors cursor-pointer"
+          className="absolute top-4 right-4 p-2 text-[#475569] dark:text-[#94a3b8] hover:text-[#0f172a] dark:hover:text-[#f8fafc] rounded-xl hover:bg-[#f1f5f9] dark:hover:bg-[#0f172a] transition-colors cursor-pointer"
           title="Kapat"
           aria-label="Kapat"
         >
@@ -52,10 +52,10 @@ export const ExitConfirmModal: React.FC<ExitConfirmModalProps> = ({
             <ShieldAlert width={24} height={24} stroke="currentColor" fill="none" className="w-6 h-6" />
           </div>
           <div>
-            <h3 id="exit-modal-title" className="text-lg sm:text-xl font-bold font-['Outfit'] text-[#0f172a] dark:text-[#ffffff]">
+            <h3 id="exit-modal-title" className="text-lg sm:text-xl font-bold font-['Outfit'] text-[#0f172a] dark:text-[#f8fafc]">
               Çıkış Onayı
             </h3>
-            <p className="text-xs text-[#64748b] dark:text-[#94a3b8]">
+            <p className="text-xs text-[#475569] dark:text-[#94a3b8]">
               PrepLingo Güvenli Çıkış Koruması
             </p>
           </div>
@@ -63,10 +63,10 @@ export const ExitConfirmModal: React.FC<ExitConfirmModalProps> = ({
 
         {/* Message */}
         <div className="py-2 space-y-2">
-          <p className="text-base font-semibold text-[#1e293b] dark:text-[#e2e8f0] leading-snug">
+          <p className="text-base font-semibold text-[#0f172a] dark:text-[#f8fafc] leading-snug">
             Uygulamadan çıkmak istediğinize emin misiniz?
           </p>
-          <p className="text-xs text-[#64748b] dark:text-[#94a3b8] leading-relaxed">
+          <p className="text-xs text-[#475569] dark:text-[#94a3b8] leading-relaxed">
             Kaydettiğiniz kelimeler ve çalışma ilerlemeniz cihazınızda güvendedir. Dilediğiniz zaman kaldığınız yerden devam edebilirsiniz.
           </p>
         </div>
@@ -85,8 +85,8 @@ export const ExitConfirmModal: React.FC<ExitConfirmModalProps> = ({
           <button
             type="button"
             onClick={onCancelExit}
-            style={{ backgroundColor: '#4f46e5', color: '#ffffff' }}
-            className="legacy-btn-indigo w-full sm:w-1/2 py-3 px-4 rounded-2xl bg-[#4f46e5] hover:bg-[#4338ca] text-[#ffffff] font-semibold text-sm shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer active:scale-95"
+            style={{ backgroundColor: '#16a34a', color: '#ffffff' }}
+            className="legacy-btn-green w-full sm:w-1/2 py-3 px-4 rounded-2xl bg-[#16a34a] hover:bg-[#15803d] text-[#ffffff] font-semibold text-sm shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer active:scale-95"
           >
             <span>Vazgeç / Uygulamada Kal</span>
           </button>

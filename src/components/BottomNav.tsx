@@ -30,7 +30,7 @@ export const BottomNav: React.FC<BottomNavProps> = ({ activeTab, onTabChange, fa
   return (
     <nav
       aria-label="Alt Menü Gezintisi"
-      className="fixed bottom-0 left-0 right-0 z-40 bg-[#ffffff] dark:bg-[#0f172a] border-t border-[#e2e8f0] dark:border-[#1e293b] transition-colors"
+      className="fixed bottom-0 left-0 right-0 z-40 bg-[#ffffff] dark:bg-[#1e293b] border-t border-[#e2e8f0] dark:border-[#334155] shadow-sm transition-colors"
     >
       <div className="max-w-md sm:max-w-xl mx-auto px-2 h-16 flex items-center justify-around">
         {tabs.map((tab) => {
@@ -46,18 +46,18 @@ export const BottomNav: React.FC<BottomNavProps> = ({ activeTab, onTabChange, fa
             >
               {/* Material 3 active pill background */}
               <div
-                style={isActive ? { backgroundColor: '#4f46e5', color: '#ffffff' } : undefined}
+                style={isActive ? { backgroundColor: '#16a34a', color: '#ffffff' } : undefined}
                 className={`relative flex items-center justify-center px-4 py-1 rounded-full transition-all duration-200 ${
                   isActive
-                    ? 'legacy-btn-indigo bg-[#4f46e5] text-[#ffffff] shadow-sm scale-100'
-                    : 'text-[#64748b] dark:text-[#94a3b8] group-hover:bg-[#f1f5f9] dark:group-hover:bg-[#1e293b]'
+                    ? 'legacy-btn-green bg-[#16a34a] text-[#ffffff] shadow-sm scale-100'
+                    : 'text-[#475569] dark:text-[#94a3b8] group-hover:bg-[#ecfdf5] dark:group-hover:bg-[#0f172a]'
                 }`}
               >
                 <Icon
                   width={20}
                   height={20}
                   fill="none"
-                  stroke={isActive ? '#ffffff' : '#64748b'}
+                  stroke={isActive ? '#ffffff' : '#475569'}
                   className={`w-5 h-5 transition-transform duration-150 ${
                     isActive ? 'scale-105' : 'group-hover:scale-105 dark:stroke-[#94a3b8]'
                   }`}
@@ -65,7 +65,7 @@ export const BottomNav: React.FC<BottomNavProps> = ({ activeTab, onTabChange, fa
                 {tab.id === 'favorites' && typeof favoritesCount === 'number' && favoritesCount > 0 && (
                   <span
                     className={`absolute -top-1 -right-1 px-1.5 py-0.2 rounded-full text-[9px] font-bold font-mono ${
-                      isActive ? 'bg-[#ffffff] text-[#4338ca] shadow-xs' : 'bg-[#f43f5e] text-[#ffffff]'
+                      isActive ? 'bg-[#ffffff] text-[#15803d] shadow-xs' : 'bg-[#f43f5e] text-[#ffffff]'
                     }`}
                   >
                     {favoritesCount > 99 ? '99+' : favoritesCount}
@@ -75,8 +75,8 @@ export const BottomNav: React.FC<BottomNavProps> = ({ activeTab, onTabChange, fa
               <span
                 className={`text-[10px] sm:text-[11px] font-medium tracking-tight mt-0.5 whitespace-nowrap transition-colors ${
                   isActive
-                    ? 'text-[#4f46e5] dark:text-[#818cf8] font-semibold'
-                    : 'text-[#64748b] dark:text-[#94a3b8]'
+                    ? 'text-[#15803d] dark:text-[#34d399] font-semibold'
+                    : 'text-[#475569] dark:text-[#94a3b8]'
                 }`}
               >
                 {tab.label}

@@ -104,43 +104,43 @@ export const PWAInstallButton: React.FC = () => {
             onClick={() => setShowIOSGuide(false)}
           >
             <div
-              className="relative w-full max-w-sm bg-[#ffffff] dark:bg-[#0f172a] rounded-3xl p-6 shadow-2xl border border-[#e2e8f0] dark:border-[#1e293b] space-y-4 animate-in zoom-in-95 duration-200"
+              className="relative w-full max-w-sm bg-[#ffffff] dark:bg-[#1e293b] rounded-3xl p-6 shadow-2xl border border-[#e2e8f0] dark:border-[#334155] space-y-4 animate-in zoom-in-95 duration-200"
               onClick={(e) => e.stopPropagation()}
             >
               <button
                 type="button"
                 onClick={() => setShowIOSGuide(false)}
-                className="absolute top-4 right-4 p-1.5 text-[#94a3b8] hover:text-[#475569] dark:hover:text-[#e2e8f0] rounded-xl hover:bg-[#f1f5f9] dark:hover:bg-[#1e293b] transition-colors cursor-pointer"
+                className="absolute top-4 right-4 p-1.5 text-[#475569] dark:text-[#94a3b8] hover:text-[#0f172a] dark:hover:text-[#f8fafc] rounded-xl hover:bg-[#f1f5f9] dark:hover:bg-[#0f172a] transition-colors cursor-pointer"
                 aria-label="Kapat"
               >
                 <X width={20} height={20} stroke="currentColor" fill="none" className="w-5 h-5" />
               </button>
 
               <div className="flex items-center gap-3 pr-6">
-                <div className="w-10 h-10 rounded-2xl bg-[#eef2ff] dark:bg-[#1e1b4b] border border-[#c7d2fe] dark:border-[#3730a3] flex items-center justify-center text-[#4f46e5] dark:text-[#818cf8] shrink-0">
+                <div className="w-10 h-10 rounded-2xl bg-[#ecfdf5] dark:bg-[#064e3b] border border-[#a7f3d0] dark:border-[#059669] flex items-center justify-center text-[#16a34a] dark:text-[#34d399] shrink-0">
                   <Smartphone width={20} height={20} stroke="currentColor" fill="none" className="w-5 h-5" />
                 </div>
                 <div>
-                  <h3 id="ios-install-title" className="font-bold font-['Outfit'] text-base text-[#0f172a] dark:text-[#ffffff]">
+                  <h3 id="ios-install-title" className="font-bold font-['Outfit'] text-base text-[#0f172a] dark:text-[#f8fafc]">
                     Ana Ekrana Ekle
                   </h3>
-                  <p className="text-xs text-[#64748b] dark:text-[#94a3b8]">
+                  <p className="text-xs text-[#475569] dark:text-[#94a3b8]">
                     Çevrimdışı uygulama olarak kullanın
                   </p>
                 </div>
               </div>
 
-              <ol className="space-y-2.5 text-xs text-[#475569] dark:text-[#cbd5e1]">
-                <li className="flex items-start gap-2.5 p-3 rounded-2xl bg-[#f8fafc] dark:bg-[#020617] border border-[#e2e8f0] dark:border-[#1e293b]">
-                  <Share width={16} height={16} stroke="currentColor" fill="none" className="w-4 h-4 text-[#4f46e5] dark:text-[#818cf8] shrink-0 mt-0.5" />
+              <ol className="space-y-2.5 text-xs text-[#475569] dark:text-[#94a3b8]">
+                <li className="flex items-start gap-2.5 p-3 rounded-2xl bg-[#f8fafc] dark:bg-[#0f172a] border border-[#e2e8f0] dark:border-[#334155]">
+                  <Share width={16} height={16} stroke="currentColor" fill="none" className="w-4 h-4 text-[#16a34a] dark:text-[#34d399] shrink-0 mt-0.5" />
                   <span>
-                    Safari alt çubuğundaki <strong className="text-[#0f172a] dark:text-[#ffffff]">Paylaş</strong> simgesine dokunun.
+                    Safari alt çubuğundaki <strong className="text-[#0f172a] dark:text-[#f8fafc]">Paylaş</strong> simgesine dokunun.
                   </span>
                 </li>
-                <li className="flex items-start gap-2.5 p-3 rounded-2xl bg-[#f8fafc] dark:bg-[#020617] border border-[#e2e8f0] dark:border-[#1e293b]">
+                <li className="flex items-start gap-2.5 p-3 rounded-2xl bg-[#f8fafc] dark:bg-[#0f172a] border border-[#e2e8f0] dark:border-[#334155]">
                   <PlusSquare width={16} height={16} stroke="currentColor" fill="none" className="w-4 h-4 text-[#059669] dark:text-[#34d399] shrink-0 mt-0.5" />
                   <span>
-                    Açılan menüden <strong className="text-[#0f172a] dark:text-[#ffffff]">&ldquo;Ana Ekrana Ekle&rdquo;</strong> seçeneğine dokunun.
+                    Açılan menüden <strong className="text-[#0f172a] dark:text-[#f8fafc]">&ldquo;Ana Ekrana Ekle&rdquo;</strong> seçeneğine dokunun.
                   </span>
                 </li>
               </ol>
@@ -148,8 +148,8 @@ export const PWAInstallButton: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setShowIOSGuide(false)}
-                style={{ backgroundColor: '#4f46e5', color: '#ffffff' }}
-                className="legacy-btn-indigo w-full py-2.5 rounded-xl bg-[#4f46e5] hover:bg-[#4338ca] text-[#ffffff] font-semibold text-xs transition-all cursor-pointer"
+                style={{ backgroundColor: '#16a34a', color: '#ffffff' }}
+                className="legacy-btn-green w-full py-2.5 rounded-xl bg-[#16a34a] hover:bg-[#15803d] text-[#ffffff] font-semibold text-xs transition-all cursor-pointer"
               >
                 Anladım
               </button>

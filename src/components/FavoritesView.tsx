@@ -151,14 +151,14 @@ export const FavoritesView: React.FC<FavoritesViewProps> = ({
   return (
     <div className="space-y-5 pb-24 animate-in fade-in duration-200">
       {/* Top Header Card */}
-      <div className="bg-[#fff1f2] dark:bg-[#0f172a] bg-gradient-to-br from-[#fff1f2] via-[#ffffff] to-[#eef2ff] dark:from-[#4c0519] dark:via-[#0f172a] dark:to-[#1e1b4b] rounded-3xl p-5 sm:p-6 border border-[#fecdd3] dark:border-[#881337] shadow-xs">
+      <div className="bg-[#ffffff] dark:bg-[#1e293b] rounded-3xl p-5 sm:p-6 border border-[#fecdd3] dark:border-[#334155] shadow-xs">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div className="space-y-1">
             <div className="flex items-center gap-2.5">
               <div className="w-10 h-10 rounded-2xl bg-[#ffe4e6] dark:bg-[#881337] flex items-center justify-center text-[#f43f5e]">
                 <Heart width={20} height={20} fill="#f43f5e" stroke="#f43f5e" className="w-5 h-5" />
               </div>
-              <h2 className="text-xl sm:text-2xl font-bold font-['Outfit'] text-[#0f172a] dark:text-[#ffffff] tracking-tight">
+              <h2 className="text-xl sm:text-2xl font-bold font-['Outfit'] text-[#0f172a] dark:text-[#f8fafc] tracking-tight">
                 Kelime Defterim
               </h2>
             </div>
@@ -168,9 +168,9 @@ export const FavoritesView: React.FC<FavoritesViewProps> = ({
           </div>
 
           {/* Counter Badge */}
-          <div className="self-start sm:self-auto px-4 py-2 rounded-2xl bg-[#ffffff] dark:bg-[#1e293b] border border-[#fecdd3] dark:border-[#9f1239] shadow-2xs flex items-center gap-2">
+          <div className="self-start sm:self-auto px-4 py-2 rounded-2xl bg-[#fff1f2] dark:bg-[#0f172a] border border-[#fecdd3] dark:border-[#334155] shadow-2xs flex items-center gap-2">
             <Heart width={16} height={16} fill="#f43f5e" stroke="#f43f5e" className="w-4 h-4 animate-pulse" />
-            <span className="text-xs sm:text-sm font-bold text-[#0f172a] dark:text-[#ffffff] font-mono">
+            <span className="text-xs sm:text-sm font-bold text-[#0f172a] dark:text-[#f8fafc] font-mono">
               {favoriteWords.length} Kelime Kaydedildi
             </span>
           </div>
@@ -178,7 +178,7 @@ export const FavoritesView: React.FC<FavoritesViewProps> = ({
 
         {/* Filter and Sort Toolbar */}
         {favoriteWords.length > 0 && (
-          <div className="mt-5 pt-4 border-t border-[#fecdd3] dark:border-[#1e293b] flex flex-wrap items-center justify-between gap-3">
+          <div className="mt-5 pt-4 border-t border-[#f1f5f9] dark:border-[#334155] flex flex-wrap items-center justify-between gap-3">
             {/* Part of Speech Filters */}
             <div className="flex flex-wrap items-center gap-1.5">
               {filterButtons.map((btn) => {
@@ -192,7 +192,7 @@ export const FavoritesView: React.FC<FavoritesViewProps> = ({
                     className={`text-xs px-3 py-1.5 rounded-xl font-medium transition-all cursor-pointer ${
                       isActive
                         ? 'bg-[#e11d48] text-[#ffffff] shadow-sm font-semibold'
-                        : 'bg-[#ffffff] dark:bg-[#1e293b] text-[#475569] dark:text-[#cbd5e1] hover:bg-[#fff1f2] dark:hover:bg-[#334155] border border-[#e2e8f0] dark:border-[#334155]'
+                        : 'bg-[#f8fafc] dark:bg-[#0f172a] text-[#475569] dark:text-[#94a3b8] hover:bg-[#fff1f2] dark:hover:bg-[#334155] border border-[#e2e8f0] dark:border-[#334155]'
                     }`}
                   >
                     {btn.label}
@@ -203,11 +203,11 @@ export const FavoritesView: React.FC<FavoritesViewProps> = ({
 
             {/* Sort Toggle */}
             <div className="flex items-center gap-1.5 text-xs">
-              <span className="text-[#64748b] dark:text-[#94a3b8] hidden sm:inline">Sıralama:</span>
+              <span className="text-[#475569] dark:text-[#94a3b8] hidden sm:inline">Sıralama:</span>
               <button
                 type="button"
                 onClick={() => setSortOption(sortOption === 'recent' ? 'alphabetical' : 'recent')}
-                className="px-3 py-1.5 rounded-xl bg-[#ffffff] dark:bg-[#1e293b] border border-[#e2e8f0] dark:border-[#334155] text-[#334155] dark:text-[#e2e8f0] font-semibold hover:border-[#fb7185] transition-colors flex items-center gap-1.5 cursor-pointer shadow-2xs"
+                className="px-3 py-1.5 rounded-xl bg-[#f8fafc] dark:bg-[#0f172a] border border-[#e2e8f0] dark:border-[#334155] text-[#0f172a] dark:text-[#f8fafc] font-semibold hover:border-[#fb7185] transition-colors flex items-center gap-1.5 cursor-pointer shadow-2xs"
                 title="Sıralama biçimini değiştir"
               >
                 <ArrowUpDown width={14} height={14} fill="none" stroke="#f43f5e" className="w-3.5 h-3.5" />
@@ -220,15 +220,15 @@ export const FavoritesView: React.FC<FavoritesViewProps> = ({
 
       {/* Empty State */}
       {favoriteWords.length === 0 ? (
-        <div className="p-8 sm:p-12 text-center rounded-3xl bg-[#ffffff] dark:bg-[#0f172a] border border-dashed border-[#cbd5e1] dark:border-[#1e293b] space-y-4">
+        <div className="p-8 sm:p-12 text-center rounded-3xl bg-[#ffffff] dark:bg-[#1e293b] border border-dashed border-[#cbd5e1] dark:border-[#334155] space-y-4">
           <div className="w-16 h-16 mx-auto rounded-3xl bg-[#fff1f2] dark:bg-[#4c0519] border border-[#fecdd3] dark:border-[#881337] flex items-center justify-center text-[#f43f5e]">
             <Heart width={32} height={32} fill="#fda4af" stroke="#f43f5e" className="w-8 h-8" />
           </div>
           <div className="space-y-1.5 max-w-md mx-auto">
-            <h3 className="text-base sm:text-lg font-bold font-['Outfit'] text-[#0f172a] dark:text-[#ffffff]">
+            <h3 className="text-base sm:text-lg font-bold font-['Outfit'] text-[#0f172a] dark:text-[#f8fafc]">
               Defteriniz Henüz Boş
             </h3>
-            <p className="text-xs sm:text-sm text-[#64748b] dark:text-[#94a3b8] leading-relaxed">
+            <p className="text-xs sm:text-sm text-[#475569] dark:text-[#94a3b8] leading-relaxed">
               Henüz kelime eklemediniz. Kartlardaki kalp simgesine dokunarak kelimelerinizi buraya kaydedebilirsiniz.
             </p>
           </div>
@@ -237,8 +237,8 @@ export const FavoritesView: React.FC<FavoritesViewProps> = ({
               <button
                 type="button"
                 onClick={onNavigateToDictionary}
-                style={{ backgroundColor: '#4f46e5', color: '#ffffff' }}
-                className="legacy-btn-indigo inline-flex items-center gap-2 px-6 py-2.5 rounded-2xl bg-[#4f46e5] hover:bg-[#4338ca] text-[#ffffff] font-semibold text-xs shadow-sm transition-all cursor-pointer active:scale-95"
+                style={{ backgroundColor: '#16a34a', color: '#ffffff' }}
+                className="legacy-btn-green inline-flex items-center gap-2 px-6 py-2.5 rounded-2xl bg-[#16a34a] hover:bg-[#15803d] text-[#ffffff] font-semibold text-xs shadow-sm transition-all cursor-pointer active:scale-95"
               >
                 <BookOpen width={16} height={16} fill="none" stroke="#ffffff" className="w-4 h-4" />
                 <span>Sözlüğe Git ve Kelime Ekle</span>
@@ -247,14 +247,14 @@ export const FavoritesView: React.FC<FavoritesViewProps> = ({
           )}
         </div>
       ) : filteredAndSortedWords.length === 0 ? (
-        <div className="p-8 text-center rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-2">
-          <p className="text-sm font-semibold text-slate-700 dark:text-slate-300">
+        <div className="p-8 text-center rounded-3xl bg-[#ffffff] dark:bg-[#1e293b] border border-[#e2e8f0] dark:border-[#334155] space-y-2">
+          <p className="text-sm font-semibold text-[#0f172a] dark:text-[#f8fafc]">
             Seçilen türde kaydedilmiş kelime bulunamadı.
           </p>
           <button
             type="button"
             onClick={() => setPosFilter('all')}
-            className="text-xs font-bold text-rose-600 dark:text-rose-400 hover:underline cursor-pointer"
+            className="text-xs font-bold text-[#e11d48] dark:text-[#fb7185] hover:underline cursor-pointer"
           >
             Tüm kaydedilenleri göster
           </button>
@@ -280,13 +280,13 @@ export const FavoritesView: React.FC<FavoritesViewProps> = ({
             return (
               <article
                 key={item.id}
-                className="bg-white dark:bg-slate-900 rounded-3xl p-5 border border-slate-200/90 dark:border-slate-800 hover:border-rose-400/60 dark:hover:border-rose-600/60 shadow-xs hover:shadow-md transition-all"
+                className="bg-[#ffffff] dark:bg-[#1e293b] rounded-3xl p-5 border border-[#e2e8f0] dark:border-[#334155] hover:border-[#fb7185] dark:hover:border-[#fb7185] shadow-xs hover:shadow-md transition-all"
               >
                 {/* Header Row: English Word, Audio, Badges, Heart Button */}
                 <div className="flex items-start justify-between gap-3">
                   <div className="space-y-1.5">
                     <div className="flex flex-wrap items-center gap-2">
-                      <h3 className="text-xl sm:text-2xl font-bold font-['Outfit'] text-slate-900 dark:text-white tracking-tight">
+                      <h3 className="text-xl sm:text-2xl font-bold font-['Outfit'] text-[#0f172a] dark:text-[#f8fafc] tracking-tight">
                         {item.word}
                       </h3>
 
@@ -383,14 +383,14 @@ export const FavoritesView: React.FC<FavoritesViewProps> = ({
                 {/* Turkish Meaning - Tap to Expand in place */}
                 <div
                   onClick={() => setExpandedCardId(isExpanded ? null : item.id)}
-                  className="mt-3.5 pt-3 border-t border-[#f1f5f9] dark:border-[#1e293b] cursor-pointer flex items-center justify-between gap-2 hover:opacity-90"
+                  className="mt-3.5 pt-3 border-t border-[#f1f5f9] dark:border-[#334155] cursor-pointer flex items-center justify-between gap-2 hover:opacity-90"
                 >
-                  <p className="text-base sm:text-lg font-bold text-[#0f172a] dark:text-[#ffffff]">
+                  <p className="text-base sm:text-lg font-bold text-[#0f172a] dark:text-[#f8fafc]">
                     {item.trMeaning}
                   </p>
                   <button
                     type="button"
-                    className="text-xs font-semibold text-[#64748b] hover:text-[#4f46e5] dark:text-[#94a3b8] dark:hover:text-[#818cf8] flex items-center gap-1 shrink-0"
+                    className="text-xs font-semibold text-[#475569] hover:text-[#16a34a] dark:text-[#94a3b8] dark:hover:text-[#34d399] flex items-center gap-1 shrink-0"
                   >
                     <span>{isExpanded ? 'Gizle' : 'Detaylar'}</span>
                     {isExpanded ? (
@@ -403,19 +403,19 @@ export const FavoritesView: React.FC<FavoritesViewProps> = ({
 
                 {/* In-Place Expanded Details Drawer */}
                 {isExpanded && (
-                  <div className="mt-3.5 pt-3 border-t border-dashed border-[#e2e8f0] dark:border-[#1e293b] space-y-3 animate-in fade-in duration-150">
+                  <div className="mt-3.5 pt-3 border-t border-dashed border-[#e2e8f0] dark:border-[#334155] space-y-3 animate-in fade-in duration-150">
                     {/* Example Sentence with Audio */}
                     {item.enExample && (
-                      <div className="bg-[#f8fafc] dark:bg-[#020617] rounded-2xl p-4 border border-[#e2e8f0] dark:border-[#1e293b] space-y-1.5">
+                      <div className="bg-[#f8fafc] dark:bg-[#0f172a] rounded-2xl p-4 border border-[#e2e8f0] dark:border-[#334155] space-y-1.5">
                         <div className="flex items-start justify-between gap-2">
-                          <p className="text-sm font-semibold text-[#0f172a] dark:text-[#ffffff] leading-relaxed">
+                          <p className="text-sm font-semibold text-[#0f172a] dark:text-[#f8fafc] leading-relaxed">
                             &quot;{item.enExample}&quot;
                           </p>
                           <button
                             type="button"
                             onClick={() => handleSpeakEnglish(item.enExample, `fav-ex-${item.id}`)}
-                            className={`p-1.5 shrink-0 rounded-xl text-[#64748b] hover:text-[#4f46e5] hover:bg-[#eef2ff] dark:hover:bg-[#1e1b4b] transition-colors ${
-                              isSpeakingEx ? 'text-[#4f46e5] animate-pulse' : ''
+                            className={`p-1.5 shrink-0 rounded-xl text-[#475569] hover:text-[#16a34a] hover:bg-[#ecfdf5] dark:hover:bg-[#334155] transition-colors ${
+                              isSpeakingEx ? 'text-[#16a34a] animate-pulse' : ''
                             }`}
                             title="İngilizce örnek cümleyi dinle"
                           >
@@ -423,13 +423,13 @@ export const FavoritesView: React.FC<FavoritesViewProps> = ({
                               width={16}
                               height={16}
                               fill="none"
-                              stroke={isSpeakingEx ? '#4f46e5' : '#64748b'}
+                              stroke={isSpeakingEx ? '#16a34a' : '#64748b'}
                               className="w-4 h-4"
                             />
                           </button>
                         </div>
                         {item.trExample && (
-                          <p className="text-xs sm:text-sm text-[#475569] dark:text-[#cbd5e1] italic">
+                          <p className="text-xs sm:text-sm text-[#475569] dark:text-[#94a3b8] italic">
                             &quot;{item.trExample}&quot;
                           </p>
                         )}
@@ -452,14 +452,14 @@ export const FavoritesView: React.FC<FavoritesViewProps> = ({
                     {/* Collocations */}
                     {hasCollocations && item.collocations && (
                       <div className="text-xs">
-                        <span className="font-bold text-[#0f172a] dark:text-[#ffffff] block mb-1.5">
+                        <span className="font-bold text-[#0f172a] dark:text-[#f8fafc] block mb-1.5">
                           Sık Kullanılan Birlikte Kullanımlar (Collocations):
                         </span>
                         <div className="flex flex-wrap gap-1.5">
                           {item.collocations.filter(Boolean).map((col, idx) => (
                             <span
                               key={idx}
-                              className="bg-[#ffffff] dark:bg-[#1e293b] px-2.5 py-1 rounded-xl border border-[#e2e8f0] dark:border-[#334155] text-[#1e293b] dark:text-[#e2e8f0] font-mono text-[11px]"
+                              className="bg-[#ffffff] dark:bg-[#0f172a] px-2.5 py-1 rounded-xl border border-[#e2e8f0] dark:border-[#334155] text-[#0f172a] dark:text-[#f8fafc] font-mono text-[11px]"
                             >
                               {col}
                             </span>

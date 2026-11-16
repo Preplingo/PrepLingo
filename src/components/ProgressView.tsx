@@ -141,9 +141,9 @@ export const ProgressView: React.FC<ProgressViewProps> = ({
       </div>
 
       {/* CEFR Level Breakdown Card */}
-      <div className="bg-[#ffffff] dark:bg-[#0f172a] rounded-3xl p-5 sm:p-6 border border-[#e2e8f0] dark:border-[#1e293b] shadow-sm space-y-4">
-        <h3 className="text-base font-bold text-[#0f172a] dark:text-[#ffffff] flex items-center gap-2">
-          <Sparkles width={16} height={16} fill="none" stroke="#4f46e5" className="w-4 h-4" />
+      <div className="bg-[#ffffff] dark:bg-[#1e293b] rounded-3xl p-5 sm:p-6 border border-[#e2e8f0] dark:border-[#334155] shadow-sm space-y-4">
+        <h3 className="text-base font-bold text-[#0f172a] dark:text-[#f8fafc] flex items-center gap-2">
+          <Sparkles width={16} height={16} fill="none" stroke="#16a34a" className="w-4 h-4" />
           <span>CEFR Seviyelerine Göre İlerleme</span>
         </h3>
 
@@ -151,16 +151,16 @@ export const ProgressView: React.FC<ProgressViewProps> = ({
           {/* A1 - A2 Progress */}
           <div className="space-y-1.5">
             <div className="flex items-center justify-between text-xs">
-              <span className="font-semibold text-[#1e293b] dark:text-[#e2e8f0]">
+              <span className="font-semibold text-[#0f172a] dark:text-[#f8fafc]">
                 A1 - A2 Seviyesi (Temel Hazırlık)
               </span>
-              <span className="font-mono text-[#64748b] dark:text-[#94a3b8]">
+              <span className="font-mono text-[#475569] dark:text-[#94a3b8]">
                 {aLevelMastered.length} / {aLevelWords.length} kelime (%{aLevelRate})
               </span>
             </div>
-            <div className="w-full bg-[#f1f5f9] dark:bg-[#1e293b] rounded-full h-2.5 overflow-hidden">
+            <div className="w-full bg-[#f1f5f9] dark:bg-[#0f172a] rounded-full h-2.5 overflow-hidden">
               <div
-                className="bg-[#14b8a6] h-full rounded-full transition-all duration-500"
+                className="bg-[#10b981] h-full rounded-full transition-all duration-500"
                 style={{ width: `${aLevelRate}%` }}
               />
             </div>
@@ -169,16 +169,16 @@ export const ProgressView: React.FC<ProgressViewProps> = ({
           {/* B1 - B2 Progress */}
           <div className="space-y-1.5">
             <div className="flex items-center justify-between text-xs">
-              <span className="font-semibold text-[#1e293b] dark:text-[#e2e8f0]">
+              <span className="font-semibold text-[#0f172a] dark:text-[#f8fafc]">
                 B1 - B2 Seviyesi (Akademik Yeterlilik / Proficiency)
               </span>
-              <span className="font-mono text-[#64748b] dark:text-[#94a3b8]">
+              <span className="font-mono text-[#475569] dark:text-[#94a3b8]">
                 {bLevelMastered.length} / {bLevelWords.length} kelime (%{bLevelRate})
               </span>
             </div>
-            <div className="w-full bg-[#f1f5f9] dark:bg-[#1e293b] rounded-full h-2.5 overflow-hidden">
+            <div className="w-full bg-[#f1f5f9] dark:bg-[#0f172a] rounded-full h-2.5 overflow-hidden">
               <div
-                className="bg-[#4f46e5] h-full rounded-full transition-all duration-500"
+                className="bg-[#16a34a] h-full rounded-full transition-all duration-500"
                 style={{ width: `${bLevelRate}%` }}
               />
             </div>
@@ -186,20 +186,20 @@ export const ProgressView: React.FC<ProgressViewProps> = ({
         </div>
 
         {/* Quick Study Action Shortcuts */}
-        <div className="pt-3 border-t border-[#f1f5f9] dark:border-[#1e293b] flex flex-wrap gap-2">
+        <div className="pt-3 border-t border-[#f1f5f9] dark:border-[#334155] flex flex-wrap gap-2">
           <button
             type="button"
             onClick={() => onNavigateToTab('flashcards')}
-            className="px-4 py-2 rounded-xl bg-[#f1f5f9] hover:bg-[#e2e8f0] dark:bg-[#1e293b] dark:hover:bg-[#334155] text-xs font-semibold text-[#334155] dark:text-[#e2e8f0] flex items-center gap-1.5 transition-colors cursor-pointer"
+            className="px-4 py-2 rounded-xl bg-[#f8fafc] hover:bg-[#ecfdf5] dark:bg-[#0f172a] dark:hover:bg-[#334155] border border-[#e2e8f0] dark:border-[#334155] text-xs font-semibold text-[#0f172a] dark:text-[#f8fafc] flex items-center gap-1.5 transition-colors cursor-pointer"
           >
-            <Layers width={16} height={16} fill="none" stroke="#6366f1" className="w-4 h-4" />
+            <Layers width={16} height={16} fill="none" stroke="#16a34a" className="w-4 h-4" />
             <span>Kartlarla Tekrar Et</span>
             <ArrowRight width={14} height={14} fill="none" stroke="#475569" className="w-3.5 h-3.5 ml-1" />
           </button>
           <button
             type="button"
             onClick={() => onNavigateToTab('games')}
-            className="px-4 py-2 rounded-xl bg-[#f1f5f9] hover:bg-[#e2e8f0] dark:bg-[#1e293b] dark:hover:bg-[#334155] text-xs font-semibold text-[#334155] dark:text-[#e2e8f0] flex items-center gap-1.5 transition-colors cursor-pointer"
+            className="px-4 py-2 rounded-xl bg-[#f8fafc] hover:bg-[#ecfdf5] dark:bg-[#0f172a] dark:hover:bg-[#334155] border border-[#e2e8f0] dark:border-[#334155] text-xs font-semibold text-[#0f172a] dark:text-[#f8fafc] flex items-center gap-1.5 transition-colors cursor-pointer"
           >
             <Trophy width={16} height={16} fill="none" stroke="#f59e0b" className="w-4 h-4" />
             <span>Eşleştirme Oyunu Oyna</span>
@@ -209,22 +209,22 @@ export const ProgressView: React.FC<ProgressViewProps> = ({
       </div>
 
       {/* Word List by Status */}
-      <div className="bg-[#ffffff] dark:bg-[#0f172a] rounded-3xl p-5 sm:p-6 border border-[#e2e8f0] dark:border-[#1e293b] shadow-sm space-y-4">
+      <div className="bg-[#ffffff] dark:bg-[#1e293b] rounded-3xl p-5 sm:p-6 border border-[#e2e8f0] dark:border-[#334155] shadow-sm space-y-4">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-          <h3 className="text-base font-bold text-[#0f172a] dark:text-[#ffffff]">
+          <h3 className="text-base font-bold text-[#0f172a] dark:text-[#f8fafc]">
             Kelimeler ve Durumları
           </h3>
 
           {/* Filter segment */}
-          <div className="flex items-center gap-1 p-1 bg-[#f1f5f9] dark:bg-[#1e293b] rounded-xl text-xs">
+          <div className="flex items-center gap-1 p-1 bg-[#f1f5f9] dark:bg-[#0f172a] rounded-xl text-xs">
             <button
               type="button"
               onClick={() => setFilterStatus('all')}
-              style={filterStatus === 'all' ? { backgroundColor: '#4f46e5', color: '#ffffff' } : undefined}
+              style={filterStatus === 'all' ? { backgroundColor: '#16a34a', color: '#ffffff' } : undefined}
               className={`px-3 py-1.5 rounded-lg font-medium transition-colors cursor-pointer ${
                 filterStatus === 'all'
-                  ? 'legacy-btn-indigo bg-[#4f46e5] text-[#ffffff] shadow-xs font-bold'
-                  : 'text-[#475569] dark:text-[#cbd5e1]'
+                  ? 'legacy-btn-green bg-[#16a34a] text-[#ffffff] shadow-xs font-bold'
+                  : 'text-[#475569] dark:text-[#94a3b8]'
               }`}
             >
               Tümü ({words.length})
@@ -257,9 +257,9 @@ export const ProgressView: React.FC<ProgressViewProps> = ({
         </div>
 
         {/* Word rows */}
-        <div className="divide-y divide-[#f1f5f9] dark:divide-[#1e293b] max-h-96 overflow-y-auto pr-1">
+        <div className="divide-y divide-[#f1f5f9] dark:divide-[#334155] max-h-96 overflow-y-auto pr-1">
           {displayedWords.length === 0 ? (
-            <div className="py-8 text-center text-[#64748b] dark:text-[#94a3b8] text-xs">
+            <div className="py-8 text-center text-[#475569] dark:text-[#94a3b8] text-xs">
               {filterStatus === 'ogrenildi'
                 ? 'Henüz öğrenildi olarak işaretlenmiş kelime bulunmuyor.'
                 : filterStatus === 'calisiliyor'
@@ -270,27 +270,27 @@ export const ProgressView: React.FC<ProgressViewProps> = ({
             displayedWords.map((word) => (
               <div
                 key={word.id}
-                className="py-3 flex items-center justify-between gap-3 hover:bg-[#f8fafc] dark:hover:bg-[#1e293b] px-2 rounded-xl transition-colors"
+                className="py-3 flex items-center justify-between gap-3 hover:bg-[#f8fafc] dark:hover:bg-[#0f172a] px-2 rounded-xl transition-colors"
               >
                 <div className="flex items-center gap-2.5 min-w-0">
                   <button
                     type="button"
                     onClick={() => handleSpeakEnglish(word.word)}
-                    className="p-1 rounded-lg text-[#64748b] hover:text-[#4f46e5] hover:bg-[#eef2ff] dark:hover:bg-[#1e1b4b] transition-colors shrink-0 cursor-pointer"
+                    className="p-1 rounded-lg text-[#475569] hover:text-[#16a34a] hover:bg-[#ecfdf5] dark:hover:bg-[#334155] transition-colors shrink-0 cursor-pointer"
                     title="İngilizce telaffuzu dinle"
                   >
                     <Volume2 width={16} height={16} fill="none" stroke="#64748b" className="w-4 h-4" />
                   </button>
                   <div className="min-w-0">
                     <div className="flex items-center gap-1.5">
-                      <span className="font-bold text-sm text-[#0f172a] dark:text-[#ffffff] truncate">
+                      <span className="font-bold text-sm text-[#0f172a] dark:text-[#f8fafc] truncate">
                         {word.word}
                       </span>
                       <span className={`text-[10px] px-1.5 py-0.5 rounded-md ${getCefrBadgeClass(word.cefrLevel)}`}>
                         {word.cefrLevel}
                       </span>
                     </div>
-                    <p className="text-xs text-[#64748b] dark:text-[#94a3b8] truncate">
+                    <p className="text-xs text-[#475569] dark:text-[#94a3b8] truncate">
                       {word.trMeaning}
                     </p>
                   </div>

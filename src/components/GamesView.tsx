@@ -22,15 +22,15 @@ export const GamesView: React.FC<GamesViewProps> = ({
   return (
     <div className="space-y-6 pb-[120px]">
       {/* Game Mode Selector Segmented Tabs */}
-      <div className="max-w-md mx-auto p-1.5 bg-[#f1f5f9] dark:bg-[#1e293b] rounded-2xl flex items-center justify-between border border-[#e2e8f0] dark:border-[#334155]">
+      <div className="max-w-md mx-auto p-1.5 bg-[#ffffff] dark:bg-[#1e293b] rounded-2xl flex items-center justify-between border border-[#e2e8f0] dark:border-[#334155] shadow-2xs">
         <button
           type="button"
           onClick={() => setGameMode('speed-match')}
-          style={gameMode === 'speed-match' ? { backgroundColor: '#4f46e5', color: '#ffffff' } : undefined}
+          style={gameMode === 'speed-match' ? { backgroundColor: '#16a34a', color: '#ffffff' } : undefined}
           className={`flex-1 py-2.5 px-3 rounded-xl text-xs sm:text-sm font-bold flex items-center justify-center gap-2 transition-all cursor-pointer ${
             gameMode === 'speed-match'
-              ? 'legacy-btn-indigo bg-[#4f46e5] text-[#ffffff] shadow-sm'
-              : 'text-[#475569] dark:text-[#cbd5e1] hover:text-[#0f172a] dark:hover:text-[#ffffff]'
+              ? 'legacy-btn-green bg-[#16a34a] text-[#ffffff] shadow-sm'
+              : 'text-[#475569] dark:text-[#94a3b8] hover:text-[#0f172a] dark:hover:text-[#f8fafc]'
           }`}
         >
           <Zap
@@ -46,18 +46,18 @@ export const GamesView: React.FC<GamesViewProps> = ({
         <button
           type="button"
           onClick={() => setGameMode('speaking-check')}
-          style={gameMode === 'speaking-check' ? { backgroundColor: '#4f46e5', color: '#ffffff' } : undefined}
+          style={gameMode === 'speaking-check' ? { backgroundColor: '#16a34a', color: '#ffffff' } : undefined}
           className={`flex-1 py-2.5 px-3 rounded-xl text-xs sm:text-sm font-bold flex items-center justify-center gap-2 transition-all cursor-pointer ${
             gameMode === 'speaking-check'
-              ? 'legacy-btn-indigo bg-[#4f46e5] text-[#ffffff] shadow-sm'
-              : 'text-[#475569] dark:text-[#cbd5e1] hover:text-[#0f172a] dark:hover:text-[#ffffff]'
+              ? 'legacy-btn-green bg-[#16a34a] text-[#ffffff] shadow-sm'
+              : 'text-[#475569] dark:text-[#94a3b8] hover:text-[#0f172a] dark:hover:text-[#f8fafc]'
           }`}
         >
           <Mic
             width={16}
             height={16}
             fill="none"
-            stroke={gameMode === 'speaking-check' ? '#ffffff' : '#4f46e5'}
+            stroke={gameMode === 'speaking-check' ? '#ffffff' : '#16a34a'}
             className="w-4 h-4 shrink-0"
           />
           <span>Telaffuz &amp; Konuşma</span>

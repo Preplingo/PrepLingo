@@ -41,12 +41,12 @@ export default function App() {
     setShowSplash(false);
   };
 
-  // Theme state
+  // Theme state (Light Mode Soft Mint #ECFDF5 by default, persisted in localStorage)
   const [darkMode, setDarkMode] = useState<boolean>(() => {
     if (typeof window !== 'undefined') {
       const savedTheme = localStorage.getItem(STORAGE_KEY_THEME);
-      if (savedTheme) return savedTheme === 'dark';
-      return window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (savedTheme === 'dark') return true;
+      if (savedTheme === 'light') return false;
     }
     return false;
   });
@@ -274,7 +274,13 @@ export default function App() {
   const favoritesCount = words.filter((w) => w.isFavorite).length;
 
   return (
-    <div className="min-h-screen overflow-x-hidden bg-[#f8fafc] dark:bg-[#020617] text-[#0f172a] dark:text-[#f1f5f9] flex flex-col font-['Plus_Jakarta_Sans',sans-serif]">
+    <div
+      style={{
+        backgroundColor: darkMode ? '#0f172a' : '#ecfdf5',
+        color: darkMode ? '#f8fafc' : '#0f172a',
+      }}
+      className="min-h-screen overflow-x-hidden bg-[#ecfdf5] dark:bg-[#0f172a] text-[#0f172a] dark:text-[#f8fafc] flex flex-col font-['Plus_Jakarta_Sans',sans-serif] transition-colors"
+    >
       {/* Animated Splash Screen on first load (3.5s) */}
       {showSplash && <SplashScreen onComplete={handleSplashComplete} durationMs={3500} />}
 

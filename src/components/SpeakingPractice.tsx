@@ -160,9 +160,9 @@ export const SpeakingPractice: React.FC<SpeakingPracticeProps> = ({ words, initi
   return (
     <div className="space-y-6 max-w-2xl mx-auto">
       {/* Practice Card */}
-      <div className="bg-[#ffffff] dark:bg-[#0f172a] rounded-3xl p-5 sm:p-7 border border-[#e2e8f0] dark:border-[#1e293b] shadow-sm space-y-5">
+      <div className="bg-[#ffffff] dark:bg-[#1e293b] rounded-3xl p-5 sm:p-7 border border-[#e2e8f0] dark:border-[#334155] shadow-sm space-y-5">
         {/* Top Header: Word + Level + Index */}
-        <div className="flex items-center justify-between border-b border-[#f1f5f9] dark:border-[#1e293b] pb-4">
+        <div className="flex items-center justify-between border-b border-[#f1f5f9] dark:border-[#334155] pb-4">
           <div className="flex items-center gap-2">
             <span className={`text-xs uppercase px-2.5 py-1 rounded-lg tracking-wide ${getCefrBadgeClass(currentWord.cefrLevel)}`}>
               {currentWord.cefrLevel}
@@ -177,21 +177,21 @@ export const SpeakingPractice: React.FC<SpeakingPracticeProps> = ({ words, initi
             <button
               type="button"
               onClick={handlePrevWord}
-              className="p-1.5 rounded-xl text-[#475569] hover:bg-[#f1f5f9] dark:hover:bg-[#1e293b] transition-colors cursor-pointer"
+              className="p-1.5 rounded-xl text-[#475569] dark:text-[#94a3b8] hover:bg-[#f1f5f9] dark:hover:bg-[#0f172a] transition-colors cursor-pointer"
               title="Önceki cümle"
             >
-              <ChevronLeft width={20} height={20} fill="none" stroke="#475569" className="w-5 h-5" />
+              <ChevronLeft width={20} height={20} fill="none" stroke="#475569" className="w-5 h-5 dark:stroke-[#94a3b8]" />
             </button>
-            <span className="text-xs font-mono text-[#64748b]">
+            <span className="text-xs font-mono text-[#475569] dark:text-[#94a3b8]">
               {selectedWordIndex + 1} / {words.length}
             </span>
             <button
               type="button"
               onClick={handleNextWord}
-              className="p-1.5 rounded-xl text-[#475569] hover:bg-[#f1f5f9] dark:hover:bg-[#1e293b] transition-colors cursor-pointer"
+              className="p-1.5 rounded-xl text-[#475569] dark:text-[#94a3b8] hover:bg-[#f1f5f9] dark:hover:bg-[#0f172a] transition-colors cursor-pointer"
               title="Sonraki cümle"
             >
-              <ChevronRight width={20} height={20} fill="none" stroke="#475569" className="w-5 h-5" />
+              <ChevronRight width={20} height={20} fill="none" stroke="#475569" className="w-5 h-5 dark:stroke-[#94a3b8]" />
             </button>
           </div>
         </div>
@@ -199,7 +199,7 @@ export const SpeakingPractice: React.FC<SpeakingPracticeProps> = ({ words, initi
         {/* Word Info & English Audio */}
         <div className="flex items-center justify-between">
           <div>
-            <h2 className="text-2xl font-bold font-['Outfit'] text-[#0f172a] dark:text-[#ffffff]">
+            <h2 className="text-2xl font-bold font-['Outfit'] text-[#0f172a] dark:text-[#f8fafc]">
               {currentWord.word}
             </h2>
           </div>
@@ -207,38 +207,38 @@ export const SpeakingPractice: React.FC<SpeakingPracticeProps> = ({ words, initi
           <button
             type="button"
             onClick={() => handleListenSample(currentWord.word)}
-            className="p-2 rounded-xl bg-[#eef2ff] dark:bg-[#1e1b4b] text-[#4f46e5] dark:text-[#818cf8] hover:bg-[#e0e7ff] transition-colors cursor-pointer"
+            className="p-2 rounded-xl bg-[#ecfdf5] dark:bg-[#064e3b] text-[#16a34a] dark:text-[#34d399] hover:bg-[#d1fae5] transition-colors cursor-pointer"
             title="İngilizce kelimeyi dinle"
           >
-            <Volume2 width={20} height={20} fill="none" stroke="#4f46e5" className="w-5 h-5" />
+            <Volume2 width={20} height={20} fill="none" stroke="#16a34a" className="w-5 h-5 dark:stroke-[#34d399]" />
           </button>
         </div>
 
         {/* Target Sentence Box */}
-        <div className="bg-[#f8fafc] dark:bg-[#020617] rounded-2xl p-4 sm:p-5 border border-[#e2e8f0] dark:border-[#1e293b] space-y-3">
+        <div className="bg-[#f8fafc] dark:bg-[#0f172a] rounded-2xl p-4 sm:p-5 border border-[#e2e8f0] dark:border-[#334155] space-y-3">
           <div className="space-y-1">
-            <span className="text-[11px] font-bold uppercase tracking-wider text-[#4f46e5] dark:text-[#818cf8] block">
+            <span className="text-[11px] font-bold uppercase tracking-wider text-[#16a34a] dark:text-[#34d399] block">
               Seslendirilecek İngilizce Cümle:
             </span>
-            <p className="text-base sm:text-lg font-semibold text-[#0f172a] dark:text-[#ffffff] leading-relaxed">
+            <p className="text-base sm:text-lg font-semibold text-[#0f172a] dark:text-[#f8fafc] leading-relaxed">
               &quot;{currentWord.enExample}&quot;
             </p>
             {/* Turkish translation: NO AUDIO BUTTON */}
-            <p className="text-xs text-[#64748b] dark:text-[#94a3b8] italic">
+            <p className="text-xs text-[#475569] dark:text-[#94a3b8] italic">
               &quot;{currentWord.trExample}&quot;
             </p>
           </div>
 
           {/* Audio Pacing Controls (ENGLISH ONLY) */}
-          <div className="pt-2 flex flex-wrap items-center gap-2 border-t border-[#e2e8f0] dark:border-[#1e293b]">
+          <div className="pt-2 flex flex-wrap items-center gap-2 border-t border-[#e2e8f0] dark:border-[#334155]">
             <button
               type="button"
               onClick={() => handleListenSample(currentWord.enExample)}
-              className={`px-3 py-1.5 rounded-xl text-xs font-semibold bg-[#ffffff] dark:bg-[#0f172a] border border-[#e2e8f0] dark:border-[#334155] text-[#334155] dark:text-[#e2e8f0] hover:border-[#818cf8] flex items-center gap-1.5 transition-colors cursor-pointer ${
-                isListeningAudio ? 'animate-pulse text-[#4f46e5]' : ''
+              className={`px-3 py-1.5 rounded-xl text-xs font-semibold bg-[#ffffff] dark:bg-[#1e293b] border border-[#e2e8f0] dark:border-[#334155] text-[#0f172a] dark:text-[#f8fafc] hover:border-[#10b981] flex items-center gap-1.5 transition-colors cursor-pointer ${
+                isListeningAudio ? 'animate-pulse text-[#16a34a]' : ''
               }`}
             >
-              <Volume2 width={14} height={14} fill="none" stroke={isListeningAudio ? '#4f46e5' : '#475569'} className="w-3.5 h-3.5" />
+              <Volume2 width={14} height={14} fill="none" stroke={isListeningAudio ? '#16a34a' : '#475569'} className="w-3.5 h-3.5" />
               <span>Önce Doğru Telaffuzu Dinle</span>
             </button>
 
@@ -247,8 +247,8 @@ export const SpeakingPractice: React.FC<SpeakingPracticeProps> = ({ words, initi
               onClick={() => setIsSlowAudio(!isSlowAudio)}
               className={`px-2.5 py-1.5 rounded-xl text-[11px] font-mono border transition-colors cursor-pointer ${
                 isSlowAudio
-                  ? 'bg-[#e0e7ff] dark:bg-[#1e1b4b] text-[#4338ca] dark:text-[#a5b4fc] border-[#a5b4fc] dark:border-[#3730a3]'
-                  : 'bg-[#ffffff] dark:bg-[#0f172a] text-[#64748b] border-[#e2e8f0] dark:border-[#334155]'
+                  ? 'bg-[#ecfdf5] dark:bg-[#064e3b] text-[#047857] dark:text-[#6ee7b7] border-[#a7f3d0] dark:border-[#059669]'
+                  : 'bg-[#ffffff] dark:bg-[#1e293b] text-[#475569] dark:text-[#94a3b8] border-[#e2e8f0] dark:border-[#334155]'
               }`}
               title="Yavaş oynatmayı aç/kapat"
             >
@@ -272,11 +272,11 @@ export const SpeakingPractice: React.FC<SpeakingPracticeProps> = ({ words, initi
           <button
             type="button"
             onClick={isRecording ? stopRecording : startRecording}
-            style={{ backgroundColor: isRecording ? '#e11d48' : '#4f46e5', color: '#ffffff' }}
+            style={{ backgroundColor: isRecording ? '#e11d48' : '#16a34a', color: '#ffffff' }}
             className={`w-20 h-20 sm:w-24 sm:h-24 mx-auto rounded-full flex flex-col items-center justify-center transition-all duration-300 shadow-lg cursor-pointer ${
               isRecording
                 ? 'bg-[#e11d48] text-[#ffffff] animate-pulse'
-                : 'legacy-btn-indigo bg-[#4f46e5] hover:bg-[#4338ca] text-[#ffffff] hover:scale-105 active:scale-95'
+                : 'legacy-btn-green bg-[#16a34a] hover:bg-[#15803d] text-[#ffffff] hover:scale-105 active:scale-95'
             }`}
             aria-label={isRecording ? 'Kaydı Durdur' : 'Kaydı Başlat'}
           >
@@ -288,10 +288,10 @@ export const SpeakingPractice: React.FC<SpeakingPracticeProps> = ({ words, initi
           </button>
 
           <div>
-            <span className="text-sm font-semibold text-[#1e293b] dark:text-[#e2e8f0] block">
+            <span className="text-sm font-semibold text-[#0f172a] dark:text-[#f8fafc] block">
               {isRecording ? 'Dinleniyor... Cümleyi şimdi seslendirin!' : 'Mikrofona Dokun ve Telaffuzunu Test Et'}
             </span>
-            <p className="text-xs text-[#64748b] dark:text-[#94a3b8]">
+            <p className="text-xs text-[#475569] dark:text-[#94a3b8]">
               {isRecording ? 'Konuşmayı bitirince tekrar dokunun' : 'İngilizce cümleyi sesli olarak okuyun'}
             </p>
           </div>
@@ -369,7 +369,7 @@ export const SpeakingPractice: React.FC<SpeakingPracticeProps> = ({ words, initi
             </div>
 
             {/* Academic Feedback Tip */}
-            <div className="p-3.5 bg-[#ffffff] dark:bg-[#0f172a] rounded-xl border border-[#e0e7ff] dark:border-[#1e293b] text-xs text-[#334155] dark:text-[#cbd5e1] flex items-start gap-2.5">
+            <div className="p-3.5 bg-[#ffffff] dark:bg-[#0f172a] rounded-xl border border-[#e0e7ff] dark:border-[#334155] text-xs text-[#334155] dark:text-[#cbd5e1] flex items-start gap-2.5">
               <Sparkles width={16} height={16} fill="none" stroke="#4f46e5" className="w-4 h-4 shrink-0 mt-0.5" />
               <div>
                 <strong className="font-semibold block mb-0.5 text-[#0f172a] dark:text-[#ffffff]">Telaffuz Testi Değerlendirmesi:</strong>

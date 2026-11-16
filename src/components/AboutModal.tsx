@@ -62,14 +62,14 @@ export const AboutModal: React.FC<AboutModalProps> = ({ isOpen, onClose }) => {
       onClick={onClose}
     >
       <div
-        className="relative w-full max-w-xl max-h-[90vh] bg-[#ffffff] dark:bg-[#0f172a] rounded-3xl p-6 sm:p-8 shadow-2xl border border-[#e2e8f0] dark:border-[#1e293b] overflow-y-auto animate-in zoom-in-95 duration-200 space-y-5"
+        className="relative w-full max-w-xl max-h-[90vh] bg-[#ffffff] dark:bg-[#1e293b] rounded-3xl p-6 sm:p-8 shadow-2xl border border-[#e2e8f0] dark:border-[#334155] overflow-y-auto animate-in zoom-in-95 duration-200 space-y-5"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close Button */}
         <button
           type="button"
           onClick={onClose}
-          className="absolute top-5 right-5 p-2 text-[#94a3b8] hover:text-[#475569] dark:hover:text-[#e2e8f0] rounded-xl hover:bg-[#f1f5f9] dark:hover:bg-[#1e293b] transition-colors cursor-pointer"
+          className="absolute top-5 right-5 p-2 text-[#475569] dark:text-[#94a3b8] hover:text-[#0f172a] dark:hover:text-[#f8fafc] rounded-xl hover:bg-[#f1f5f9] dark:hover:bg-[#0f172a] transition-colors cursor-pointer"
           title="Kapat"
           aria-label="Kapat"
         >
@@ -81,56 +81,56 @@ export const AboutModal: React.FC<AboutModalProps> = ({ isOpen, onClose }) => {
           <AppLogo size={46} />
           <div>
             <div className="flex items-center gap-2">
-              <h3 id="about-modal-title" className="text-xl sm:text-2xl font-bold font-['Outfit'] text-[#0f172a] dark:text-[#ffffff]">
+              <h3 id="about-modal-title" className="text-xl sm:text-2xl font-bold font-['Outfit'] text-[#0f172a] dark:text-[#f8fafc]">
                 PrepLingo
               </h3>
-              <span className="text-[10px] font-bold uppercase tracking-wider text-[#4338ca] dark:text-[#a5b4fc] bg-[#eef2ff] dark:bg-[#1e1b4b] px-2.5 py-0.5 rounded-full border border-[#c7d2fe] dark:border-[#3730a3]">
+              <span className="text-[10px] font-bold uppercase tracking-wider text-[#047857] dark:text-[#6ee7b7] bg-[#ecfdf5] dark:bg-[#064e3b] px-2.5 py-0.5 rounded-full border border-[#a7f3d0] dark:border-[#059669]">
                 AKADEMİK &amp; GENEL SÖZLÜK
               </span>
             </div>
-            <p className="text-xs text-[#64748b] dark:text-[#94a3b8] mt-0.5">
+            <p className="text-xs text-[#475569] dark:text-[#94a3b8] mt-0.5">
               Üniversite Hazırlık, YDS/IELTS/TOEFL ve Tüm İngilizce Öğrenenler İçin Sözlük &amp; Çalışma Platformu
             </p>
           </div>
         </div>
 
         {/* Feature Cards Grid */}
-        <div className="space-y-3.5 pt-1 text-[#334155] dark:text-[#cbd5e1] text-xs sm:text-sm">
+        <div className="space-y-3.5 pt-1 text-[#0f172a] dark:text-[#f8fafc] text-xs sm:text-sm">
           {/* Section 1: Prep Exam & All Learners Focus */}
-          <div className="p-4 rounded-2xl bg-[#eef2ff] dark:bg-[#1e1b4b] border border-[#e0e7ff] dark:border-[#312e81] space-y-1.5">
-            <div className="flex items-center gap-2 font-bold text-[#1e1b4b] dark:text-[#c7d2fe]">
-              <GraduationCap width={16} height={16} stroke="currentColor" fill="none" className="w-4 h-4 text-[#4f46e5] dark:text-[#818cf8] shrink-0" />
+          <div className="p-4 rounded-2xl bg-[#ecfdf5] dark:bg-[#0f172a] border border-[#a7f3d0] dark:border-[#334155] space-y-1.5">
+            <div className="flex items-center gap-2 font-bold text-[#065f46] dark:text-[#6ee7b7]">
+              <GraduationCap width={16} height={16} stroke="currentColor" fill="none" className="w-4 h-4 text-[#16a34a] dark:text-[#34d399] shrink-0" />
               <span>Üniversite Hazırlık, Sınavlar ve Tüm Öğrenenler İçin</span>
             </div>
-            <p className="text-[#475569] dark:text-[#cbd5e1] leading-relaxed text-xs">
+            <p className="text-[#475569] dark:text-[#94a3b8] leading-relaxed text-xs">
               Üniversite hazırlık öğrencileri, yeni başlayanlar ve YDS, YÖKDİL, IELTS, TOEFL sınavlarına hazırlananlar için kapsamlı İngilizce-Türkçe / Türkçe-İngilizce sözlük ve kelime platformu. A1–B2 temel sözcüklerden yüksek frekanslı 2.500 akademik kelimeye ve 30.000+ genel sözlük arşivine kadar tüm seviyeleri kapsar.
             </p>
           </div>
 
           {/* Section 2: Dual Layer Architecture */}
-          <div className="p-4 rounded-2xl bg-[#f8fafc] dark:bg-[#020617] border border-[#e2e8f0] dark:border-[#1e293b] space-y-2.5">
-            <div className="flex items-center gap-2 font-bold text-[#0f172a] dark:text-[#ffffff]">
+          <div className="p-4 rounded-2xl bg-[#f8fafc] dark:bg-[#0f172a] border border-[#e2e8f0] dark:border-[#334155] space-y-2.5">
+            <div className="flex items-center gap-2 font-bold text-[#0f172a] dark:text-[#f8fafc]">
               <Database width={16} height={16} stroke="currentColor" fill="none" className="w-4 h-4 text-[#059669] dark:text-[#34d399] shrink-0" />
               <span>Bilinçli İki Katmanlı Sözlük Mimarisi</span>
             </div>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
-              <div className="p-3 rounded-xl bg-[#ffffff] dark:bg-[#0f172a] border border-[#e2e8f0] dark:border-[#1e293b] space-y-1">
+              <div className="p-3 rounded-xl bg-[#ffffff] dark:bg-[#1e293b] border border-[#e2e8f0] dark:border-[#334155] space-y-1">
                 <div className="flex items-center gap-1.5 font-bold text-[#b45309] dark:text-[#fcd34d]">
                   <Sparkles width={14} height={14} stroke="currentColor" fill="none" className="w-3.5 h-3.5" />
                   <span>2.500 Zengin Akademik Kart</span>
                 </div>
-                <p className="text-[#64748b] dark:text-[#94a3b8] leading-relaxed">
+                <p className="text-[#475569] dark:text-[#94a3b8] leading-relaxed">
                   CEFR A1–B2 seviye rozetleri, İngilizce telaffuz sesleri, çift dilli örnek cümleler, sınav ipuçları ve fiil çekim formları (V1/V2/V3).
                 </p>
               </div>
 
-              <div className="p-3 rounded-xl bg-[#ffffff] dark:bg-[#0f172a] border border-[#e2e8f0] dark:border-[#1e293b] space-y-1">
+              <div className="p-3 rounded-xl bg-[#ffffff] dark:bg-[#1e293b] border border-[#e2e8f0] dark:border-[#334155] space-y-1">
                 <div className="flex items-center gap-1.5 font-bold text-[#0369a1] dark:text-[#7dd3fc]">
                   <BookOpen width={14} height={14} stroke="currentColor" fill="none" className="w-3.5 h-3.5" />
                   <span>25.000+ Kelimelik Genel Sözlük</span>
                 </div>
-                <p className="text-[#64748b] dark:text-[#94a3b8] leading-relaxed">
+                <p className="text-[#475569] dark:text-[#94a3b8] leading-relaxed">
                   Akademik liste dışındaki günlük kelimeleri aradığınızda, internet gerekmeksizin anında Türkçe karşılık sağlayan ultra hafif çevrimdışı yedek katman.
                 </p>
               </div>
@@ -139,31 +139,31 @@ export const AboutModal: React.FC<AboutModalProps> = ({ isOpen, onClose }) => {
 
           {/* Section 3: 100% Offline & Kelime Defterim */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-            <div className="p-3.5 rounded-2xl bg-[#f8fafc] dark:bg-[#020617] border border-[#e2e8f0] dark:border-[#1e293b] space-y-1">
-              <div className="flex items-center gap-2 font-bold text-[#0f172a] dark:text-[#ffffff] text-xs">
-                <WifiOff width={16} height={16} stroke="currentColor" fill="none" className="w-4 h-4 text-[#4f46e5] dark:text-[#818cf8] shrink-0" />
+            <div className="p-3.5 rounded-2xl bg-[#f8fafc] dark:bg-[#0f172a] border border-[#e2e8f0] dark:border-[#334155] space-y-1">
+              <div className="flex items-center gap-2 font-bold text-[#0f172a] dark:text-[#f8fafc] text-xs">
+                <WifiOff width={16} height={16} stroke="currentColor" fill="none" className="w-4 h-4 text-[#16a34a] dark:text-[#34d399] shrink-0" />
                 <span>%100 Çevrimdışı (Offline-First)</span>
               </div>
-              <p className="text-xs text-[#64748b] dark:text-[#94a3b8] leading-relaxed">
+              <p className="text-xs text-[#475569] dark:text-[#94a3b8] leading-relaxed">
                 Tüm veri tabanı, arama motoru ve ses sentezleyici cihazınızda yerel çalışır. Metroda, otobüste veya uçuş modunda kesintisiz çalışabilirsiniz.
               </p>
             </div>
 
-            <div className="p-3.5 rounded-2xl bg-[#f8fafc] dark:bg-[#020617] border border-[#e2e8f0] dark:border-[#1e293b] space-y-1">
-              <div className="flex items-center gap-2 font-bold text-[#0f172a] dark:text-[#ffffff] text-xs">
+            <div className="p-3.5 rounded-2xl bg-[#f8fafc] dark:bg-[#0f172a] border border-[#e2e8f0] dark:border-[#334155] space-y-1">
+              <div className="flex items-center gap-2 font-bold text-[#0f172a] dark:text-[#f8fafc] text-xs">
                 <Heart width={16} height={16} stroke="#f43f5e" fill="#f43f5e" className="w-4 h-4 text-[#f43f5e] shrink-0" />
                 <span>Kişisel Kelime Defterim</span>
               </div>
-              <p className="text-xs text-[#64748b] dark:text-[#94a3b8] leading-relaxed">
+              <p className="text-xs text-[#475569] dark:text-[#94a3b8] leading-relaxed">
                 Kartlardaki kalp simgesine dokunarak zorlandığınız kelimeleri defterinize kaydedebilir, türlerine göre filtreleyerek odaklı tekrar yapabilirsiniz.
               </p>
             </div>
           </div>
 
           {/* Section 4: Contact, Support & Student Feedback */}
-          <div className="p-4 rounded-2xl bg-[#eef2ff] dark:bg-[#1e1b4b] border border-[#c7d2fe] dark:border-[#3730a3] space-y-2.5">
+          <div className="p-4 rounded-2xl bg-[#ecfdf5] dark:bg-[#0f172a] border border-[#a7f3d0] dark:border-[#334155] space-y-2.5">
             <div className="flex items-center justify-between gap-2">
-              <div className="flex items-center gap-2 font-bold text-[#0f172a] dark:text-[#ffffff] text-xs sm:text-sm">
+              <div className="flex items-center gap-2 font-bold text-[#0f172a] dark:text-[#f8fafc] text-xs sm:text-sm">
                 <MessageSquareHeart width={16} height={16} stroke="#f43f5e" fill="none" className="w-4 h-4 text-[#f43f5e] shrink-0" />
                 <span>İletişim &amp; Destek</span>
               </div>
@@ -175,15 +175,15 @@ export const AboutModal: React.FC<AboutModalProps> = ({ isOpen, onClose }) => {
               )}
             </div>
 
-            <p className="text-xs text-[#475569] dark:text-[#cbd5e1] leading-relaxed">
+            <p className="text-xs text-[#475569] dark:text-[#94a3b8] leading-relaxed">
               Hatalı gördüğünüz bir kelimeyi, teknik desteği veya önerilerinizi bize iletebilirsiniz. Öğrenci geri bildirimleriyle PrepLingo her geçen gün daha da gelişiyor.
             </p>
 
             <div className="pt-1 flex flex-col sm:flex-row sm:flex-wrap items-stretch sm:items-center gap-2.5">
               <a
                 href={`mailto:${supportEmail}?subject=PrepLingo%20%C4%B0leti%C5%9Fim%20ve%20Destek`}
-                style={{ backgroundColor: '#4f46e5', color: '#ffffff' }}
-                className="legacy-btn-indigo px-4 py-2 rounded-xl bg-[#4f46e5] hover:bg-[#4338ca] active:scale-95 text-[#ffffff] font-semibold text-xs transition-all inline-flex items-center justify-center gap-2 shadow-xs"
+                style={{ backgroundColor: '#16a34a', color: '#ffffff' }}
+                className="legacy-btn-green px-4 py-2 rounded-xl bg-[#16a34a] hover:bg-[#15803d] active:scale-95 text-[#ffffff] font-semibold text-xs transition-all inline-flex items-center justify-center gap-2 shadow-xs"
               >
                 <Mail width={14} height={14} stroke="#ffffff" fill="none" className="w-3.5 h-3.5 shrink-0" />
                 <span>{supportEmail}</span>
@@ -192,7 +192,7 @@ export const AboutModal: React.FC<AboutModalProps> = ({ isOpen, onClose }) => {
               <button
                 type="button"
                 onClick={handleFeedbackClick}
-                className="px-3.5 py-2 rounded-xl bg-[#ffffff] dark:bg-[#1e293b] border border-[#c7d2fe] dark:border-[#3730a3] text-[#4338ca] dark:text-[#a5b4fc] hover:bg-[#eef2ff] dark:hover:bg-[#334155] font-semibold text-xs transition-all cursor-pointer"
+                className="px-3.5 py-2 rounded-xl bg-[#ffffff] dark:bg-[#1e293b] border border-[#a7f3d0] dark:border-[#334155] text-[#047857] dark:text-[#6ee7b7] hover:bg-[#d1fae5] dark:hover:bg-[#334155] font-semibold text-xs transition-all cursor-pointer"
               >
                 E-posta Adresini Kopyala
               </button>
@@ -201,7 +201,7 @@ export const AboutModal: React.FC<AboutModalProps> = ({ isOpen, onClose }) => {
                 href="https://preplingo-privacy.netlify.app"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-3.5 py-2 rounded-xl bg-[#ffffff] dark:bg-[#1e293b] border border-[#c7d2fe] dark:border-[#3730a3] text-[#4338ca] dark:text-[#a5b4fc] hover:bg-[#eef2ff] dark:hover:bg-[#334155] font-semibold text-xs transition-all inline-flex items-center justify-center gap-2"
+                className="px-3.5 py-2 rounded-xl bg-[#ffffff] dark:bg-[#1e293b] border border-[#a7f3d0] dark:border-[#334155] text-[#047857] dark:text-[#6ee7b7] hover:bg-[#d1fae5] dark:hover:bg-[#334155] font-semibold text-xs transition-all inline-flex items-center justify-center gap-2"
               >
                 <ShieldCheck width={14} height={14} stroke="currentColor" fill="none" className="w-3.5 h-3.5 shrink-0 text-[#059669] dark:text-[#34d399]" />
                 <span>Gizlilik Politikası</span>
@@ -211,8 +211,8 @@ export const AboutModal: React.FC<AboutModalProps> = ({ isOpen, onClose }) => {
         </div>
 
         {/* Footer info & Dismiss */}
-        <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-3 border-t border-[#f1f5f9] dark:border-[#1e293b]">
-          <div className="flex items-center gap-1.5 text-xs text-[#94a3b8] dark:text-[#64748b]">
+        <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-3 border-t border-[#f1f5f9] dark:border-[#334155]">
+          <div className="flex items-center gap-1.5 text-xs text-[#475569] dark:text-[#94a3b8]">
             <ShieldCheck width={16} height={16} stroke="#10b981" fill="none" className="w-4 h-4 text-[#10b981]" />
             <span>Kişisel verileriniz ve ilerlemeniz yalnızca cihazınızda saklanır.</span>
           </div>
@@ -220,8 +220,8 @@ export const AboutModal: React.FC<AboutModalProps> = ({ isOpen, onClose }) => {
           <button
             type="button"
             onClick={onClose}
-            style={{ backgroundColor: '#4f46e5', color: '#ffffff' }}
-            className="legacy-btn-indigo w-full sm:w-auto px-6 py-2.5 rounded-xl bg-[#4f46e5] hover:bg-[#4338ca] text-[#ffffff] font-semibold text-xs shadow-sm transition-all cursor-pointer active:scale-95"
+            style={{ backgroundColor: '#16a34a', color: '#ffffff' }}
+            className="legacy-btn-green w-full sm:w-auto px-6 py-2.5 rounded-xl bg-[#16a34a] hover:bg-[#15803d] text-[#ffffff] font-semibold text-xs shadow-sm transition-all cursor-pointer active:scale-95"
           >
             Anladım
           </button>

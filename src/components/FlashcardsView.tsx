@@ -164,20 +164,20 @@ export const FlashcardsView: React.FC<FlashcardsViewProps> = ({
   return (
     <div className="space-y-6 pb-24 max-w-2xl mx-auto">
       {/* Controls Header */}
-      <div className="bg-[#ffffff] dark:bg-[#0f172a] rounded-3xl p-4 sm:p-5 border border-[#e2e8f0] dark:border-[#1e293b] shadow-sm transition-colors space-y-4">
+      <div className="bg-[#ffffff] dark:bg-[#1e293b] rounded-3xl p-4 sm:p-5 border border-[#e2e8f0] dark:border-[#334155] shadow-sm transition-colors space-y-4">
         {/* CEFR Level & Starred Filters */}
         <div className="flex flex-wrap items-center justify-between gap-3">
-          <div className="flex items-center gap-1.5 p-1 bg-[#f1f5f9] dark:bg-[#1e293b] rounded-2xl">
+          <div className="flex items-center gap-1.5 p-1 bg-[#f1f5f9] dark:bg-[#0f172a] rounded-2xl">
             {(['Tümü', 'A1-A2', 'B1-B2', 'Yıldızlılar'] as const).map((tab) => (
               <button
                 key={tab}
                 type="button"
                 onClick={() => setCefrFilter(tab)}
-                style={cefrFilter === tab ? { backgroundColor: '#4f46e5', color: '#ffffff' } : undefined}
+                style={cefrFilter === tab ? { backgroundColor: '#16a34a', color: '#ffffff' } : undefined}
                 className={`px-3 py-1.5 rounded-xl text-xs sm:text-sm font-semibold transition-all cursor-pointer ${
                   cefrFilter === tab
-                    ? 'legacy-btn-indigo bg-[#4f46e5] text-[#ffffff] shadow-sm font-bold'
-                    : 'text-[#475569] dark:text-[#cbd5e1] hover:text-[#0f172a] dark:hover:text-[#ffffff]'
+                    ? 'legacy-btn-green bg-[#16a34a] text-[#ffffff] shadow-sm font-bold'
+                    : 'text-[#475569] dark:text-[#94a3b8] hover:text-[#0f172a] dark:hover:text-[#f8fafc]'
                 }`}
               >
                 {tab === 'Tümü' ? 'Tüm Kartlar' : tab === 'Yıldızlılar' ? '★ Yıldızlılar' : tab}
@@ -189,10 +189,10 @@ export const FlashcardsView: React.FC<FlashcardsViewProps> = ({
             <button
               type="button"
               onClick={handleShuffle}
-              className="px-3.5 py-1.5 rounded-xl text-xs font-semibold text-[#4338ca] dark:text-[#a5b4fc] bg-[#eef2ff] hover:bg-[#e0e7ff] active:bg-[#c7d2fe] dark:bg-[#1e1b4b] dark:hover:bg-[#312e81] border border-[#c7d2fe] dark:border-[#3730a3] flex items-center gap-1.5 transition-all shadow-xs cursor-pointer active:scale-95"
+              className="px-3.5 py-1.5 rounded-xl text-xs font-semibold text-[#047857] dark:text-[#6ee7b7] bg-[#ecfdf5] hover:bg-[#d1fae5] active:bg-[#a7f3d0] dark:bg-[#064e3b] dark:hover:bg-[#065f46] border border-[#a7f3d0] dark:border-[#059669] flex items-center gap-1.5 transition-all shadow-xs cursor-pointer active:scale-95"
               title="Desteyi yeniden karıştır"
             >
-              <Shuffle width={14} height={14} fill="none" stroke="#4f46e5" className="w-3.5 h-3.5" />
+              <Shuffle width={14} height={14} fill="none" stroke="#16a34a" className="w-3.5 h-3.5" />
               <span>Karıştır</span>
             </button>
           </div>
@@ -200,9 +200,9 @@ export const FlashcardsView: React.FC<FlashcardsViewProps> = ({
 
         {/* Progress Bar & Counters */}
         <div className="space-y-1.5">
-          <div className="flex items-center justify-between text-xs text-[#64748b] dark:text-[#94a3b8]">
+          <div className="flex items-center justify-between text-xs text-[#475569] dark:text-[#94a3b8]">
             <span>
-              Kart <strong className="text-[#0f172a] dark:text-[#ffffff] font-mono">{deck.length > 0 ? currentIndex + 1 : 0}</strong> /{' '}
+              Kart <strong className="text-[#0f172a] dark:text-[#f8fafc] font-mono">{deck.length > 0 ? currentIndex + 1 : 0}</strong> /{' '}
               <span className="font-mono">{deck.length}</span>
             </span>
             <div className="flex items-center gap-3">
@@ -216,9 +216,9 @@ export const FlashcardsView: React.FC<FlashcardsViewProps> = ({
               </span>
             </div>
           </div>
-          <div className="w-full bg-[#f1f5f9] dark:bg-[#1e293b] rounded-full h-2 overflow-hidden">
+          <div className="w-full bg-[#f1f5f9] dark:bg-[#0f172a] rounded-full h-2 overflow-hidden">
             <div
-              className="bg-[#4f46e5] h-full rounded-full transition-all duration-300"
+              className="bg-[#16a34a] h-full rounded-full transition-all duration-300"
               style={{ width: `${progressPercentage}%` }}
             />
           </div>
@@ -227,10 +227,10 @@ export const FlashcardsView: React.FC<FlashcardsViewProps> = ({
 
       {/* Main Flashcard Container */}
       {deck.length === 0 ? (
-        <div className="bg-[#ffffff] dark:bg-[#0f172a] rounded-3xl p-10 text-center border border-[#e2e8f0] dark:border-[#1e293b]">
+        <div className="bg-[#ffffff] dark:bg-[#1e293b] rounded-3xl p-10 text-center border border-[#e2e8f0] dark:border-[#334155]">
           <Layers width={48} height={48} fill="none" stroke="#94a3b8" className="w-12 h-12 mx-auto mb-3" />
-          <h3 className="text-lg font-bold text-[#1e293b] dark:text-[#e2e8f0]">Bu destede kelime bulunmuyor</h3>
-          <p className="text-sm text-[#64748b] dark:text-[#94a3b8] mt-1">
+          <h3 className="text-lg font-bold text-[#0f172a] dark:text-[#f8fafc]">Bu destede kelime bulunmuyor</h3>
+          <p className="text-sm text-[#475569] dark:text-[#94a3b8] mt-1">
             {cefrFilter === 'Yıldızlılar'
               ? 'Henüz yıldızlı kelimeniz yok. Sözlükten kelimelere yıldız ekleyerek burada pratik yapabilirsiniz!'
               : 'Farklı bir seviye filtresi seçmeyi deneyebilirsiniz.'}
@@ -238,8 +238,8 @@ export const FlashcardsView: React.FC<FlashcardsViewProps> = ({
           <button
             type="button"
             onClick={() => setCefrFilter('Tümü')}
-            style={{ backgroundColor: '#4f46e5', color: '#ffffff' }}
-            className="legacy-btn-indigo mt-4 px-4 py-2 bg-[#4f46e5] text-[#ffffff] rounded-xl text-xs font-semibold hover:bg-[#4338ca] transition-colors cursor-pointer"
+            style={{ backgroundColor: '#16a34a', color: '#ffffff' }}
+            className="legacy-btn-green mt-4 px-4 py-2 bg-[#16a34a] text-[#ffffff] rounded-xl text-xs font-semibold hover:bg-[#15803d] transition-colors cursor-pointer"
           >
             Tüm Kartları Göster
           </button>
@@ -274,7 +274,7 @@ export const FlashcardsView: React.FC<FlashcardsViewProps> = ({
               className="flex-1 min-w-0 mx-14 cursor-pointer select-none transition-all duration-150"
             >
               {!isFlipped ? (
-                <div className="card-front text-center p-5 sm:p-8 bg-[#ffffff] dark:bg-[#0f172a] rounded-3xl border-2 border-[#e2e8f0] dark:border-[#1e293b] shadow-sm hover:border-[#818cf8] dark:hover:border-[#4f46e5] min-h-[360px] flex flex-col justify-between">
+                <div className="card-front text-center p-5 sm:p-8 bg-[#ffffff] dark:bg-[#1e293b] rounded-3xl border-2 border-[#e2e8f0] dark:border-[#334155] shadow-sm hover:border-[#10b981] dark:hover:border-[#34d399] min-h-[360px] flex flex-col justify-between">
                   {/* Top Bar: Level Badge & Bookmark */}
                   <div className="flex items-center justify-between">
                     <span className={`text-xs uppercase px-2.5 py-1 rounded-lg tracking-wide ${getCefrBadgeClass(currentWord.cefrLevel)}`}>
@@ -302,14 +302,14 @@ export const FlashcardsView: React.FC<FlashcardsViewProps> = ({
                   {/* Center: Word, Audio, Type */}
                   <div className="my-auto py-4 space-y-3">
                     <div className="flex items-center justify-center gap-2 flex-wrap">
-                      <h2 className="text-3xl sm:text-4xl font-bold font-['Outfit'] text-[#0f172a] dark:text-[#ffffff] break-words">
+                      <h2 className="text-3xl sm:text-4xl font-bold font-['Outfit'] text-[#0f172a] dark:text-[#f8fafc] break-words">
                         {currentWord.word}
                       </h2>
                       <button
                         type="button"
                         onClick={(e) => handleSpeakEnglish(e, currentWord.word)}
-                        className={`p-1.5 rounded-xl text-[#64748b] hover:text-[#4f46e5] hover:bg-[#eef2ff] dark:hover:bg-[#1e1b4b] transition-colors ${
-                          isSpeaking ? 'text-[#4f46e5] animate-pulse' : ''
+                        className={`p-1.5 rounded-xl text-[#475569] hover:text-[#16a34a] hover:bg-[#ecfdf5] dark:hover:bg-[#334155] transition-colors ${
+                          isSpeaking ? 'text-[#16a34a] animate-pulse' : ''
                         }`}
                         title="İngilizce telaffuzu dinle"
                       >
@@ -317,7 +317,7 @@ export const FlashcardsView: React.FC<FlashcardsViewProps> = ({
                           width={20}
                           height={20}
                           fill="none"
-                          stroke={isSpeaking ? '#4f46e5' : '#64748b'}
+                          stroke={isSpeaking ? '#16a34a' : '#64748b'}
                           className="w-5 h-5"
                         />
                       </button>
@@ -336,14 +336,14 @@ export const FlashcardsView: React.FC<FlashcardsViewProps> = ({
                   </div>
 
                   {/* Bottom Prompt */}
-                  <p className="text-sm text-[#6b7280] dark:text-[#94a3b8] mt-6 pt-3 border-t border-[#f1f5f9] dark:border-[#1e293b]">
+                  <p className="text-sm text-[#475569] dark:text-[#94a3b8] mt-6 pt-3 border-t border-[#f1f5f9] dark:border-[#334155]">
                     Anlamı görmek için dokunun
                   </p>
                 </div>
               ) : (
-                <div className="card-back text-center p-5 sm:p-8 bg-[#eff6ff] dark:bg-[#0f172a] rounded-3xl border-2 border-[#bfdbfe] dark:border-[#3730a3] shadow-sm min-h-[360px] flex flex-col justify-between">
+                <div className="card-back text-center p-5 sm:p-8 bg-[#ffffff] dark:bg-[#1e293b] rounded-3xl border-2 border-[#10b981] dark:border-[#34d399] shadow-sm min-h-[360px] flex flex-col justify-between">
                   {/* Top Bar: Word hint & Bookmark */}
-                  <div className="flex items-center justify-between text-xs text-[#1d4ed8] dark:text-[#a5b4fc]">
+                  <div className="flex items-center justify-between text-xs text-[#047857] dark:text-[#6ee7b7]">
                     <span className="font-bold uppercase tracking-wider">
                       {currentWord.word} · {getPosTurkishLabel(currentWord.partOfSpeech)}
                     </span>
@@ -368,7 +368,7 @@ export const FlashcardsView: React.FC<FlashcardsViewProps> = ({
 
                   {/* Center: Meaning & Examples */}
                   <div className="my-auto py-4 space-y-3">
-                    <h3 className="text-2xl sm:text-3xl font-bold text-[#1e3a8a] dark:text-[#ffffff] mb-2 break-words">
+                    <h3 className="text-2xl sm:text-3xl font-bold text-[#0f172a] dark:text-[#f8fafc] mb-2 break-words">
                       {currentWord.trMeaning}
                     </h3>
 
@@ -379,28 +379,28 @@ export const FlashcardsView: React.FC<FlashcardsViewProps> = ({
                       className="justify-center mb-2"
                     />
 
-                    <div className="max-w-lg mx-auto bg-[#ffffff] dark:bg-[#020617] p-3.5 rounded-2xl border border-[#dbeafe] dark:border-[#1e293b] space-y-1.5">
+                    <div className="max-w-lg mx-auto bg-[#f8fafc] dark:bg-[#0f172a] p-3.5 rounded-2xl border border-[#e2e8f0] dark:border-[#334155] space-y-1.5">
                       <div className="flex items-center justify-center gap-2">
-                        <p className="text-[#1f2937] dark:text-[#f1f5f9] italic font-medium text-sm sm:text-base">
+                        <p className="text-[#0f172a] dark:text-[#f8fafc] italic font-medium text-sm sm:text-base">
                           &quot;{currentWord.enExample}&quot;
                         </p>
                         <button
                           type="button"
                           onClick={(e) => handleSpeakEnglish(e, currentWord.enExample)}
-                          className="p-1 rounded text-[#2563eb] dark:text-[#818cf8] hover:bg-[#dbeafe] dark:hover:bg-[#1e293b] transition-colors shrink-0"
+                          className="p-1 rounded text-[#16a34a] dark:text-[#34d399] hover:bg-[#ecfdf5] dark:hover:bg-[#334155] transition-colors shrink-0"
                           title="İngilizce örnek cümleyi dinle"
                         >
-                          <Volume2 width={16} height={16} fill="none" stroke="#2563eb" className="w-4 h-4" />
+                          <Volume2 width={16} height={16} fill="none" stroke="#16a34a" className="w-4 h-4" />
                         </button>
                       </div>
-                      <p className="text-[#4b5563] dark:text-[#94a3b8] text-sm">
+                      <p className="text-[#475569] dark:text-[#94a3b8] text-sm">
                         &quot;{currentWord.trExample}&quot;
                       </p>
                     </div>
                   </div>
 
                   {/* Bottom Prompt */}
-                  <p className="text-sm text-[#2563eb] dark:text-[#818cf8] font-medium mt-6 pt-3 border-t border-[#dbeafe] dark:border-[#1e293b]">
+                  <p className="text-sm text-[#16a34a] dark:text-[#34d399] font-medium mt-6 pt-3 border-t border-[#f1f5f9] dark:border-[#334155]">
                     Kelimeye dönmek için dokunun
                   </p>
                 </div>
