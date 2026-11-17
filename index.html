@@ -1,6 +1,24 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <script>
+  (function() {
+    const origAttach = Element.prototype.attachShadow;
+    Element.prototype.attachShadow = function(init) {
+      if (this.id && /netlify/i.test(this.id) || (typeof this.className === 'string' && /netlify/i.test(this.className)) || this.hasAttribute('data-netlify-deploy-id')) {
+        this.remove();
+        return origAttach.call(document.createElement('div'), init);
+      }
+      const shadow = origAttach.apply(this, arguments);
+      setTimeout(() => {
+        if ((shadow.innerHTML && /netlify/i.test(shadow.innerHTML)) || (this.innerText && /netlify/i.test(this.innerText))) {
+          this.remove();
+        }
+      }, 0);
+      return shadow;
+    };
+  })();
+</script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>PrepLingo - University Prep English-Turkish Dictionary & Study</title>
